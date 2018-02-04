@@ -1,0 +1,9 @@
+Package: ecdmcore
+Title: Computational Backend for the ECDM Framework
+Version: 0.0.0.9000
+Authors@R: person("James", "Balamuta", email = "balamut2@illinois.edu", role = c("aut", "cre"))
+Description: Provides common functions used throughout other ECDM packages.
+Depends: R (>= 3.3.0)
+License: GPL (>= 2)
+Encoding: UTF-8
+LazyData: true
