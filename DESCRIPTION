@@ -1,14 +1,31 @@
 Package: ecdmcore
-Title: Computational Backend for the ECDM Framework
+Title: Algorithms used across Exploratory Cognitive Diagnostic Modeling    
 Version: 0.0.0.9000
-Authors@R: person("James", "Balamuta", email = "balamut2@illinois.edu", role = c("aut", "cre"))
-Description: Provides common functions used throughout other ECDM packages.
-Depends: R (>= 3.3.0)
+Authors@R: c(
+             person("James Joseph", "Balamuta", 
+                    email = "balamut2@illinois.edu",
+                    role = c("aut", "cre", "cph"),
+                    comment = c(ORCID = "0000-0003-2826-8458")
+                    ),
+             person("Steven Andrew", "Culpepper", 
+                    email = "sculpepp@illinois.edu",
+                    role = c("aut", "cph"),
+                    comment = c(ORCID = "0000-0003-4226-6176")
+                    ),
+             person("Jeffrey", "Douglas", 
+                    email = "jeffdoug@illinois.edu",
+                    role = c("aut", "cph")
+                   )
+            )
+Description: Provides a common set of functions used in the exploratory
+    cognitive diagnostic ('ECDM') framework. These functions include standard
+    object definitions for Q matrices, model construction, and more.
+Depends: R (>= 3.5.0)
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 LinkingTo: Rcpp, RcppArmadillo
 Imports: Rcpp
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Suggests: testthat,
     covr
