@@ -86,3 +86,17 @@ attribute_classes <- function(K) {
     .Call(`_ecdmcore_attribute_classes`, K)
 }
 
+#' Verify Q Matrix is Identifiable
+#'
+#' Performs a check to see if Q is identifable or not.
+#'
+#' @param Q The Q matrix to be checked with dimensions \eqn{K \times J}{K x J}.
+#'
+#' @return
+#' A `bool` with value either: false or true
+#'
+#' @export
+check_identifiability <- function(Q) {
+    .Call(`_ecdmcore_check_identifiability`, Q)
+}
+
