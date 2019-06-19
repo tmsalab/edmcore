@@ -1,38 +1,14 @@
 #include <RcppArmadillo.h>
 
-// [[Rcpp::interfaces(r, cpp)]]
-
-//' Bijection Vector
+//' Verify Q Matrix is Identifiable
 //'
-//' @param K number of levels
-//' @return A \code{vec} with length \eqn{K}.
-//' @export
-// [[Rcpp::export]]
-arma::vec bijectionvector(unsigned int K) {
-  arma::vec vv(K);
-
-  for (unsigned int k = 0; k < K; ++k) {
-    vv(k) = pow(2, K - k - 1);
-  }
-
-  return vv;
-}
-
-//' Inverse Bijection Vector
+//' Performs a check to see if Q is identifable or not.
 //'
-//' @param CL A \code{double} that controls ...
-//' @inheritParams bijectionvector
-//' @return A \code{vec} with length \eqn{K}.
+//' @param Q The Q matrix to be checked with dimensions \eqn{K \times J}{K x J}.
+//'
+//' @return A `bool` with value either: false or true
 //' @export
-// [[Rcpp::export]]
-arma::vec inv_bijectionvector(unsigned int K, double CL) {
-  arma::vec alpha(K);
-
-  for (unsigned int k = 0; k < K; ++k) {
-    double twopow = pow(2, K - k - 1);
-    alpha(k) = (twopow <= CL);
-    CL = CL - twopow * alpha(k);
-  }
-
-  return alpha;
-}
+// bool check_identifiability(const arma::mat Q)
+// {
+//   return ecdmcore::check_identifiability(Q);
+// }
