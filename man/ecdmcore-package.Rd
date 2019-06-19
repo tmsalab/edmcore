@@ -4,11 +4,20 @@
 \name{ecdmcore-package}
 \alias{ecdmcore}
 \alias{ecdmcore-package}
-\title{ecdmcore: Computational Backend for the ECDM Framework}
+\title{ecdmcore: Algorithms used across Exploratory Cognitive Diagnostic Modeling}
 \description{
-Provides common functions used throughout other ECDM packages.
+Provides a common set of functions used in the exploratory
+    cognitive diagnostic ('ECDM') framework. These functions include standard
+    object definitions for Q matrices, model construction, and more.
 }
 \author{
-\strong{Maintainer}: James Balamuta \email{balamut2@illinois.edu}
+\strong{Maintainer}: James Joseph Balamuta \email{balamut2@illinois.edu} (0000-0003-2826-8458) [copyright holder]
+
+Authors:
+\itemize{
+  \item Steven Andrew Culpepper \email{sculpepp@illinois.edu} (0000-0003-4226-6176) [copyright holder]
+  \item Jeffrey Douglas \email{jeffdoug@illinois.edu} [copyright holder]
+}
 
 }
+\keyword{internal}
