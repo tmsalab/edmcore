@@ -29,10 +29,22 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// attribute_classes
+arma::mat attribute_classes(int K);
+RcppExport SEXP _ecdmcore_attribute_classes(SEXP KSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    rcpp_result_gen = Rcpp::wrap(attribute_classes(K));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_ecdmcore_attribute_bijection", (DL_FUNC) &_ecdmcore_attribute_bijection, 1},
     {"_ecdmcore_attribute_inv_bijection", (DL_FUNC) &_ecdmcore_attribute_inv_bijection, 2},
+    {"_ecdmcore_attribute_classes", (DL_FUNC) &_ecdmcore_attribute_classes, 1},
     {NULL, NULL, 0}
 };
 

@@ -52,3 +52,37 @@ attribute_inv_bijection <- function(K, CL) {
     .Call(`_ecdmcore_attribute_inv_bijection`, K, CL)
 }
 
+#' Simulate all the Latent Attribute Profile \eqn{\mathbf{\alpha}_c} in
+#' Matrix form
+#'
+#' Generate the \eqn{\mathbf{\alpha}_c = (\alpha_{c1}, \ldots, \alpha_{cK})'}
+#' attribute profile matrix for members of class \eqn{c} such that
+#' \eqn{\alpha_{ck}} ' is 1 if members of class \eqn{c} possess skill \eqn{k}
+#' and zero otherwise.
+#'
+#' @param K Number of Attributes
+#'
+#' @return
+#' A \eqn{2^K} by \eqn{K} `matrix` of latent classes
+#' corresponding to entry \eqn{c} of \eqn{pi} based upon
+#' mastery and nonmastery of the \eqn{K} skills.
+#'
+#' @author
+#' James Joseph Balamuta and Steven Andrew Culpepper
+#'
+#' @seealso
+#' [simcdm::sim_subject_attributes()] and [simcdm::attribute_inv_bijection()]
+#'
+#' @export
+#' @examples
+#' ## Simulate Attribute Class Matrix ----
+#'
+#' # Define number of attributes
+#' K = 3
+#'
+#' # Generate an Latent Attribute Profile (Alpha) Matrix
+#' alphas = attribute_classes(K)
+attribute_classes <- function(K) {
+    .Call(`_ecdmcore_attribute_classes`, K)
+}
+
