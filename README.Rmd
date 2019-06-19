@@ -2,36 +2,79 @@
 output: github_document
 ---
 
-
-[![Travis-CI Build Status](https://travis-ci.org/tmsalab/ecdmcore.svg?branch=master)](https://travis-ci.org/tmsalab/ecdmcore)
-[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/ecdmcore)](http://www.r-pkg.org/pkg/ecdmcore)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/ecdmcore)](https://cran.r-project.org/package=ecdmcore)
-[![Coverage Status](https://img.shields.io/codecov/c/github/tmsalab/ecdmcore/master.svg)](https://codecov.io/github/tmsalab/ecdmcore?branch=master)
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, echo = FALSE}
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "man/figures/README-",
+  out.width = "100%"
 )
 ```
-
 # ecdmcore
 
-The goal of `ecdmcore` is to provide a unified computational backend across
-multiple _R_ packages. 
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.com/tmsalab/ecdmcore.svg?branch=master)](https://travis-ci.com/tmsalab/ecdmcore)
+[![Package-License](http://img.shields.io/badge/license-GPL%20\(%3E=2\)-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
+[![CRAN Version Badge](http://www.r-pkg.org/badges/version/simcdm)](https://cran.r-project.org/package=simcdm)
+[![CRAN status](https://www.r-pkg.org/badges/version/ecdmcore)](https://cran.r-project.org/package=ecdmcore)
+[![RStudio CRAN Mirror’s Monthly Downloads](http://cranlogs.r-pkg.org/badges/ecdmcore?color=brightgreen)](http://www.r-pkg.org/pkg/ecdmcore)
+[![RStudio CRAN Mirror’s Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/ecdmcore?color=brightgreen)](http://www.r-pkg.org/pkg/ecdmcore)
+[![Codecov test coverage](https://codecov.io/gh/tmsalab/ecdmcore/branch/master/graph/badge.svg)](https://codecov.io/gh/tmsalab/ecdmcore?branch=master)
+<!-- badges: end -->
+
+The goal of `ecdmcore` is to house a set of functions shared by many packages
+within the exploratory cognitive diagnostic modeling framework.
 
 ## Installation
 
-You can install ecdmcore from github with:
+You can install the released version of ecdmcore from [CRAN](https://CRAN.R-project.org) with:
 
-```{r gh-installation, eval = FALSE}
+``` r
+install.packages("ecdmcore")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
 # install.packages("devtools")
 devtools::install_github("tmsalab/ecdmcore")
 ```
 
+## Usage
+
+To use `ecdmcore`, load the package using:
+
+``` r
+library("ecdmcore")
+```
+
+## Overview
+
+The package contains class structure shared between different estimation
+units.
+
+In particular, we have: 
+
+  - Attributes: `attribute_classes()`, `attribute_bijection()`,
+    `attribute_inv_bijection()`.
+  - Matrix: `q_matrix()`
+
+## Authors
+
+James Joseph Balamuta, Steven Andrew Culpepper, and Jeffrey Douglas
+
+## Citing the `ecdmcore` package
+
+To ensure future development of the package, please cite `ecdmcore`
+package if used during the analysis or simulations. Citation information
+for the package may be acquired by using in *R*:
+
+``` r
+citation("ecdmcore")
+```
+
 ## License
 
-GPL (>= 2)
+GPL (\>= 2)
