@@ -9,7 +9,7 @@
 #' @return
 #' A `ggplot2` object that can be further manipulated.
 #'
-#' @importFrom ggplot2 ggplot aes labs theme element_text theme_minimal scale_fill_gradient geom_tile
+#' @importFrom ggplot2 ggplot aes labs theme element_text theme_minimal scale_fill_gradient geom_tile scale_x_continuous scale_y_continuous
 #' @export
 #' @rdname q_graph
 #' @examples
@@ -20,6 +20,9 @@ plot.q_matrix = function(x, ...) {
   # TODO: Figure out the best way to deal with globals
   Trait = Item = Value = NULL
 
+  j = nrow(x)
+  k = ncol(x)
+
   df_matrix_long = melt_array(x)
   colnames(df_matrix_long) = c("Item", "Trait", "Value")
 
@@ -27,10 +30,12 @@ plot.q_matrix = function(x, ...) {
     geom_tile(aes(fill = Value), color = "white") +
     scale_fill_gradient(low = "white", high = "steelblue") +
     labs(title = "Heatmap of Q Matrix Entries",
-         subtitle = sprintf("J = %i, K = %i", nrow(x), ncol(x)),
-         x = "Items",
-         y = "Traits",
+         subtitle = sprintf("J = %i, K = %i", j, k),
+         x = "Traits",
+         y = "Items",
          fill = "Value") +
     theme_minimal() +
-    theme()
+    theme() +
+    scale_x_continuous(breaks = seq_len(k)) +
+    scale_y_continuous(breaks = seq_len(j))
 }
