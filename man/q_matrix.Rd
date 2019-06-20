@@ -16,5 +16,9 @@ A `q_matrix` object.
 Provides a way to create an object as a `"q_matrix"`.
 }
 \examples{
+# Q matrix values
+x = matrix(c(1, 0, 0, 1), nrow = 2)
 
+# Construct class
+q_mat = q_matrix(x)
 }

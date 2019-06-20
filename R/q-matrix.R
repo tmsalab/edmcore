@@ -64,7 +64,11 @@ create_q_matrix = function(x) {
 #' @export
 #'
 #' @examples
+#' # Q matrix values
+#' x = matrix(c(1, 0, 0, 1), nrow = 2)
 #'
+#' # Construct class
+#' q_mat = q_matrix(x)
 q_matrix = function(x) {
   as_q_matrix(x)
 }
