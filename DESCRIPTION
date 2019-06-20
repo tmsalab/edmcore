@@ -1,6 +1,6 @@
 Package: ecdmcore
 Title: Algorithms used across Exploratory Cognitive Diagnostic Modeling    
-Version: 0.0.1.1000
+Version: 0.0.1.1100
 Authors@R: c(
              person("James Joseph", "Balamuta", 
                     email = "balamut2@illinois.edu",
