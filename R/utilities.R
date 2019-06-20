@@ -41,3 +41,38 @@ melt_array = function(x) {
   # Return melted value
   df_matrix_long
 }
+
+
+#' Extract and Format List to 4D Array
+#'
+#' Converts from the `list` with length of \eqn{R} and entry dimensions
+#' \eqn{J x K x S} to an `array` with dimensions \eqn{J x K x S x R}.
+#'
+#' @param x An `list` object with each element an `array`
+#'
+#' @return
+#' An `array` with dimensions \eqn{J x K x S x R}.
+#'
+#' @export
+#' @examples
+#' # Create a matrix
+#' x = matrix(1:6, nrow = 2)
+#'
+#' # Add matrices to a list
+#' x_list = list(x, x + 1)
+#'
+#' # Convert to array
+#' x_array = listmatrix_to_array(x_list)
+listmatrix_to_array = function(x) {
+
+  stopifnot(length(x) > 0L)
+
+  n_list_elements = length(x)
+  cube_dim = dim(x[[1]])
+
+  strategies_array =
+    array(as.numeric(unlist(x)),
+          dim = c(cube_dim, n_list_elements))
+
+  strategies_array
+}

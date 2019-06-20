@@ -48,3 +48,17 @@ test_that("Verify array is melted correctly", {
   expect_equal(melt_array(x), target_df, check.attributes = FALSE)
 })
 
+## List Matrices ----
+
+test_that("Verify list of matrices coerces to array", {
+
+  # Build a list
+  x = matrix(1:6, nrow = 2)
+  x_list = list(x, x + 1)
+
+  # Build expected array
+  target_array = array(c(x, x+1), dim = c(2, 3, 2))
+
+  # Verify equality
+  expect_equal(listmatrix_to_array(x_list), target_array)
+})
