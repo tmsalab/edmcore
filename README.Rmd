@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.com/tmsalab/ecdmcore.svg?branch=master)](https://travis-ci.com/tmsalab/ecdmcore)
 [![Package-License](http://img.shields.io/badge/license-GPL%20\(%3E=2\)-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
-[![CRAN Version Badge](http://www.r-pkg.org/badges/version/simcdm)](https://cran.r-project.org/package=simcdm)
+[![CRAN Version Badge](http://www.r-pkg.org/badges/version/ecdmcore)](https://cran.r-project.org/package=ecdmcore)
 [![CRAN status](https://www.r-pkg.org/badges/version/ecdmcore)](https://cran.r-project.org/package=ecdmcore)
 [![RStudio CRAN Mirror’s Monthly Downloads](http://cranlogs.r-pkg.org/badges/ecdmcore?color=brightgreen)](http://www.r-pkg.org/pkg/ecdmcore)
 [![RStudio CRAN Mirror’s Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/ecdmcore?color=brightgreen)](http://www.r-pkg.org/pkg/ecdmcore)

@@ -1,4 +1,4 @@
-#include <RcppArmadillo.h>
+#include <ecdmcore.h>
 
 //' Verify Q Matrix is Identifiable
 //'
@@ -6,9 +6,12 @@
 //'
 //' @param Q The Q matrix to be checked with dimensions \eqn{K \times J}{K x J}.
 //'
-//' @return A `bool` with value either: false or true
+//' @return
+//' A `bool` with value either: false or true
+//'
 //' @export
-// bool check_identifiability(const arma::mat Q)
-// {
-//   return ecdmcore::check_identifiability(Q);
-// }
+// [[Rcpp::export]]
+bool check_identifiability(const arma::mat Q)
+{
+  return ecdmcore::check_identifiability(Q);
+}
