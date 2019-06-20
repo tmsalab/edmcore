@@ -7,9 +7,9 @@
 \method{plot}{q_matrix}(x, ...)
 }
 \arguments{
-\item{...}{Additional paramters not used}
+\item{x}{Either an `edina`, `errum`, or `q_matrix` object.}
 
-\item{object, }{x Either an `edina`, `errum`, or `q_matrix` object.}
+\item{...}{Additional paramters not used}
 }
 \value{
 A `ggplot2` object that can be further manipulated.

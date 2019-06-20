@@ -3,8 +3,8 @@
 #' Provides a heatmap approach to showing the estimated binary or averaged
 #' values of the Q Matrix.
 #'
-#' @param object, x Either an `edina`, `errum`, or `q_matrix` object.
-#' @param ...       Additional paramters not used
+#' @param x   Either an `edina`, `errum`, or `q_matrix` object.
+#' @param ... Additional paramters not used
 #'
 #' @return
 #' A `ggplot2` object that can be further manipulated.
