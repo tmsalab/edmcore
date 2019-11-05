@@ -5,7 +5,7 @@ test_that("Construct permutation table", {
 
   # K = 2, 2! x 2
   k_2 = matrix(c(1, 2, 2, 1), nrow = 2)
-  expect_equal(attribute_permutations(2), k_2)
+  expect_equal(attribute_permutation_table(2), k_2)
 
   # K = 3, 3! x 3
   k_3 = cbind(
@@ -13,7 +13,7 @@ test_that("Construct permutation table", {
     c(2, 3, 1, 3, 1, 2),
     c(3, 2, 3, 1, 2, 1)
   )
-  expect_equal(attribute_permutations(3), k_3)
+  expect_equal(attribute_permutation_table(3), k_3)
 })
 
 test_that("Location of highest element", {

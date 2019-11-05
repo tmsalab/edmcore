@@ -11,10 +11,9 @@
 #' This is an internal function wrapper.
 #'
 #' @noRd
-attribute_permutations = function(K) {
+attribute_permutation_table = function(K) {
   gtools::permutations(K, K)
 }
-
 
 #' Matrix Subscript Position of Highest Matrix Entry
 #'
@@ -40,16 +39,99 @@ matrix_max_index = function(x) {
   arrayInd(highest_index, .dim = dim(x))
 }
 
+#' Reorder an object to match a target as closely as possible
+#'
+#' Rearranges columns within a matrix until the closest permutation
+#' to the target is found.
+#'
+#' @param current Present `matrix` object.
+#' @param target  Desired `matrix` object.
+#'
+#' @return
+#' A `permutated_matrix` object that contains:
+#'
+#' - `permutate_matrix`:
+#'    The `current` matrix permutated to match the `target`
+#' - `permutate_order`:
+#'    The permutation order applied to the columns of `current`.
+#' - `permutate_mean`:
+#'    The mean difference between the permutation current and target.
+#'    Bound between 0 and 1 with a mean value close to 1 indicating an
+#'    exact permutation between `current` and `target` is possible.
+#' - `permutate_target`:
+#'    Reference object used for permutation.
+#'
+#' @export
+permutate_binary_matrix = function(current, target) {
+
+  if (dim(current) != dim(target)) {
+    msg = sprintf(
+      "Dimensions of `current` (%s, %s) must match `target` (%s, %s).",
+      nrow(current), ncol(current),
+      nrow(target), ncol(target)
+    )
+    stop(msg, call. = FALSE)
+  }
+
+  # Data Dimensions
+  K = ncol(current)
+
+  # Create permutation tables
+  permutation_table = attribute_permutation_table(K)
+
+  n_permutations = nrow(permutation_table)
+
+  # Setup a vector to store results from matching columns
+  col_distances = rep(NA, n_permutations)
+
+  # Iterate on trait permutations
+  for (r in seq_len(n_permutations)) {
+    # Retrieve permutation indices
+    col_indices = permutation_table[r,]
+
+    # Obtain the mean difference between the current and target matrix
+    col_distances[r] = mean(current[, col_indices] == target)
+  }
+
+  # Obtain the desired column permutation index
+  permutation_idx = which.max(col_distances)
+
+  # Release the best permutation order
+  permutation_order = permutation_table[permutation_idx,]
+
+  out = structure(list(
+    permutate_matrix = current[, permutation_order],
+    permutate_order  = permutation_order,
+    permutate_mean   = col_distances[permutation_idx],
+    permutate_target = target
+  ), class = "permutation_matrix")
+
+  return(out)
+}
+
+#' Custom print handle for displaying the permutation ordering
+#'
+#' @param x   A `permutation_matrix` object.
+#' @param ... Not used.
+#'
+#' @export
+print.permutation_matrix = function(x, ...) {
+  cat("Results of permutating binary matrix...")
+  cat("Column Permutation:", x$permutation_order, "\n")
+  cat("Average Permutation Element Match:", x$permutation_mean, "\n\n")
+  cat("Permutated Matrix:\n")
+  print(x$permutate_matrix)
+}
 
 #' Element-wise Accuracy Table for Q Matrix Estimation
 #'
 #' Given the oracle Q matrix, compare the estimated Q matrix to
 #' determine how accurate the estimation routine is.
 #'
-#' @param oracle    Set containing the actual strategies used to
-#'                  generate the data. Dimensions: \eqn{J x K x S}.
 #' @param estimated Set containing the estimated strategies values
 #'                  on generated data. Dimensions: \eqn{J x K x S}.
+#' @param oracle    Set containing the actual strategies used to
+#'                  generate the data. Dimensions: \eqn{J x K x S}.
 #' @param decision  Threshold for applying a classification to estimated
 #'                  entry. Default: `0.5`
 #'
@@ -81,61 +163,17 @@ matrix_max_index = function(x) {
 #' # Simulate a random Q matrix
 #' Q_est = matrix(runif(7*2), ncol = 2)
 #'
-#' #
-#' q_recovery_element(Q_oracle, Q_est)
-q_recovery_element = function(oracle, estimated, decision = 0.5) {
+#' # Obtain the recovery metric for elementwise matches
+#' recovery_element(Q_est, Q_oracle)
+recovery_element = function(estimated, oracle, decision = 0.5) {
 
-  if (dim(oracle) != dim(estimated)) {
-    msg = sprintf(
-      "Dimensions of `oracle` (%s, %s) must match `estimated` (%s, %s).",
-        nrow(oracle), ncol(oracle),
-        nrow(estimated), ncol(estimated)
-      )
-    stop(msg, call. = FALSE)
-  }
-
-  # Data Dimensions
-  K = ncol(oracle)
-
-  # Create permutation tables
-  attribute_permutation_table = attribute_permutations(K)
-
-  # Setup a vector to store results from matching columns
-  col_match = rep(
-    NA, nrow(attribute_permutation_table),
-  )
-
-  # Computed averaged Q matrices and perform binary classification
+  # Perform the binary classification
   Q_est_binary = 1 * (estimated > decision)
 
-  # Oracle Q matrices used to generate the data
+  # Rename oracle
   Q_oracle = oracle
 
-  # Iterate on trait permutations
-  for (r in seq_len(nrow(attribute_permutation_table))) {
-    # Obtain the mean difference between the oracle and binary estimate matrix
-    col_match[r] =
-      mean(Q_oracle == Q_est_binary[, attribute_permutation_table[r,]])
-  }
+  permutation = permutate_binary_matrix(Q_est_binary, Q_oracle)
 
-  # Obtain the desired column permutation index
-  permutation_idx = which.max(col_match)
-
-  # Retrieve the column ordering
-  permutation_column_order = attribute_permutation_table[permutation_idx, ]
-
-  # Retrieve and set the best pairing
-  permutated_q = Q_est_binary[, permutation_column_order]
-
-  # Retrieve the element-wise mean
-  element_wise_recovery = col_match[r]
-
-  out = structure(
-    list(element_wise_recovery = element_wise_recovery,
-         permutated_q = permutated_q,
-         decision_rule = decision),
-    class = c("q_element_recovery", "list")
-  )
-
-  return(invisible(out))
+  return(permutation)
 }
