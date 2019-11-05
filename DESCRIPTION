@@ -20,6 +20,8 @@ Authors@R: c(
 Description: Provides a common set of functions used in the exploratory
     cognitive diagnostic ('ECDM') framework. These functions include standard
     object definitions for Q matrices, model construction, and more.
+URL: https://tmsalab.github.io/ecdmcore, https://github.com/tmsalab/ecdmcore
+BugReports: https://github.com/tmsalab/ecdmcore/issues
 License: GPL (>= 2)
 Depends: R (>= 3.5.0)
 LinkingTo: Rcpp, RcppArmadillo
