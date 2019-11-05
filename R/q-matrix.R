@@ -1,8 +1,10 @@
+## Formatting Tools for Q Matrices ----
+
 #' Format Q Matrix
 #'
 #' Applies a common naming scheme to the Q Matrix.
 #'
-#' @param x A [`base::matrix()`] with dimensions \eqn{J x K}.
+#' @param x A [`base::matrix()`] with dimensions \eqn{J \times K}{J x K}.
 #'
 #' @noRd
 format_q_matrix = function(x) {
@@ -18,6 +20,8 @@ format_q_matrix = function(x) {
   # Release
   x
 }
+
+## Convert Data to Q Matrix Object ----
 
 #' Constructor for Q Matrix
 #'
@@ -129,6 +133,8 @@ print.q_matrix = function(x, ... ) {
   print(x, ...)
   invisible(x)
 }
+
+## Extract Q Matrices from Data Objects ----
 
 #' Extract Q Matrix
 #'
