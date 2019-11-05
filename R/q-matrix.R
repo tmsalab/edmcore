@@ -4,9 +4,6 @@
 #'
 #' @param x A [`base::matrix()`] with dimensions \eqn{J x K}.
 #'
-#' @return
-#' A
-#'
 #' @noRd
 format_q_matrix = function(x) {
 
@@ -34,7 +31,7 @@ format_q_matrix = function(x) {
 #' @noRd
 create_q_matrix = function(x) {
 
-  stopifnot(x %in% c(0, 1))
+  stopifnot(all(x %in% c(0, 1)))
 
   # Verify invertibility
   identified_q = check_identifiability(x)
@@ -64,7 +61,11 @@ create_q_matrix = function(x) {
 #' @export
 #'
 #' @examples
+#' # Create a matrix with only 1s and 0s.
+#' x = matrix(c(1, 0, 0, 1), ncol = 2)
 #'
+#' # Register it as a Q matrix.
+#' q_matrix(x)
 q_matrix = function(x) {
   as_q_matrix(x)
 }
