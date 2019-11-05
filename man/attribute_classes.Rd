@@ -11,7 +11,7 @@ attribute_classes(K)
 \item{K}{Number of Attributes}
 }
 \value{
-A \eqn{2^K} by \eqn{K} `matrix` of latent classes
+A \eqn{2^K} by \eqn{K} \code{matrix} of latent classes
 corresponding to entry \eqn{c} of \eqn{pi} based upon
 mastery and nonmastery of the \eqn{K} skills.
 }
@@ -31,7 +31,7 @@ K = 3
 alphas = attribute_classes(K)
 }
 \seealso{
-[simcdm::sim_subject_attributes()] and [simcdm::attribute_inv_bijection()]
+\code{\link[simcdm:sim_subject_attributes]{simcdm::sim_subject_attributes()}} and \code{\link[simcdm:attribute_inv_bijection]{simcdm::attribute_inv_bijection()}}
 }
 \author{
 James Joseph Balamuta and Steven Andrew Culpepper

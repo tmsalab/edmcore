@@ -7,9 +7,9 @@
 \method{print}{q_matrix}(x, ...)
 }
 \arguments{
-\item{x}{An `q_matrix` object}
+\item{x}{An \code{q_matrix} object}
 
-\item{...}{Additional methods passed onto the `print.matrix` method.}
+\item{...}{Additional methods passed onto the \code{print.matrix} method.}
 }
 \description{
 Custom print method for the Q Matrix Object.

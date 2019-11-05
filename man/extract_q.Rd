@@ -13,12 +13,12 @@ extract_q_matrix(x, ...)
 \method{extract_q_matrix}{default}(x, ...)
 }
 \arguments{
-\item{x}{An `edina`, `dina`, `errum`, or `rrum` object}
+\item{x}{An \code{edina}, \code{dina}, \code{errum}, or \code{rrum} object}
 
 \item{...}{Additional parameters}
 }
 \value{
-A `matrix` that is either dichotomous or estimated.
+A \code{matrix} that is either dichotomous or estimated.
 }
 \description{
 Given a modeling object, extract the Q Matrix
