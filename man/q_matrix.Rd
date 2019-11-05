@@ -7,14 +7,18 @@
 q_matrix(x)
 }
 \arguments{
-\item{x}{Either a `data.frame` or `matrix`.}
+\item{x}{Either a \code{data.frame} or \code{matrix}.}
 }
 \value{
-A `q_matrix` object.
+A \code{q_matrix} object.
 }
 \description{
-Provides a way to create an object as a `"q_matrix"`.
+Provides a way to create an object as a \code{"q_matrix"}.
 }
 \examples{
+# Create a matrix with only 1s and 0s.
+x = matrix(c(1, 0, 0, 1), ncol = 2)
 
+# Register it as a Q matrix.
+q_matrix(x)
 }

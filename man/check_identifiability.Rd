@@ -10,7 +10,7 @@ check_identifiability(Q)
 \item{Q}{The Q matrix to be checked with dimensions \eqn{K \times J}{K x J}.}
 }
 \value{
-A `bool` with value either: false or true
+A \code{bool} with value either: false or true
 }
 \description{
 Performs a check to see if Q is identifable or not.
