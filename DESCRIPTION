@@ -23,7 +23,9 @@ Description: Provides a common set of functions used in the exploratory
 License: GPL (>= 2)
 Depends: R (>= 3.5.0)
 LinkingTo: Rcpp, RcppArmadillo
-Imports: Rcpp
+Imports: 
+    Rcpp,
+    gtools
 Suggests: 
     testthat (>= 2.1.0),
     covr,
