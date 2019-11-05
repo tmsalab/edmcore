@@ -1,0 +1,37 @@
+---
+title: "Q Matrix Recovery Metrics"
+author: "James Balamuta"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{q-matrix-metrics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ecdmcore)
+```
+
+To assess the accuracy associated with estimating $\mathbf{Q}$ we employ both
+matrix- and element-wise recovery rates across replication $r$. 
+As the estimation is valid up to a permutation, we present the accuracy rates 
+after permutating the estimated Q matrix across all trait (column) orderings.
+Once the Q matrix has been permutated, we then compute and show
+the respective metric.
+
+**Matrix-wise recovery rate** is defined as:
+$$
+\frac{1}{R}\sum _{r=1}^R\mathcal I(\widehat{{Q}}^{(r)}=\widehat{Q})
+$$
+
+**Matrix-wise recovery rate** is defined as:
+$$
+\frac{1}{R}\sum _{r=1}^R\frac{1}{JK}\sum _{j=1}^J\sum _{k=1}^K\mathcal I(\hat{q}_{jk}^{(r)}=q_{jk})
+$$
