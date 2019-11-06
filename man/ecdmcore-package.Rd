@@ -10,6 +10,15 @@ Provides a common set of functions used in the exploratory
     cognitive diagnostic ('ECDM') framework. These functions include standard
     object definitions for Q matrices, model construction, and more.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://tmsalab.github.io/ecdmcore}
+  \item \url{https://github.com/tmsalab/ecdmcore}
+  \item Report bugs at \url{https://github.com/tmsalab/ecdmcore/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: James Joseph Balamuta \email{balamut2@illinois.edu} (0000-0003-2826-8458) [copyright holder]
 
