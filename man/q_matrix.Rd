@@ -16,9 +16,9 @@ A \code{q_matrix} object.
 Provides a way to create an object as a \code{"q_matrix"}.
 }
 \examples{
-# Create a matrix with only 1s and 0s.
-x = matrix(c(1, 0, 0, 1), ncol = 2)
+# Q matrix values
+x = matrix(c(1, 0, 0, 1), nrow = 2)
 
-# Register it as a Q matrix.
-q_matrix(x)
+# Construct class
+q_mat = q_matrix(x)
 }
