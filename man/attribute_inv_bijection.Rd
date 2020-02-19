@@ -9,11 +9,11 @@ attribute_inv_bijection(K, CL)
 \arguments{
 \item{K}{Number of Attributes.}
 
-\item{CL}{An `integer` between \eqn{0} and \eqn{2^{K-1}}}
+\item{CL}{An \code{integer} between \eqn{0} and \eqn{2^{K-1}}}
 }
 \value{
 A \eqn{K}-dimensional vector with an attribute pattern corresponding
-to `CL`.
+to \code{CL}.
 }
 \description{
 Convert an integer between \eqn{0} and \eqn{2^{K-1}} to
@@ -25,7 +25,7 @@ inv_biject1 = attribute_inv_bijection(5, 1)
 inv_biject2 = attribute_inv_bijection(5, 2)
 }
 \seealso{
-[ecdmcore::attribute_bijection()]
+\code{\link[ecdmcore:attribute_bijection]{ecdmcore::attribute_bijection()}}
 }
 \author{
 Steven Andrew Culpepper and James Joseph Balamuta

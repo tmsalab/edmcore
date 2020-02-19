@@ -7,14 +7,14 @@
 listmatrix_to_array(x)
 }
 \arguments{
-\item{x}{An `list` object with each element an `array`}
+\item{x}{An \code{list} object with each element an \code{array}}
 }
 \value{
-An `array` with dimensions \eqn{J x K x S x R}.
+An \code{array} with dimensions \eqn{J x K x S x R}.
 }
 \description{
-Converts from the `list` with length of \eqn{R} and entry dimensions
-\eqn{J x K x S} to an `array` with dimensions \eqn{J x K x S x R}.
+Converts from the \code{list} with length of \eqn{R} and entry dimensions
+\eqn{J x K x S} to an \code{array} with dimensions \eqn{J x K x S x R}.
 }
 \examples{
 # Create a matrix

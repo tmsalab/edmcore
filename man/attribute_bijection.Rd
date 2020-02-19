@@ -21,7 +21,7 @@ Computes the powers of 2 from \eqn{0} up to \eqn{K - 1} for
 biject = attribute_bijection(3)
 }
 \seealso{
-[ecdmcore::attribute_inv_bijection()]
+\code{\link[ecdmcore:attribute_inv_bijection]{ecdmcore::attribute_inv_bijection()}}
 }
 \author{
 Steven Andrew Culpepper and James Joseph Balamuta

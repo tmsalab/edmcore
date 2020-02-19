@@ -5,7 +5,7 @@
 \alias{as_q_matrix.data.frame}
 \alias{as_q_matrix.matrix}
 \alias{as_q_matrix.default}
-\title{Coerce `data.frame` and `matrix` classes to Q Matrix.}
+\title{Coerce \code{data.frame} and \code{matrix} classes to Q Matrix.}
 \usage{
 as_q_matrix(x, ...)
 
@@ -16,10 +16,10 @@ as_q_matrix(x, ...)
 \method{as_q_matrix}{default}(x, ...)
 }
 \arguments{
-\item{x}{Either a `data.frame` or `matrix`.}
+\item{x}{Either a \code{data.frame} or \code{matrix}.}
 
 \item{...}{Not used}
 }
 \description{
-`as.q_matrix` acts as an aliases.
+\code{as.q_matrix} acts as an aliases.
 }
