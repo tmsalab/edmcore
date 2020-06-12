@@ -52,12 +52,28 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// permuteAtableIndices
+arma::vec permuteAtableIndices(unsigned int nClass, unsigned int K, unsigned int order, const arma::vec& vv, const arma::vec& perm);
+RcppExport SEXP _ecdmcore_permuteAtableIndices(SEXP nClassSEXP, SEXP KSEXP, SEXP orderSEXP, SEXP vvSEXP, SEXP permSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< unsigned int >::type nClass(nClassSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type K(KSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type order(orderSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type vv(vvSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type perm(permSEXP);
+    rcpp_result_gen = Rcpp::wrap(permuteAtableIndices(nClass, K, order, vv, perm));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_ecdmcore_attribute_bijection", (DL_FUNC) &_ecdmcore_attribute_bijection, 1},
     {"_ecdmcore_attribute_inv_bijection", (DL_FUNC) &_ecdmcore_attribute_inv_bijection, 2},
     {"_ecdmcore_attribute_classes", (DL_FUNC) &_ecdmcore_attribute_classes, 1},
     {"_ecdmcore_check_identifiability", (DL_FUNC) &_ecdmcore_check_identifiability, 1},
+    {"_ecdmcore_permuteAtableIndices", (DL_FUNC) &_ecdmcore_permuteAtableIndices, 5},
     {NULL, NULL, 0}
 };
 

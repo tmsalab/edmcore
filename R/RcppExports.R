@@ -100,3 +100,20 @@ check_identifiability <- function(Q) {
     .Call(`_ecdmcore_check_identifiability`, Q)
 }
 
+#' Permute indices
+#'
+#' Constructs and permutes indices within a vector
+#'
+#' @param nClass Number of classes given by \eqn{2^K}.
+#' @param K      Number of Attributes
+#' @param order  Degree of Order
+#' @param vv     Bijection vector
+#' @param perm   Permutations
+#'
+#' @return
+#'
+#' Permuted table at specified indices.
+permuteAtableIndices <- function(nClass, K, order, vv, perm) {
+    .Call(`_ecdmcore_permuteAtableIndices`, nClass, K, order, vv, perm)
+}
+
