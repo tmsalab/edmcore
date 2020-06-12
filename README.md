@@ -5,8 +5,8 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.com/tmsalab/ecdmcore.svg?branch=master)](https://travis-ci.com/tmsalab/ecdmcore)
+[![R build
+status](https://github.com/tmsalab/ecdmcore/workflows/R-CMD-check/badge.svg)](https://github.com/tmsalab/ecdmcore/actions)
 [![Package-License](http://img.shields.io/badge/license-GPL%20\(%3E=2\)-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
 [![CRAN Version
 Badge](http://www.r-pkg.org/badges/version/ecdmcore)](https://cran.r-project.org/package=ecdmcore)
