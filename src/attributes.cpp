@@ -23,11 +23,11 @@
 // [[Rcpp::export]]
 arma::vec attribute_bijection(unsigned int K)
 {
-  arma::vec vv(K);
-  for (unsigned int i = 0; i < K; ++i) {
-    vv(i) = std::pow(2.0, static_cast<double>(K - i) - 1.0);
-  }
-  return vv;
+    arma::vec vv(K);
+    for (unsigned int i = 0; i < K; ++i) {
+        vv(i) = std::pow(2.0, static_cast<double>(K - i) - 1.0);
+    }
+    return vv;
 }
 
 //' Perform an Inverse Bijection of an Integer to Attribute Pattern
@@ -56,15 +56,15 @@ arma::vec attribute_bijection(unsigned int K)
 // [[Rcpp::export]]
 arma::vec attribute_inv_bijection(unsigned int K, double CL)
 {
-  arma::vec alpha(K);
+    arma::vec alpha(K);
 
-  for (unsigned int k = 0; k < K; ++k) {
-    double twopow = std::pow(2.0, static_cast<double>(K - k) - 1.0);
-    alpha(k) = (twopow <= CL);
-    CL = CL - twopow * alpha(k);
-  }
+    for (unsigned int k = 0; k < K; ++k) {
+        double twopow = std::pow(2.0, static_cast<double>(K - k) - 1.0);
+        alpha(k) = (twopow <= CL);
+        CL = CL - twopow * alpha(k);
+    }
 
-  return alpha;
+    return alpha;
 }
 
 //' Simulate all the Latent Attribute Profile \eqn{\mathbf{\alpha}_c} in
@@ -100,20 +100,20 @@ arma::vec attribute_inv_bijection(unsigned int K, double CL)
 // [[Rcpp::export]]
 arma::mat attribute_classes(int K)
 {
-  // Modified version of ETAMatrix
+    // Modified version of ETAMatrix
 
-  // Calculate number of classes
-  unsigned int nClass =
-    static_cast<unsigned int>(std::pow(2.0, static_cast<double>(K)));
+    // Calculate number of classes
+    unsigned int nClass =
+        static_cast<unsigned int>(std::pow(2.0, static_cast<double>(K)));
 
-  // Create alpha matrix
-  arma::mat alpha_matrix(nClass, K);
+    // Create alpha matrix
+    arma::mat alpha_matrix(nClass, K);
 
-  // Fill alpha matrix with classes under an inverse bijection
-  for (unsigned int cc = 0; cc < nClass; cc++) {
-    alpha_matrix.row(cc) = attribute_inv_bijection(K, cc).t();
-  }
+    // Fill alpha matrix with classes under an inverse bijection
+    for (unsigned int cc = 0; cc < nClass; cc++) {
+        alpha_matrix.row(cc) = attribute_inv_bijection(K, cc).t();
+    }
 
-  // Release result
-  return alpha_matrix;
+    // Release result
+    return alpha_matrix;
 }
