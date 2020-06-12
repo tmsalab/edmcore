@@ -148,7 +148,7 @@ print.permutation_matrix = function(x, ...) {
 #'    entries.
 #'
 #' @export
-#'
+#' @rdname recovery-permutations
 #' @examples
 #' # Create a Q matrix
 #' Q_oracle =
@@ -163,17 +163,38 @@ print.permutation_matrix = function(x, ...) {
 #' # Simulate a random Q matrix
 #' Q_est = matrix(runif(7*2), ncol = 2)
 #'
-#' # Obtain the recovery metric for elementwise matches
+#' # Obtain the recovery metric for element-wise matches
 #' recovery_element(Q_est, Q_oracle)
-recovery_element = function(estimated, oracle, decision = 0.5) {
+recovery_q_element = function(estimated_q, oracle_q, decision = 0.5) {
 
   # Perform the binary classification
-  Q_est_binary = 1 * (estimated > decision)
+  Q_est_binary = 1 * (estimated_q > decision)
 
   # Rename oracle
-  Q_oracle = oracle
+  Q_oracle = oracle_q
 
   permutation = permutate_binary_matrix(Q_est_binary, Q_oracle)
 
   return(permutation)
+}
+
+#' @export
+#' @rdname recovery-permutations
+recovery_theta_order = function(estimated_theta, permutation_order) {
+
+  K = length(permutation_order)
+
+  vv = attribute_bijection(K)
+
+  border = c(
+    permuteAtableIndices(
+      nClass = 2 ^ K,
+      K,
+      order = K,
+      vv,
+      permutation_order - 1 # remove 1 from indices
+    )
+  ) + 1
+
+  return(estimated_theta[, border])
 }

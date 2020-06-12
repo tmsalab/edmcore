@@ -109,9 +109,9 @@ check_identifiability <- function(Q) {
 #' @param order  Degree of Order
 #' @param vv     Bijection vector
 #' @param perm   Permutations
+#' @noRd
 #'
 #' @return
-#'
 #' Permuted table at specified indices.
 permuteAtableIndices <- function(nClass, K, order, vv, perm) {
     .Call(`_ecdmcore_permuteAtableIndices`, nClass, K, order, vv, perm)
