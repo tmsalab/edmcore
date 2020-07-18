@@ -104,7 +104,7 @@ permutate_binary_matrix = function(current, target) {
     permutate_order  = permutation_order,
     permutate_mean   = col_distances[permutation_idx],
     permutate_target = target
-  ), class = "permutation_matrix")
+  ), class = "permutate_binary_matrix")
 
   return(out)
 }
@@ -128,10 +128,10 @@ print.permutation_matrix = function(x, ...) {
 #' Given the oracle Q matrix, compare the estimated Q matrix to
 #' determine how accurate the estimation routine is.
 #'
-#' @param estimated Set containing the estimated strategies values
-#'                  on generated data. Dimensions: \eqn{J x K x S}.
-#' @param oracle    Set containing the actual strategies used to
-#'                  generate the data. Dimensions: \eqn{J x K x S}.
+#' @param estimated Set containing the estimated Q matrix values
+#'                  on generated data. Dimensions: \eqn{J x K}.
+#' @param oracle    Set containing the actual Q matrix values used to
+#'                  generate the data. Dimensions: \eqn{J x K}.
 #' @param decision  Threshold for applying a classification to estimated
 #'                  entry. Default: `0.5`
 #'
@@ -165,13 +165,13 @@ print.permutation_matrix = function(x, ...) {
 #'
 #' # Obtain the recovery metric for element-wise matches
 #' recovery_element(Q_est, Q_oracle)
-recovery_q_element = function(estimated_q, oracle_q, decision = 0.5) {
+recovery_q_element = function(estimate, oracle, decision = 0.5) {
 
   # Perform the binary classification
-  Q_est_binary = 1 * (estimated_q > decision)
+  Q_est_binary = 1 * (estimated > decision)
 
   # Rename oracle
-  Q_oracle = oracle_q
+  Q_oracle = oracle
 
   permutation = permutate_binary_matrix(Q_est_binary, Q_oracle)
 
@@ -180,21 +180,51 @@ recovery_q_element = function(estimated_q, oracle_q, decision = 0.5) {
 
 #' @export
 #' @rdname recovery-permutations
-recovery_theta_order = function(estimated_theta, permutation_order) {
+recovery_theta_order = function(estimate, oracle, P = sqrt(ncol(oracle))) {
 
-  K = length(permutation_order)
+  # Create permutation tables
+  permutation_table = attribute_permutation_table(P)
 
-  vv = attribute_bijection(K)
+  n_permutations = nrow(permutation_table)
 
-  border = c(
-    permuteAtableIndices(
-      nClass = 2 ^ K,
-      K,
-      order = K,
+  # Setup a vector to store results from matching columns
+  col_distances = rep(NA, n_permutations)
+
+  vv = pgedm:::gen_bijectionvector(P, 2)
+
+  # Iterate on trait permutations
+  for (r in seq_len(n_permutations)) {
+    # Retrieve permutation indices
+    col_indices = permutation_table[r,]
+
+    border = c(pgedm:::permuteAtableIndices(
+      nClass = 2 ^ P,
+      P,
+      M = 2,
+      order = P,
       vv,
-      permutation_order - 1 # remove 1 from indices
-    )
-  ) + 1
+      col_indices - 1 # remove 1 from R indices to match C++
+    )) + 1
 
-  return(estimated_theta[, border])
+    # Obtain the mean difference between the current and target matrix
+    col_distances[r] = mean(abs(estimated_theta[, border] - oracle_theta))
+  }
+
+  # Obtain the desired column permutation index
+  permutation_idx = which.min(col_distances)
+
+  # Release the best permutation order
+  permutation_order = permutation_table[permutation_idx,]
+
+
+  border = c(pgedm:::permuteAtableIndices(
+    nClass = 2 ^ P,
+    P,
+    M = 2,
+    order = P,
+    vv,
+    permutation_order - 1 # remove 1 from indices
+  )) + 1
+
+  return(border)
 }
