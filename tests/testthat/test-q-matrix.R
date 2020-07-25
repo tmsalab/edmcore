@@ -14,8 +14,8 @@ test_that("Verify Q matrix construction", {
                )
   )
 
-  # Verify identifiability set
-  expect_true(attr(q, "identifiable"))
+  # Verify matrix is identifiable
+  expect_true(is_q_strict(q))
 
   # Reset q and focus on element entries
   class(q) = "matrix"
@@ -27,8 +27,8 @@ test_that("Verify non-identifiable Q matrix construction", {
   x = matrix(c(0, 1), ncol = 2)
   q = q_matrix(x)
 
-  # Verify matrix isn't identifiabile
-  expect_false(attr(q, "identifiable"))
+  # Verify matrix isn't identifiable
+  expect_false(is_q_strict(q))
 
   # Reset q and focus on element entries
   class(q) = "matrix"

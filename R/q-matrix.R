@@ -6,6 +6,12 @@
 #'
 #' @param x A [`base::matrix()`] with dimensions \eqn{J \times K}{J x K}.
 #'
+#' @return
+#' A `matrix` with:
+#'
+#' - **Columns** named as `TraitXYZ` with XYZ denoting the trait number.
+#' - **Rows** named as `ItemXYZ` with XYZ denoting the item number.
+#'
 #' @noRd
 format_q_matrix = function(x) {
 
@@ -21,6 +27,53 @@ format_q_matrix = function(x) {
   x
 }
 
+## Verify Q matrix object ----
+
+#' Is object a Q Matrix?
+#'
+#' @param x An object to test
+#'
+#' @return
+#' A logical vector
+#'
+#' @examples
+#' x = matrix(c(1, 0, 2, 1))
+#' is_q_matrix(q_matrix(x))
+is_q_matrix = function(x) inherits(x, "q_matrix")
+
+#' Is Q Matrix Strictly or Generically Identifiable?
+#'
+#' @param x A [q_matrix()] or [base::matrix()] to test.
+#'
+#' @return
+#' A logical vector
+#'
+#' @section Strictly Identifiable:
+#'
+#' Add details...
+#'
+#' @section Generically Identifiable:
+#'
+#' Add details...
+#'
+#' @export
+#' @examples
+#' x = matrix(c(1, 0, 1, 1))
+#' is_q_strict(x)
+#' is_q_strict(q_matrix(x))
+is_q_strict = function(x) {
+  stopifnot("`x` must be either `q_matrix` or `matrix`" =
+              inherits(x, c("q_matrix", "matrix")))
+
+  if (is_q_matrix(x)) {
+    attr(x, 'strictly_identifiable')
+  } else {
+    stopifnot("`x` must contain only 0 or 1 entries." = x %in% c(0, 1))
+    is_strict_q_identified(x)
+  }
+}
+
+
 ## Convert Data to Q Matrix Object ----
 
 #' Constructor for Q Matrix
@@ -35,10 +88,8 @@ format_q_matrix = function(x) {
 #' @noRd
 create_q_matrix = function(x) {
 
-  stopifnot(all(x %in% c(0, 1)))
-
-  # Verify invertibility
-  identified_q = is_strict_q_identified(x)
+  # Verify strict identifiability
+  strictly_identified_q = is_q_strict(x)
 
   # Structure Q matrix
   x = format_q_matrix(x)
@@ -47,7 +98,7 @@ create_q_matrix = function(x) {
   class(x) = c('q_matrix', class(x))
 
   # Embed information
-  attr(x, 'identifiable') = identified_q
+  attr(x, 'strictly_identifiable') = strictly_identified_q
 
   # Release result
   x
@@ -62,14 +113,25 @@ create_q_matrix = function(x) {
 #' @return
 #' A `q_matrix` object.
 #'
-#' @export
+#' @seealso
+#' [as_q_matrix()]
 #'
+#' @export
 #' @examples
 #' # Q matrix values
 #' x = matrix(c(1, 0, 0, 1), nrow = 2)
 #'
-#' # Construct class
+#' # Q matrix wrapper
 #' q_mat = q_matrix(x)
+#'
+#' # Data Frame encoding of Q
+#' q_df = data.frame(
+#'    k1 = c(1, 0),
+#'    k2 = c(0, 1)
+#' )
+#'
+#' # Create a Q matrix
+#' q_mat = q_matrix(q_df)
 q_matrix = function(x) {
   as_q_matrix(x)
 }
@@ -81,8 +143,21 @@ q_matrix = function(x) {
 #' @param x        Either a `data.frame` or `matrix`.
 #' @param ...      Not used
 #'
-#' @rdname as_q_matrix
+#' @return
+#' A `q_matrix` object.`
+#'
+#' @seealso
+#' [q_matrix()]
+#'
 #' @export
+#' @rdname as_q_matrix
+#'
+#' @examples
+#' # Q matrix values
+#' x = matrix(c(1, 0, 0, 1), nrow = 2)
+#'
+#' # Construct class
+#' q_mat = as_q_matrix(x)
 as_q_matrix = function(x, ...) {
   UseMethod("as_q_matrix")
 }
@@ -106,59 +181,42 @@ as_q_matrix.default = function(x, ...) {
   stop(class(x)[1], " is not yet supported for conversion to `q_matrix`.")
 }
 
-#' Printing out a Q Matrix Object
+#' Output Q Matrix
 #'
 #' Custom print method for the Q Matrix Object.
 #'
 #' @param x        An `q_matrix` object
 #' @param ...      Additional methods passed onto the `print.matrix` method.
 #'
+#' @seealso
+#' [q_matrix()], [as_q_matrix()]
+#'
+#' @return
+#' An invisible `matrix` without the `q_matrix` class displayed as a part
+#' of the output displayed.
+#'
 #' @export
+#' @examples
+#' # Q matrix values
+#' x = matrix(c(1, 0, 0, 1), nrow = 2)
+#'
+#' # Show Q matrix structure
+#' q_matrix(x)
 print.q_matrix = function(x, ... ) {
 
-  cat("Q Matrix properties\n")
-  cat("   Items: ", nrow(x), "\n")
-  cat("   Traits: ", ncol(x), "\n")
-  cat("   Identifiable: ")
+  cat("A q matrix:", nrow(x), "x", ncol(x), "\n")
+  cat("Strictly Identified: ")
 
   # Creative use of STDERROR vs. STDOUT. Might back fire.
-  if(attr(x, "identifiable")) {
+  if(is_q_strict(x)) {
     cat("Yes. \n\n")
   } else {
-    message(" No.\n")
+    message("No.\n")
   }
 
   class(x) = "matrix"
-  attributes(x)["identifiable"] = NULL
+  attributes(x)["strictly_identifiable"] = NULL
   print(x, ...)
   invisible(x)
 }
 
-## Extract Q Matrices from Data Objects ----
-
-#' Extract Q Matrix
-#'
-#' Given a modeling object, extract the Q Matrix
-#'
-#' @param x    An `edina`, `dina`, `errum`, or `rrum` object
-#' @param ...  Additional parameters
-#'
-#' @return A `matrix` that is either dichotomous or estimated.
-#'
-#' @rdname extract_q
-#' @export
-extract_q_matrix = function(x, ...) {
-  UseMethod("extract_q_matrix")
-}
-
-#' @rdname extract_q
-#' @export
-extract_q_matrix.q_matrix = function(x, ...) {
-  x
-}
-
-#' @rdname extract_q
-#' @export
-extract_q_matrix.default = function(x, ...) {
-  stop("'", class(x)[1], "' is not yet supported for extracting a `q_matrix`.")
-}
