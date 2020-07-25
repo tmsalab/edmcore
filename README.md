@@ -1,50 +1,42 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ecdmcore
+# edmcore
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.com/tmsalab/ecdmcore.svg?branch=master)](https://travis-ci.com/tmsalab/ecdmcore)
+[![R build
+status](https://github.com/tmsalab/edmcore/workflows/R-CMD-check/badge.svg)](https://github.com/tmsalab/edmcore/actions)
 [![Package-License](http://img.shields.io/badge/license-GPL%20\(%3E=2\)-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
-[![CRAN Version
-Badge](http://www.r-pkg.org/badges/version/ecdmcore)](https://cran.r-project.org/package=ecdmcore)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/ecdmcore)](https://cran.r-project.org/package=ecdmcore)
-[![RStudio CRAN Mirror’s Monthly
-Downloads](http://cranlogs.r-pkg.org/badges/ecdmcore?color=brightgreen)](http://www.r-pkg.org/pkg/ecdmcore)
-[![RStudio CRAN Mirror’s Total
-Downloads](http://cranlogs.r-pkg.org/badges/grand-total/ecdmcore?color=brightgreen)](http://www.r-pkg.org/pkg/ecdmcore)
 [![Codecov test
-coverage](https://codecov.io/gh/tmsalab/ecdmcore/branch/master/graph/badge.svg)](https://codecov.io/gh/tmsalab/ecdmcore?branch=master)
+coverage](https://codecov.io/gh/tmsalab/edmcore/branch/master/graph/badge.svg)](https://codecov.io/gh/tmsalab/edmcore?branch=master)
 <!-- badges: end -->
 
-The goal of `ecdmcore` is to house a set of functions shared by many
+The goal of `edmcore` is to house a set of functions shared by many
 packages within the exploratory cognitive diagnostic modeling framework.
 
 ## Installation
 
-You can install the released version of ecdmcore from
+You can install the released version of edmcore from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("ecdmcore")
+install.packages("edmcore")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("tmsalab/ecdmcore")
+devtools::install_github("tmsalab/edmcore")
 ```
 
 ## Usage
 
-To use `ecdmcore`, load the package using:
+To use `edmcore`, load the package using:
 
 ``` r
-library("ecdmcore")
+library("edmcore")
 ```
 
 ## Overview
@@ -62,14 +54,14 @@ In particular, we have:
 
 James Joseph Balamuta, Steven Andrew Culpepper, and Jeffrey Douglas
 
-## Citing the `ecdmcore` package
+## Citing the `edmcore` package
 
-To ensure future development of the package, please cite `ecdmcore`
+To ensure future development of the package, please cite `edmcore`
 package if used during the analysis or simulations. Citation information
 for the package may be acquired by using in *R*:
 
 ``` r
-citation("ecdmcore")
+citation("edmcore")
 ```
 
 ## License
