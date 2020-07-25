@@ -1,4 +1,4 @@
 library(testthat)
-library(ecdmcore)
+library(edmcore)
 
-test_check("ecdmcore")
+test_check("edmcore")

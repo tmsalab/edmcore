@@ -7,12 +7,12 @@
 \method{plot}{q_matrix}(x, ...)
 }
 \arguments{
-\item{x}{Either an `edina`, `errum`, or `q_matrix` object.}
+\item{x}{Either an \code{edina}, \code{errum}, or \code{q_matrix} object.}
 
 \item{...}{Additional paramters not used}
 }
 \value{
-A `ggplot2` object that can be further manipulated.
+A \code{ggplot2} object that can be further manipulated.
 }
 \description{
 Provides a heatmap approach to showing the estimated binary or averaged

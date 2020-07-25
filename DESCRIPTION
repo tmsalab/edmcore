@@ -1,5 +1,5 @@
-Package: ecdmcore
-Title: Algorithms used across Exploratory Cognitive Diagnostic Modeling    
+Package: edmcore
+Title: Algorithms used across Exploratory Diagnostic Modeling    
 Version: 0.0.3.900
 Authors@R: c(
              person("James Joseph", "Balamuta", 
@@ -18,10 +18,10 @@ Authors@R: c(
                    )
             )
 Description: Provides a common set of functions used in the exploratory
-    cognitive diagnostic ('ECDM') framework. These functions include standard
+    diagnostic ('EDM') framework. These functions include standard
     object definitions for Q matrices, model construction, and more.
-URL: https://tmsalab.github.io/ecdmcore, https://github.com/tmsalab/ecdmcore
-BugReports: https://github.com/tmsalab/ecdmcore/issues
+URL: https://tmsalab.github.io/edmcore, https://github.com/tmsalab/edmcore
+BugReports: https://github.com/tmsalab/edmcore/issues
 License: GPL (>= 2)
 Depends: R (>= 3.5.0)
 LinkingTo: Rcpp, RcppArmadillo
@@ -37,5 +37,5 @@ Suggests:
 VignetteBuilder: knitr
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)

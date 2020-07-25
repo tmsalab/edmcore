@@ -1,9 +1,9 @@
-#ifndef ECDMCORE_Q_MATRIX_H
-#define ECDMCORE_Q_MATRIX_H
+#ifndef EDMCORE_Q_MATRIX_H
+#define EDMCORE_Q_MATRIX_H
 
-namespace ecdmcore {
+namespace edmcore {
 
-inline bool check_identifiability(const arma::mat Q) {
+inline bool is_strict_q_identified(const arma::mat Q) {
     unsigned int K = Q.n_cols;
     unsigned int J = Q.n_rows;
 

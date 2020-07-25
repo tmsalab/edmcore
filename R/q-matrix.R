@@ -38,7 +38,7 @@ create_q_matrix = function(x) {
   stopifnot(all(x %in% c(0, 1)))
 
   # Verify invertibility
-  identified_q = check_identifiability(x)
+  identified_q = is_strict_q_identified(x)
 
   # Structure Q matrix
   x = format_q_matrix(x)

@@ -22,7 +22,7 @@
 #' ## Construct an attribute bijection ----
 #' biject = attribute_bijection(3)
 attribute_bijection <- function(K) {
-    .Call(`_ecdmcore_attribute_bijection`, K)
+    .Call(`_edmcore_attribute_bijection`, K)
 }
 
 #' Perform an Inverse Bijection of an Integer to Attribute Pattern
@@ -49,7 +49,7 @@ attribute_bijection <- function(K) {
 #' inv_biject1 = attribute_inv_bijection(5, 1)
 #' inv_biject2 = attribute_inv_bijection(5, 2)
 attribute_inv_bijection <- function(K, CL) {
-    .Call(`_ecdmcore_attribute_inv_bijection`, K, CL)
+    .Call(`_edmcore_attribute_inv_bijection`, K, CL)
 }
 
 #' Simulate all the Latent Attribute Profile \eqn{\mathbf{\alpha}_c} in
@@ -83,12 +83,12 @@ attribute_inv_bijection <- function(K, CL) {
 #' # Generate an Latent Attribute Profile (Alpha) Matrix
 #' alphas = attribute_classes(K)
 attribute_classes <- function(K) {
-    .Call(`_ecdmcore_attribute_classes`, K)
+    .Call(`_edmcore_attribute_classes`, K)
 }
 
-#' Verify Q Matrix is Identifiable
+#' Verify Q Matrix is Strictly Identifiable
 #'
-#' Performs a check to see if Q is identifable or not.
+#' Performs a check to see if Q is strictly identified or not.
 #'
 #' @param Q The Q matrix to be checked with dimensions \eqn{K \times J}{K x J}.
 #'
@@ -96,7 +96,24 @@ attribute_classes <- function(K) {
 #' A `bool` with value either: false or true
 #'
 #' @export
-check_identifiability <- function(Q) {
-    .Call(`_ecdmcore_check_identifiability`, Q)
+is_strict_q_identified <- function(Q) {
+    .Call(`_edmcore_is_strict_q_identified`, Q)
+}
+
+#' Permute indices
+#'
+#' Constructs and permutes indices within a vector
+#'
+#' @param nClass Number of classes given by \eqn{2^K}.
+#' @param K      Number of Attributes
+#' @param order  Degree of Order
+#' @param vv     Bijection vector
+#' @param perm   Permutations
+#' @noRd
+#'
+#' @return
+#' Permuted table at specified indices.
+permuteAtableIndices <- function(nClass, K, order, vv, perm) {
+    .Call(`_edmcore_permuteAtableIndices`, nClass, K, order, vv, perm)
 }
 
