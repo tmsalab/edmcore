@@ -64,7 +64,7 @@ matrix_max_index = function(x) {
 #' @export
 permutate_binary_matrix = function(current, target) {
 
-  if (dim(current) != dim(target)) {
+  if (all(dim(current) != dim(target))) {
     msg = sprintf(
       "Dimensions of `current` (%s, %s) must match `target` (%s, %s).",
       nrow(current), ncol(current),

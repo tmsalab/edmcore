@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(ecdmcore)
+library(edmcore)
 ```
 
 To assess the accuracy associated with estimating $\mathbf{Q}$ we employ both
