@@ -10,7 +10,8 @@
 //' @return
 //' A `bool` with value either: false or true
 //'
-//' @export
+//' @noRd
+//' @keywords internal
 // [[Rcpp::export]]
 bool is_strict_q_identified(const arma::mat Q)
 {

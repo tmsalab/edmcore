@@ -95,7 +95,8 @@ attribute_classes <- function(K) {
 #' @return
 #' A `bool` with value either: false or true
 #'
-#' @export
+#' @noRd
+#' @keywords internal
 is_strict_q_identified <- function(Q) {
     .Call(`_edmcore_is_strict_q_identified`, Q)
 }
