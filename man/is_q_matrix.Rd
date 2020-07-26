@@ -16,6 +16,6 @@ A logical vector
 Is object a Q Matrix?
 }
 \examples{
-x = matrix(c(1, 0, 2, 1))
+x = matrix(c(1, 0, 1, 1))
 is_q_matrix(q_matrix(x))
 }

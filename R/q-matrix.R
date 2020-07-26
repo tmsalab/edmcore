@@ -38,7 +38,7 @@ format_q_matrix = function(x) {
 #'
 #' @export
 #' @examples
-#' x = matrix(c(1, 0, 2, 1))
+#' x = matrix(c(1, 0, 1, 1))
 #' is_q_matrix(q_matrix(x))
 is_q_matrix = function(x) inherits(x, "q_matrix")
 
