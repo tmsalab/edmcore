@@ -36,6 +36,7 @@ format_q_matrix = function(x) {
 #' @return
 #' A logical vector
 #'
+#' @export
 #' @examples
 #' x = matrix(c(1, 0, 2, 1))
 #' is_q_matrix(q_matrix(x))
