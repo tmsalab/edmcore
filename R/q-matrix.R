@@ -40,7 +40,9 @@ format_q_matrix = function(x) {
 #' @examples
 #' x = matrix(c(1, 0, 1, 1))
 #' is_q_matrix(q_matrix(x))
-is_q_matrix = function(x) inherits(x, "q_matrix")
+is_q_matrix = function(x) {
+  inherits(x, "q_matrix")
+}
 
 #' Is Q Matrix Strictly or Generically Identifiable?
 #'
@@ -181,6 +183,8 @@ as_q_matrix.matrix = function(x, ...) {
 as_q_matrix.default = function(x, ...) {
   stop(class(x)[1], " is not yet supported for conversion to `q_matrix`.")
 }
+
+## Output Q Matrix ----
 
 #' Output Q Matrix
 #'
