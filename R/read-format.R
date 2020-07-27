@@ -45,8 +45,13 @@ read_item_matrix = function(file, header = FALSE, sep = " ", skip = 0) {
 #' Allows for a dichotomous Q Matrix to be imported with standard styling.
 #'
 #' @inheritParams read_item_matrix
+#'
 #' @return
 #' A `matrix` labeled with row names as `ItemYY` and column names as `SkillZZ`
+#'
+#' @seealso
+#' [q_matrix()] or [as_q_matrix()] for constructing a Q matrix from an
+#' existing class.
 #'
 #' @export
 #' @details

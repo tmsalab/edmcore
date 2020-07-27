@@ -29,3 +29,7 @@ Allows for a dichotomous Q Matrix to be imported with standard styling.
 This function is designed to specifically read in dichotomous Q matrix
 into \emph{R}. The matrix must be structured with the appropriate separator.
 }
+\seealso{
+\code{\link[=q_matrix]{q_matrix()}} or \code{\link[=as_q_matrix]{as_q_matrix()}} for constructing a Q matrix from an
+existing class.
+}

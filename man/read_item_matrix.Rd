@@ -18,10 +18,6 @@ space given by \code{sep = " "}.}
 
 \item{skip}{the number of lines of the data file that should be
 skipped before the data is read. Default is 0.}
-
-\item{drop_columns}{columns of the item matrix that should be dropped. To
-prevent the first and third columns specify
-\code{drop_columns = c(1,3)}. By default, all columns are included.}
 }
 \value{
 A \code{matrix} labeled with row names as \code{SubjectXX} and column names as \code{ItemYY}
