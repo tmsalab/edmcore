@@ -22,6 +22,9 @@ x = matrix(c(1, 0, 0, 1, 1, 1), ncol = 2)
 # Item matrix initialization
 items = item_matrix(x)
 
+# View item matrix
+items
+
 # Data Frame encoding of items
 items_df = data.frame(
    s1 = c(1, 0, 1, 1, 0, 1),
@@ -30,6 +33,9 @@ items_df = data.frame(
 
 # Create an Item Matrix
 items = item_matrix(items_df)
+
+# View item matrix
+items
 }
 \seealso{
 \code{\link[=as_item_matrix]{as_item_matrix()}}

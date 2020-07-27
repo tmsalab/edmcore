@@ -38,8 +38,17 @@ format_item_matrix = function(x) {
 #'
 #' @export
 #' @examples
-#' x = matrix(c(1, 0, 1, 1))
-#' is_item_matrix(item_matrix(x))
+#' # Specify int matrix details
+#' x = matrix(c(1, 0, 1, 1, 1), ncol = 2)
+#'
+#' # Coerce to an item matrix
+#' items = item_matrix(x)
+#'
+#' # Verify output is an item matrix
+#' is_item_matrix(items)
+#'
+#' # Not an item matrix, but a regular matrix...
+#' is_item_matrix(x)
 is_item_matrix = function(x) {
   inherits(x, "item_matrix")
 }
@@ -88,6 +97,9 @@ create_item_matrix = function(x) {
 #' # Item matrix initialization
 #' items = item_matrix(x)
 #'
+#' # View item matrix
+#' items
+#'
 #' # Data Frame encoding of items
 #' items_df = data.frame(
 #'    s1 = c(1, 0, 1, 1, 0, 1),
@@ -96,6 +108,9 @@ create_item_matrix = function(x) {
 #'
 #' # Create an Item Matrix
 #' items = item_matrix(items_df)
+#'
+#' # View item matrix
+#' items
 item_matrix = function(x) {
   as_item_matrix(x)
 }
@@ -123,7 +138,10 @@ item_matrix = function(x) {
 #' x = matrix(c(1, 0, 0, 1), nrow = 2)
 #'
 #' # Construct item class
-#' item_mat = as_item_matrix(x)
+#' items = as_item_matrix(x)
+#'
+#' # View output
+#' items
 as_item_matrix = function(x, ...) {
   UseMethod("as_item_matrix")
 }

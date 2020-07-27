@@ -16,6 +16,15 @@ A logical vector
 Is object an Item Matrix?
 }
 \examples{
-x = matrix(c(1, 0, 1, 1))
-is_item_matrix(item_matrix(x))
+# Specify int matrix details
+x = matrix(c(1, 0, 1, 1, 1), ncol = 2)
+
+# Coerce to an item matrix
+items = item_matrix(x)
+
+# Verify output is an item matrix
+is_item_matrix(items)
+
+# Not an item matrix, but a regular matrix...
+is_item_matrix(x)
 }

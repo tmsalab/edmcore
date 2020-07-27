@@ -22,6 +22,9 @@ x = matrix(c(1, 0, 0, 1), nrow = 2)
 # Q matrix wrapper
 q_mat = q_matrix(x)
 
+# View the converted Q matrix
+q_mat
+
 # Data Frame encoding of Q
 q_df = data.frame(
    k1 = c(1, 0),

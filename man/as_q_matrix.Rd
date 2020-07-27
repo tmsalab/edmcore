@@ -32,6 +32,9 @@ x = matrix(c(1, 0, 0, 1), nrow = 2)
 
 # Construct class
 q_mat = as_q_matrix(x)
+
+# View the converted Q matrix
+q_mat
 }
 \seealso{
 \code{\link[=q_matrix]{q_matrix()}}
