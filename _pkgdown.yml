@@ -34,6 +34,7 @@ reference:
      a problem to items on the assessment.
   contents:
   - q_matrix
+  - as_q_matrix
   - read_q_matrix
   - is_q_matrix
   - is_q_strict
@@ -43,7 +44,10 @@ reference:
     **Item Matrix** stores the correct or incorrect response a subject
     makes on a given assessment item. Rows are subjects and columns are items.
   contents:
+  - item_matrix
+  - as_item_matrix
   - read_item_matrix
+  - is_item_matrix
 
 navbar:
   components:
