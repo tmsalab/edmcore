@@ -1,6 +1,6 @@
 Package: edmcore
 Title: Algorithms used across Exploratory Diagnostic Modeling    
-Version: 0.0.3.900
+Version: 0.1.1
 Authors@R: c(
              person("James Joseph", "Balamuta", 
                     email = "balamut2@illinois.edu",
