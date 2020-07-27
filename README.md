@@ -46,9 +46,11 @@ units.
 
 In particular, we have:
 
-  - Attributes: `attribute_classes()`, `attribute_bijection()`,
-    `attribute_inv_bijection()`.
-  - Matrix: `q_matrix()`
+  - Attributes
+      - `attribute_classes()`, `attribute_bijection()`, and
+        `attribute_inv_bijection()`.
+  - Q Matrix
+      - `q_matrix()`, `is_q_matrix()`, and `is_q_strict()`
 
 ## Authors
 
