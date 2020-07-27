@@ -166,7 +166,14 @@
 <span class='no'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 
 <span class='co'># Construct item class</span>
-<span class='no'>item_mat</span> <span class='kw'>=</span> <span class='fu'>as_item_matrix</span>(<span class='no'>x</span>)</div></pre>
+<span class='no'>items</span> <span class='kw'>=</span> <span class='fu'>as_item_matrix</span>(<span class='no'>x</span>)
+
+<span class='co'># View output</span>
+<span class='no'>items</span></div><div class='output co'>#&gt; An item matrix: 2 x 2 
+#&gt; 
+#&gt;          Item1 Item2
+#&gt; Subject1     1     0
+#&gt; Subject2     0     1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

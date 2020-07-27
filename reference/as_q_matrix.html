@@ -172,7 +172,13 @@
 <span class='no'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 
 <span class='co'># Construct class</span>
-<span class='no'>q_mat</span> <span class='kw'>=</span> <span class='fu'>as_q_matrix</span>(<span class='no'>x</span>)</div></pre>
+<span class='no'>q_mat</span> <span class='kw'>=</span> <span class='fu'>as_q_matrix</span>(<span class='no'>x</span>)
+
+<span class='co'># View the converted Q matrix</span>
+<span class='no'>q_mat</span></div><div class='output co'>#&gt; A q matrix: 2 x 2 
+#&gt; Strictly Identified: </div><div class='output co'>#&gt; <span class='message'>No.</span></div><div class='output co'>#&gt;       Trait1 Trait2
+#&gt; Item1      1      0
+#&gt; Item2      0      1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
