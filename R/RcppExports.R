@@ -15,7 +15,7 @@
 #' Steven Andrew Culpepper and James Joseph Balamuta
 #'
 #' @seealso
-#' [ecdmcore::attribute_inv_bijection()]
+#' [attribute_inv_bijection()]
 #'
 #' @export
 #' @examples
@@ -41,7 +41,7 @@ attribute_bijection <- function(K) {
 #' Steven Andrew Culpepper and James Joseph Balamuta
 #'
 #' @seealso
-#' [ecdmcore::attribute_bijection()]
+#' [attribute_bijection()]
 #'
 #' @export
 #' @examples
@@ -71,7 +71,7 @@ attribute_inv_bijection <- function(K, CL) {
 #' James Joseph Balamuta and Steven Andrew Culpepper
 #'
 #' @seealso
-#' [simcdm::sim_subject_attributes()] and [simcdm::attribute_inv_bijection()]
+#' [simcdm::sim_subject_attributes()] and [attribute_inv_bijection()]
 #'
 #' @export
 #' @examples

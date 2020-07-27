@@ -25,7 +25,7 @@ inv_biject1 = attribute_inv_bijection(5, 1)
 inv_biject2 = attribute_inv_bijection(5, 2)
 }
 \seealso{
-\code{\link[ecdmcore:attribute_bijection]{ecdmcore::attribute_bijection()}}
+\code{\link[=attribute_bijection]{attribute_bijection()}}
 }
 \author{
 Steven Andrew Culpepper and James Joseph Balamuta

@@ -31,7 +31,7 @@ K = 3
 alphas = attribute_classes(K)
 }
 \seealso{
-\code{\link[simcdm:sim_subject_attributes]{simcdm::sim_subject_attributes()}} and \code{\link[simcdm:attribute_inv_bijection]{simcdm::attribute_inv_bijection()}}
+\code{\link[simcdm:sim_subject_attributes]{simcdm::sim_subject_attributes()}} and \code{\link[=attribute_inv_bijection]{attribute_inv_bijection()}}
 }
 \author{
 James Joseph Balamuta and Steven Andrew Culpepper

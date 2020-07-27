@@ -2,7 +2,7 @@
 % Please edit documentation in R/item-matrix.R
 \name{item_matrix}
 \alias{item_matrix}
-\title{Create a Q Matrix Object}
+\title{Create an Item Matrix Object}
 \usage{
 item_matrix(x)
 }
@@ -22,13 +22,13 @@ x = matrix(c(1, 0, 0, 1, 1, 1), ncol = 2)
 # Item matrix initialization
 items = item_matrix(x)
 
-# Data Frame encoding of Q
+# Data Frame encoding of items
 items_df = data.frame(
    s1 = c(1, 0, 1, 1, 0, 1),
    s2 = c(0, 1, 0, 1, 1, 0)
 )
 
-# Create a Q matrix
+# Create an Item Matrix
 items = item_matrix(items_df)
 }
 \seealso{
