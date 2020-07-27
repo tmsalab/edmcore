@@ -58,7 +58,7 @@ In particular, we have:
 - Q Matrix
   - `q_matrix()`/`as_q_matrix()`, `read_q_matrix()`, `is_q_matrix()`, and `is_q_strict()`
 - Item Matrix
-  - `read_item_matrix()`
+  - `item_matrix()`/`as_item_matrix()`, `read_item_matrix()`, and `is_item_matrix()`
 
 ## Authors
 
