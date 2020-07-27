@@ -19,15 +19,35 @@ authors:
     href: http://publish.illinois.edu/jeffdoug/
 
 reference:
+- title: Attributes
+  desc: >
+    **Attributes** represent the latent classes and how we establish a bridge
+    to them through bijections.
+  contents:
+  - attribute_classes
+  - attribute_bijection
+  - attribute_inv_bijection
+
 - title: Q Matrix
   desc: >
     **Q Matrix** holds the dichotomous mapping of skills required to solve
      a problem to items on the assessment.
   contents:
   - q_matrix
+  - as_q_matrix
+  - read_q_matrix
   - is_q_matrix
   - is_q_strict
 
+- title: Item Matrix
+  desc: >
+    **Item Matrix** stores the correct or incorrect response a subject
+    makes on a given assessment item. Rows are subjects and columns are items.
+  contents:
+  - item_matrix
+  - as_item_matrix
+  - read_item_matrix
+  - is_item_matrix
 
 navbar:
   components:

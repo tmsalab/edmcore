@@ -168,7 +168,7 @@ as_q_matrix = function(x, ...) {
 #' @export
 #' @rdname as_q_matrix
 as_q_matrix.data.frame = function(x, ...) {
-  x = as.matrix(x)
+  x = data.matrix(x)
   create_q_matrix(x)
 }
 
@@ -219,7 +219,7 @@ print.q_matrix = function(x, ... ) {
     message("No.\n")
   }
 
-  class(x) = "matrix"
+  class(x) = c("matrix")
   attributes(x)["strictly_identifiable"] = NULL
   print(x, ...)
   invisible(x)
