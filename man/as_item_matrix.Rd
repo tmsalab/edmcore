@@ -25,7 +25,10 @@ Converts underlying data into an Item Matrix frame.
 x = matrix(c(1, 0, 0, 1), nrow = 2)
 
 # Construct item class
-item_mat = as_item_matrix(x)
+items = as_item_matrix(x)
+
+# View output
+items
 }
 \seealso{
 \code{\link[=item_matrix]{item_matrix()}}

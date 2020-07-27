@@ -127,6 +127,9 @@ create_q_matrix = function(x) {
 #' # Q matrix wrapper
 #' q_mat = q_matrix(x)
 #'
+#' # View the converted Q matrix
+#' q_mat
+#'
 #' # Data Frame encoding of Q
 #' q_df = data.frame(
 #'    k1 = c(1, 0),
@@ -161,6 +164,9 @@ q_matrix = function(x) {
 #'
 #' # Construct class
 #' q_mat = as_q_matrix(x)
+#'
+#' # View the converted Q matrix
+#' q_mat
 as_q_matrix = function(x, ...) {
   UseMethod("as_q_matrix")
 }
