@@ -41,7 +41,7 @@ read_psych = function(file, header = FALSE, sep = " ", skip = 0) {
 #' This function is designed to specifically read in dichotomous item matrices
 #' into _R_. The matrix must be structured with the appropriate separator.
 read_item_matrix = function(file, header = FALSE, sep = " ", skip = 0) {
-  read_psych(file, header = header, sep = sep, skip = skip)
+  as_item_matrix(read_psych(file, header = header, sep = sep, skip = skip))
 }
 
 #' Import a Q Matrix
