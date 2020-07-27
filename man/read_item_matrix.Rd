@@ -29,3 +29,7 @@ Allows for a dichotomous items matrix to be imported with standard styling.
 This function is designed to specifically read in dichotomous item matrices
 into \emph{R}. The matrix must be structured with the appropriate separator.
 }
+\seealso{
+\code{\link[=item_matrix]{item_matrix()}} / \code{\link[=as_item_matrix]{as_item_matrix()}} for constructing an Item Matrix from an
+existing class.
+}

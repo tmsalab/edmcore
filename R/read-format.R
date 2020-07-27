@@ -32,6 +32,10 @@ read_psych = function(file, header = FALSE, sep = " ", skip = 0) {
 #' @return
 #' A `matrix` labeled with row names as `SubjectXX` and column names as `ItemYY`
 #'
+#' @seealso
+#' [item_matrix()] / [as_item_matrix()] for constructing an Item Matrix from an
+#' existing class.
+#'
 #' @export
 #' @details
 #' This function is designed to specifically read in dichotomous item matrices
