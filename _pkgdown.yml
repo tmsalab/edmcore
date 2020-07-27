@@ -28,6 +28,14 @@ reference:
   - is_q_matrix
   - is_q_strict
 
+- title: Attributes
+  desc: >
+    **Attributes** represent the latent classes and how we establish a bridge
+    to them through bijections.
+  contents:
+  - attribute_classes
+  - attribute_bijection
+  - attribute_inv_bijection
 
 navbar:
   components:
