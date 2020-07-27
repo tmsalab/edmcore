@@ -50,7 +50,10 @@ In particular, we have:
       - `attribute_classes()`, `attribute_bijection()`, and
         `attribute_inv_bijection()`.
   - Q Matrix
-      - `q_matrix()`, `is_q_matrix()`, and `is_q_strict()`
+      - `q_matrix()`, `read_q_matrix()`, `is_q_matrix()`, and
+        `is_q_strict()`
+  - Item Matrix
+      - `read_item_matrix()`
 
 ## Authors
 
