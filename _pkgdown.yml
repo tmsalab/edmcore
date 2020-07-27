@@ -1,4 +1,34 @@
+url: https://tmsalab.github.io/edmcore
+
 template:
   params:
-    bootswatch: cerulean
     ganalytics: UA-151562227-1
+
+home:
+  strip_header: true
+
+development:
+  mode: auto
+
+authors:
+  James Joseph Balamuta:
+    href: https://thecoatlessprofessor.com
+  Steven Andrew Culpepper:
+    href: http://publish.illinois.edu/sculpepper/
+  Jeffrey Douglas:
+    href: http://publish.illinois.edu/jeffdoug/
+
+reference:
+- title: Q Matrix
+  desc: >
+    **Q Matrix** holds the dichotomous mapping of skills required to solve
+     a problem to items on the assessment.
+  contents:
+  - q_matrix
+  - is_q_matrix
+  - is_q_strict
+
+
+navbar:
+  components:
+    home: ~
