@@ -43,11 +43,11 @@ metric_mode = function(x, na.rm = FALSE) {
 
 ## Numerical approaches -----
 
-center_values = function(estimate, oracle, na.rm = FALSE) {
+center_values = function(estimate, oracle) {
   # Take difference across array
   base::sweep(x = estimate,
               MARGIN = c(1, 2),
-              STATS = oracle, FUN = "-", na.rm = na.rm)
+              STATS = oracle, FUN = "-")
 }
 
 #' Metric for Bias
@@ -125,7 +125,7 @@ metric_bias = function(estimate, oracle, na.rm = FALSE) {
 metric_frobenius_norm = function(estimate, oracle, na.rm = FALSE) {
 
   # Pass computation off to R's norm function
-  base::norm(center_values(estimate = estimate, oracle = oracle, na.rm = na.rm),
+  base::norm(estimate - oracle,
              type = "F")
 }
 
