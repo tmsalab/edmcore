@@ -1,9 +1,9 @@
 ---
-title: "Q Matrix Recovery Metrics"
+title: "Recovery Metrics"
 author: "James Balamuta"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{q-matrix-metrics}
+  %\VignetteIndexEntry{recovery-metrics}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -13,11 +13,12 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-```
 
-```{r setup}
 library(edmcore)
 ```
+
+
+## Q Matrix
 
 To assess the accuracy associated with estimating $\mathbf{Q}$ we employ both
 matrix- and element-wise recovery rates across replication $r$. 
@@ -31,7 +32,11 @@ $$
 \frac{1}{R}\sum _{r=1}^R\mathcal I(\widehat{{Q}}^{(r)}=\widehat{Q})
 $$
 
-**Matrix-wise recovery rate** is defined as:
+**Element-wise recovery rate** is defined as:
 $$
 \frac{1}{R}\sum _{r=1}^R\frac{1}{JK}\sum _{j=1}^J\sum _{k=1}^K\mathcal I(\hat{q}_{jk}^{(r)}=q_{jk})
 $$
+
+## Theta matrix
+
+To Do... 
