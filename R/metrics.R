@@ -39,3 +39,51 @@ metric_mode = function(x, na.rm = FALSE) {
   # Note: There are no tie-breakers here.
   uniq_x[which.max(tabulate(match(x, uniq_x)))]
 }
+
+
+## Numerical approaches -----
+
+center_values = function(estimate, oracle, na.rm = FALSE) {
+  # Take difference across array
+  base::sweep(x = estimate,
+              MARGIN = c(1, 2),
+              STATS = oracle, FUN = "-", na.rm = na.rm)
+}
+
+#' Metric for Bias
+#'
+#' Computes the Bias
+#'
+#' @param estimate Estimated values from the model.
+#' @param oracle   Known values used to generate the model.
+#' @param na.rm    A `logical` indicating if missing values (including NaN) should
+#'                 be removed. Default: `FALSE`
+#'
+#' @return
+#' A `numeric` value for each parameter comparison.
+#'
+#' @seealso
+#' [base::norm()]
+#'
+#' @section Recovery Use:
+#' The bias may be used to understand the difference between
+#' \eqn{\hat\theta} matrix and the oracle \eqn{\theta} matrix.
+#'
+#' @details
+#' The bias measures the difference between expected value of an estimated
+#' parameter and its true value.
+#'
+#' The metric is computed under:
+#' \deqn{\operatorname{Bias}(\hat \theta, \theta) = E\left[\hat\theta\right] - \theta}
+#'
+#' @export
+#' @examples
+#' # Construct data
+#' estimate = matrix(c(1,1,2,4,3,6), nrow = 2, ncol = 3)
+#' truth = matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
+#'
+#' # Compute the bias
+#' metric_bias(estimate, truth)
+metric_bias = function(estimate, oracle, na.rm = FALSE) {
+  mean(estimate, na.rm = na.rm) - oracle
+}
