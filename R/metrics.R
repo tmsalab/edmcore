@@ -87,3 +87,45 @@ center_values = function(estimate, oracle, na.rm = FALSE) {
 metric_bias = function(estimate, oracle, na.rm = FALSE) {
   mean(estimate, na.rm = na.rm) - oracle
 }
+
+
+#' Metric for Frobenius Norm
+#'
+#' Computes the Frobenius norm of matrix entries
+#'
+#' @param estimate Estimated values from the model.
+#' @param oracle   Known values used to generate the model.
+#' @param na.rm    A `logical` indicating if missing values (including NaN) should
+#'                 be removed. Default: `FALSE`
+#'
+#' @return
+#' A single `numeric` value.
+#'
+#' @seealso
+#' [base::norm()]
+#'
+#' @section Recovery Use:
+#' The Frobenius norm is best used to understand differences between
+#' the estimated \eqn{\hat\theta} matrix and the oracle \eqn{\theta} matrix.
+#'
+#' @details
+#' The Frobenius norm is an extension of the Euclidean norm to \eqn{\mathcal{K}^{n\times n}}.
+#'
+#' The metric is computed under:
+#' \deqn{\|A\|_{\rm F} = \left(\sum_{i=1}^m \sum_{j=1}^n |a_{ij}|^2\right)^{\frac{1}{2}}}
+#'
+#' @export
+#' @examples
+#' # Construct data
+#' estimate = matrix(c(1,1,2,4,3,6), nrow = 2, ncol = 3)
+#' truth = matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
+#'
+#' # Compute the frobenius norm
+#' metric_frobenius_norm(estimate, truth)
+metric_frobenius_norm = function(estimate, oracle, na.rm = FALSE) {
+
+  # Pass computation off to R's norm function
+  base::norm(center_values(estimate = estimate, oracle = oracle, na.rm = na.rm),
+             type = "F")
+}
+
