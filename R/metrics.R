@@ -129,3 +129,83 @@ metric_frobenius_norm = function(estimate, oracle, na.rm = FALSE) {
              type = "F")
 }
 
+#' Metric for Element-Wise Accuracy
+#'
+#' Computes the element-wise accuracy of matrices.
+#'
+#' @param estimate Estimated values from the model.
+#' @param oracle   Known values used to generate the model.
+#' @param na.rm    A `logical` indicating if missing values (including NaN) should
+#'                 be removed. Default: `FALSE`
+#'
+#' @return
+#' A single `numeric` value between 0 and 1.
+#'
+#' @seealso
+#' [base::norm()]
+#'
+#' @section Recovery Use:
+#' The element-wise recovery metric is best used to understand differences
+#' between dichotomous matrices such as the \eqn{\boldsymbol{Q}} and
+#' \eqn{\boldsymbol{\Delta}} matrices.
+#'
+#' @details
+#' The element-wise metric is also known as accuracy or
+#' the proportion of estimated values that are equivalent to the same elements
+#' in the oracle value.
+#'
+#' The metric is computed under:
+#' \deqn{\frac{1}{JK}\sum _{j=1}^J\sum _{k=1}^K\mathcal I(\hat{\theta}_{jk}=\theta_{jk})}
+#'
+#' @export
+#' @examples
+#' # Construct data
+#' estimate = matrix(c(1,1,2,4,3,6), nrow = 2, ncol = 3)
+#' truth = matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
+#'
+#' # Compute the frobenius norm
+#' metric_element_wise(estimate, truth)
+metric_element_wise = function(estimate, oracle, na.rm = FALSE) {
+  mean(estimate == oracle)
+}
+
+
+#' Metric for Matrix-Wise Accuracy
+#'
+#' Computes the matrix-wise accuracy.
+#'
+#' @param estimate Estimated values from the model.
+#' @param oracle   Known values used to generate the model.
+#' @param na.rm    A `logical` indicating if missing values (including NaN) should
+#'                 be removed. Default: `FALSE`
+#'
+#' @return
+#' A single `numeric` value between 0 and 1.
+#'
+#' @seealso
+#' [base::norm()]
+#'
+#' @section Recovery Use:
+#' The element-wise recovery metric is best used to understand differences
+#' between dichotomous matrices such as the \eqn{\boldsymbol{Q}} and
+#' \eqn{\boldsymbol{\Delta}} matrices.
+#'
+#' @details
+#' The matrix-wise metric is a variant of accuracy that holistically looks
+#' at the entire estimated matrix against the entire
+#'
+#' The metric is computed under:
+#' \deqn{I(\hat{\theta}=\theta)}
+#'
+#' @export
+#' @examples
+#' # Construct data
+#' estimate = matrix(c(1,1,2,4,3,6), nrow = 2, ncol = 3)
+#' truth = matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
+#'
+#' # Compute the frobenius norm
+#' metric_matrix_wise(estimate, truth)
+metric_matrix_wise = function(estimate, oracle, na.rm = FALSE) {
+  1 * isTRUE(all.equal(estimate, oracle))
+}
+
