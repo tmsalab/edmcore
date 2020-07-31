@@ -37,6 +37,21 @@
     <loc>https://tmsalab.github.io/edmcore/reference/listmatrix_to_array.html</loc>
   </url>
   <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/metric_bias.html</loc>
+  </url>
+  <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/metric_element_wise.html</loc>
+  </url>
+  <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/metric_frobenius_norm.html</loc>
+  </url>
+  <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/metric_matrix_wise.html</loc>
+  </url>
+  <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/metric_mode.html</loc>
+  </url>
+  <url>
     <loc>https://tmsalab.github.io/edmcore/reference/permutate_binary_matrix.html</loc>
   </url>
   <url>
