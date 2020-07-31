@@ -1,179 +1,211 @@
-#' Generate all attribute permutations possible for each trait.
+## Integer approaches -----
+
+#' Metric for determining the most popular value
 #'
-#' Create all possible orderings for trait columns within the Q matrix.
+#' Computes the mode given a vector of data.
 #'
-#' @param K Number of Traits
+#' @param x      A `vector` of data.
+#' @param na.rm  A `logical` indicating if missing values (including NaN) should
+#'               be removed. Default: `FALSE`
 #'
 #' @return
-#' K! x K
+#' A single `numeric` or `integer` value.
+#'
+#' @section Recovery Use:
+#' The mode should be used when computing latent class recovery among subjects.
 #'
 #' @details
-#' This is an internal function wrapper.
-#'
-#' @noRd
-attribute_permutation_table = function(K) {
-  gtools::permutations(K, K)
-}
-
-#' Matrix Subscript Position of Highest Matrix Entry
-#'
-#' Locates the highest matrix entry and returns its location in matrix
-#' subscript.
-#'
-#' @param x A `matrix` with dimensions \eqn{M \times N}{M x N}.
-#'
-#' @return
-#' The location of the highest value reported as a `vector` with entries given
-#' as:
-#'
-#' - `row`
-#' - `column`
-#'
-#' @seealso [`base::which.max()`], [`base::arrayInd()`]
-#' @noRd
-matrix_max_index = function(x) {
-  # Obtain the location of the maximum value in the matrix
-  highest_index = which.max(x)
-
-  # Release the subscript
-  arrayInd(highest_index, .dim = dim(x))
-}
-
-#' Reorder an object to match a target as closely as possible
-#'
-#' Rearranges columns within a matrix until the closest permutation
-#' to the target is found.
-#'
-#' @param current Present `matrix` object.
-#' @param target  Desired `matrix` object.
-#'
-#' @return
-#' A `permutated_matrix` object that contains:
-#'
-#' - `permutate_matrix`:
-#'    The `current` matrix permutated to match the `target`
-#' - `permutate_order`:
-#'    The permutation order applied to the columns of `current`.
-#' - `permutate_mean`:
-#'    The mean difference between the permutation current and target.
-#'    Bound between 0 and 1 with a mean value close to 1 indicating an
-#'    exact permutation between `current` and `target` is possible.
-#' - `permutate_target`:
-#'    Reference object used for permutation.
+#' Be forewarned that this method of obtaining the mode does not take into
+#' consideration ties. That is, only the first group with the maximum value
+#' is returned. If a second group also has a similar count, this group will
+#' not be returned.
 #'
 #' @export
-permutate_binary_matrix = function(current, target) {
-
-  if (all(dim(current) != dim(target))) {
-    msg = sprintf(
-      "Dimensions of `current` (%s, %s) must match `target` (%s, %s).",
-      nrow(current), ncol(current),
-      nrow(target), ncol(target)
-    )
-    stop(msg, call. = FALSE)
-  }
-
-  # Data Dimensions
-  K = ncol(current)
-
-  # Create permutation tables
-  permutation_table = attribute_permutation_table(K)
-
-  n_permutations = nrow(permutation_table)
-
-  # Setup a vector to store results from matching columns
-  col_distances = rep(NA, n_permutations)
-
-  # Iterate on trait permutations
-  for (r in seq_len(n_permutations)) {
-    # Retrieve permutation indices
-    col_indices = permutation_table[r,]
-
-    # Obtain the mean difference between the current and target matrix
-    col_distances[r] = mean(current[, col_indices] == target)
-  }
-
-  # Obtain the desired column permutation index
-  permutation_idx = which.max(col_distances)
-
-  # Release the best permutation order
-  permutation_order = permutation_table[permutation_idx,]
-
-  out = structure(list(
-    permutate_matrix = current[, permutation_order],
-    permutate_order  = permutation_order,
-    permutate_mean   = col_distances[permutation_idx],
-    permutate_target = target
-  ), class = "permutation_matrix")
-
-  return(out)
-}
-
-#' Custom print handle for displaying the permutation ordering
-#'
-#' @param x   A `permutation_matrix` object.
-#' @param ... Not used.
-#'
-#' @export
-print.permutation_matrix = function(x, ...) {
-  cat("Results of permutating binary matrix...")
-  cat("Column Permutation:", x$permutation_order, "\n")
-  cat("Average Permutation Element Match:", x$permutation_mean, "\n\n")
-  cat("Permutated Matrix:\n")
-  print(x$permutate_matrix)
-}
-
-#' Element-wise Accuracy Table for Q Matrix Estimation
-#'
-#' Given the oracle Q matrix, compare the estimated Q matrix to
-#' determine how accurate the estimation routine is.
-#'
-#' @param estimated Set containing the estimated strategies values
-#'                  on generated data. Dimensions: \eqn{J x K x S}.
-#' @param oracle    Set containing the actual strategies used to
-#'                  generate the data. Dimensions: \eqn{J x K x S}.
-#' @param decision  Threshold for applying a classification to estimated
-#'                  entry. Default: `0.5`
-#'
-#' @return
-#' A `list` containing:
-#'
-#' - `element_wise_recovery`:
-#'    Average number of entries matching between the Q matrix and estimated
-#'    matrix.
-#' - `permutated_q`:
-#'    Ordered Q matrix by permutation under decision rule of 0.5.
-#' - `decision_rule`:
-#'    Threshold cut-off applied to the estimated Q matrix to ensure dichotomous
-#'    entries.
-#'
-#' @export
-#'
 #' @examples
-#' # Create a Q matrix
-#' Q_oracle =
-#'   rbind(c(0, 1),
-#'         c(1, 0),
-#'         c(0, 1),
-#'         c(1, 0),
-#'         c(0, 1),
-#'         c(0, 1),
-#'         c(1, 0))
-#'
-#' # Simulate a random Q matrix
-#' Q_est = matrix(runif(7*2), ncol = 2)
-#'
-#' # Obtain the recovery metric for elementwise matches
-#' recovery_element(Q_est, Q_oracle)
-recovery_element = function(estimated, oracle, decision = 0.5) {
+#' # Sample class-data
+#' x = c(0, 0, 0, 1, 1, 2)
+#' metric_mode(x)
+metric_mode = function(x, na.rm = FALSE) {
 
-  # Perform the binary classification
-  Q_est_binary = 1 * (estimated > decision)
+  # Remove missing values
+  if (na.rm) {
+    x = x[!is.na(x)]
+  }
 
-  # Rename oracle
-  Q_oracle = oracle
+  # Obtain unique values
+  uniq_x = unique(x)
 
-  permutation = permutate_binary_matrix(Q_est_binary, Q_oracle)
-
-  return(permutation)
+  # Obtain the first occurrence of a maximum value
+  # Note: There are no tie-breakers here.
+  uniq_x[which.max(tabulate(match(x, uniq_x)))]
 }
+
+
+## Numerical approaches -----
+
+center_values = function(estimate, oracle) {
+  # Take difference across array
+  base::sweep(x = estimate,
+              MARGIN = c(1, 2),
+              STATS = oracle, FUN = "-")
+}
+
+#' Metric for Bias
+#'
+#' Computes the Bias
+#'
+#' @param estimate Estimated values from the model.
+#' @param oracle   Known values used to generate the model.
+#' @param na.rm    A `logical` indicating if missing values (including NaN) should
+#'                 be removed. Default: `FALSE`
+#'
+#' @return
+#' A `numeric` value for each parameter comparison.
+#'
+#' @seealso
+#' [base::norm()]
+#'
+#' @section Recovery Use:
+#' The bias may be used to understand the difference between
+#' \eqn{\hat\theta} matrix and the oracle \eqn{\theta} matrix.
+#'
+#' @details
+#' The bias measures the difference between expected value of an estimated
+#' parameter and its true value.
+#'
+#' The metric is computed under:
+#' \deqn{\operatorname{Bias}(\hat \theta, \theta) = E\left[\hat\theta\right] - \theta}
+#'
+#' @export
+#' @examples
+#' # Construct data
+#' estimate = matrix(c(1,1,2,4,3,6), nrow = 2, ncol = 3)
+#' truth = matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
+#'
+#' # Compute the bias
+#' metric_bias(estimate, truth)
+metric_bias = function(estimate, oracle, na.rm = FALSE) {
+  mean(estimate, na.rm = na.rm) - oracle
+}
+
+
+#' Metric for Frobenius Norm
+#'
+#' Computes the Frobenius norm of matrix entries
+#'
+#' @param estimate Estimated values from the model.
+#' @param oracle   Known values used to generate the model.
+#' @param na.rm    A `logical` indicating if missing values (including NaN) should
+#'                 be removed. Default: `FALSE`
+#'
+#' @return
+#' A single `numeric` value.
+#'
+#' @seealso
+#' [base::norm()]
+#'
+#' @section Recovery Use:
+#' The Frobenius norm is best used to understand differences between
+#' the estimated \eqn{\hat\theta} matrix and the oracle \eqn{\theta} matrix.
+#'
+#' @details
+#' The Frobenius norm is an extension of the Euclidean norm to \eqn{\mathcal{K}^{n\times n}}.
+#'
+#' The metric is computed under:
+#' \deqn{\|A\|_{\rm F} = \left(\sum_{i=1}^m \sum_{j=1}^n |a_{ij}|^2\right)^{\frac{1}{2}}}
+#'
+#' @export
+#' @examples
+#' # Construct data
+#' estimate = matrix(c(1,1,2,4,3,6), nrow = 2, ncol = 3)
+#' truth = matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
+#'
+#' # Compute the frobenius norm
+#' metric_frobenius_norm(estimate, truth)
+metric_frobenius_norm = function(estimate, oracle, na.rm = FALSE) {
+
+  # Pass computation off to R's norm function
+  base::norm(estimate - oracle,
+             type = "F")
+}
+
+#' Metric for Element-Wise Accuracy
+#'
+#' Computes the element-wise accuracy of matrices.
+#'
+#' @param estimate Estimated values from the model.
+#' @param oracle   Known values used to generate the model.
+#' @param na.rm    A `logical` indicating if missing values (including NaN) should
+#'                 be removed. Default: `FALSE`
+#'
+#' @return
+#' A single `numeric` value between 0 and 1.
+#'
+#' @seealso
+#' [base::norm()]
+#'
+#' @section Recovery Use:
+#' The element-wise recovery metric is best used to understand differences
+#' between dichotomous matrices such as the \eqn{\boldsymbol{Q}} and
+#' \eqn{\boldsymbol{\Delta}} matrices.
+#'
+#' @details
+#' The element-wise metric is also known as accuracy or
+#' the proportion of estimated values that are equivalent to the same elements
+#' in the oracle value.
+#'
+#' The metric is computed under:
+#' \deqn{\frac{1}{JK}\sum _{j=1}^J\sum _{k=1}^K\mathcal I(\hat{\theta}_{jk}=\theta_{jk})}
+#'
+#' @export
+#' @examples
+#' # Construct data
+#' estimate = matrix(c(1,1,2,4,3,6), nrow = 2, ncol = 3)
+#' truth = matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
+#'
+#' # Compute the frobenius norm
+#' metric_element_wise(estimate, truth)
+metric_element_wise = function(estimate, oracle, na.rm = FALSE) {
+  mean(estimate == oracle)
+}
+
+
+#' Metric for Matrix-Wise Accuracy
+#'
+#' Computes the matrix-wise accuracy.
+#'
+#' @param estimate Estimated values from the model.
+#' @param oracle   Known values used to generate the model.
+#' @param na.rm    A `logical` indicating if missing values (including NaN) should
+#'                 be removed. Default: `FALSE`
+#'
+#' @return
+#' A single `numeric` value between 0 and 1.
+#'
+#' @seealso
+#' [base::norm()]
+#'
+#' @section Recovery Use:
+#' The element-wise recovery metric is best used to understand differences
+#' between dichotomous matrices such as the \eqn{\boldsymbol{Q}} and
+#' \eqn{\boldsymbol{\Delta}} matrices.
+#'
+#' @details
+#' The matrix-wise metric is a variant of accuracy that holistically looks
+#' at the entire estimated matrix against the entire
+#'
+#' The metric is computed under:
+#' \deqn{I(\hat{\theta}=\theta)}
+#'
+#' @export
+#' @examples
+#' # Construct data
+#' estimate = matrix(c(1,1,2,4,3,6), nrow = 2, ncol = 3)
+#' truth = matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
+#'
+#' # Compute the frobenius norm
+#' metric_matrix_wise(estimate, truth)
+metric_matrix_wise = function(estimate, oracle, na.rm = FALSE) {
+  1 * isTRUE(all.equal(estimate, oracle))
+}
+

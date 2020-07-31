@@ -27,6 +27,7 @@ reference:
   - attribute_classes
   - attribute_bijection
   - attribute_inv_bijection
+  - attribute_permutation_table
 
 - title: Q Matrix
   desc: >
@@ -48,6 +49,24 @@ reference:
   - as_item_matrix
   - read_item_matrix
   - is_item_matrix
+
+- title: Metrics
+  desc: >
+    **Metrics** compute various recovery properties by comparing the estimated
+    result to the known data generating parameters (e.g. 'oracle model').
+  contents:
+  - metric_mode
+  - metric_bias
+  - metric_frobenius_norm
+  - metric_element_wise
+  - metric_matrix_wise
+
+- title: Permutations
+  desc: >
+    **Permutations** relate to how items are re-ordered during a recovery
+    assessment.
+  contents:
+  - permutate_binary_matrix
 
 navbar:
   components:
