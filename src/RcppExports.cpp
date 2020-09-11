@@ -41,6 +41,111 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// n_choose_k
+unsigned int n_choose_k(unsigned int n, unsigned int k);
+RcppExport SEXP _edmcore_n_choose_k(SEXP nSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< unsigned int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(n_choose_k(n, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// combination_matrix
+arma::umat combination_matrix(unsigned int n, unsigned int k);
+RcppExport SEXP _edmcore_combination_matrix(SEXP nSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< unsigned int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(combination_matrix(n, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// combination_matrix_from_vector
+arma::umat combination_matrix_from_vector(arma::urowvec x, unsigned int k);
+RcppExport SEXP _edmcore_combination_matrix_from_vector(SEXP xSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::urowvec >::type x(xSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(combination_matrix_from_vector(x, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// set_diff_cpp
+arma::urowvec set_diff_cpp(arma::urowvec x, arma::urowvec y);
+RcppExport SEXP _edmcore_set_diff_cpp(SEXP xSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::urowvec >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::urowvec >::type y(ySEXP);
+    rcpp_result_gen = Rcpp::wrap(set_diff_cpp(x, y));
+    return rcpp_result_gen;
+END_RCPP
+}
+// is_q_generic_identified
+bool is_q_generic_identified(const arma::mat& Q);
+RcppExport SEXP _edmcore_is_q_generic_identified(SEXP QSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type Q(QSEXP);
+    rcpp_result_gen = Rcpp::wrap(is_q_generic_identified(Q));
+    return rcpp_result_gen;
+END_RCPP
+}
+// is_q_generic_complete
+bool is_q_generic_complete(const arma::mat& Q);
+RcppExport SEXP _edmcore_is_q_generic_complete(SEXP QSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type Q(QSEXP);
+    rcpp_result_gen = Rcpp::wrap(is_q_generic_complete(Q));
+    return rcpp_result_gen;
+END_RCPP
+}
+// binary_q_ideal
+arma::mat binary_q_ideal(unsigned int k);
+RcppExport SEXP _edmcore_binary_q_ideal(SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< unsigned int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(binary_q_ideal(k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// seq_linear_increase
+arma::rowvec seq_linear_increase(unsigned int start, unsigned int end);
+RcppExport SEXP _edmcore_seq_linear_increase(SEXP startSEXP, SEXP endSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< unsigned int >::type start(startSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type end(endSEXP);
+    rcpp_result_gen = Rcpp::wrap(seq_linear_increase(start, end));
+    return rcpp_result_gen;
+END_RCPP
+}
+// seq_linear_decrease
+arma::rowvec seq_linear_decrease(unsigned int start, unsigned int end);
+RcppExport SEXP _edmcore_seq_linear_decrease(SEXP startSEXP, SEXP endSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< unsigned int >::type start(startSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type end(endSEXP);
+    rcpp_result_gen = Rcpp::wrap(seq_linear_decrease(start, end));
+    return rcpp_result_gen;
+END_RCPP
+}
 // is_strict_q_identified
 bool is_strict_q_identified(const arma::mat Q);
 RcppExport SEXP _edmcore_is_strict_q_identified(SEXP QSEXP) {
@@ -72,6 +177,15 @@ static const R_CallMethodDef CallEntries[] = {
     {"_edmcore_attribute_bijection", (DL_FUNC) &_edmcore_attribute_bijection, 1},
     {"_edmcore_attribute_inv_bijection", (DL_FUNC) &_edmcore_attribute_inv_bijection, 2},
     {"_edmcore_attribute_classes", (DL_FUNC) &_edmcore_attribute_classes, 1},
+    {"_edmcore_n_choose_k", (DL_FUNC) &_edmcore_n_choose_k, 2},
+    {"_edmcore_combination_matrix", (DL_FUNC) &_edmcore_combination_matrix, 2},
+    {"_edmcore_combination_matrix_from_vector", (DL_FUNC) &_edmcore_combination_matrix_from_vector, 2},
+    {"_edmcore_set_diff_cpp", (DL_FUNC) &_edmcore_set_diff_cpp, 2},
+    {"_edmcore_is_q_generic_identified", (DL_FUNC) &_edmcore_is_q_generic_identified, 1},
+    {"_edmcore_is_q_generic_complete", (DL_FUNC) &_edmcore_is_q_generic_complete, 1},
+    {"_edmcore_binary_q_ideal", (DL_FUNC) &_edmcore_binary_q_ideal, 1},
+    {"_edmcore_seq_linear_increase", (DL_FUNC) &_edmcore_seq_linear_increase, 2},
+    {"_edmcore_seq_linear_decrease", (DL_FUNC) &_edmcore_seq_linear_decrease, 2},
     {"_edmcore_is_strict_q_identified", (DL_FUNC) &_edmcore_is_strict_q_identified, 1},
     {"_edmcore_permuteAtableIndices", (DL_FUNC) &_edmcore_permuteAtableIndices, 5},
     {NULL, NULL, 0}

@@ -86,6 +86,42 @@ attribute_classes <- function(K) {
     .Call(`_edmcore_attribute_classes`, K)
 }
 
+n_choose_k <- function(n, k) {
+    .Call(`_edmcore_n_choose_k`, n, k)
+}
+
+combination_matrix <- function(n, k) {
+    .Call(`_edmcore_combination_matrix`, n, k)
+}
+
+combination_matrix_from_vector <- function(x, k) {
+    .Call(`_edmcore_combination_matrix_from_vector`, x, k)
+}
+
+set_diff_cpp <- function(x, y) {
+    .Call(`_edmcore_set_diff_cpp`, x, y)
+}
+
+is_q_generic_identified <- function(Q) {
+    .Call(`_edmcore_is_q_generic_identified`, Q)
+}
+
+is_q_generic_complete <- function(Q) {
+    .Call(`_edmcore_is_q_generic_complete`, Q)
+}
+
+binary_q_ideal <- function(k) {
+    .Call(`_edmcore_binary_q_ideal`, k)
+}
+
+seq_linear_increase <- function(start, end) {
+    .Call(`_edmcore_seq_linear_increase`, start, end)
+}
+
+seq_linear_decrease <- function(start, end) {
+    .Call(`_edmcore_seq_linear_decrease`, start, end)
+}
+
 #' Verify Q Matrix is Strictly Identifiable
 #'
 #' Performs a check to see if Q is strictly identified or not.
