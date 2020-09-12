@@ -48,14 +48,11 @@ inline bool is_q_generic_identified(const arma::mat& Q) {
 
   // Unpack Q dimensions
   unsigned int
-  J = Q.n_rows,
+    J = Q.n_rows,
     K = Q.n_cols;
-
-  Rcpp::Rcout << "entered funct" << std::endl;
 
   // Obtain column sum
   arma::rowvec attr_count = sum(Q, 0);
-  Rcpp::Rcout << "cleared row count" << std::endl;
 
   // Checks if some attributes is required by <=2 item, then not generic ID  by Theorem 3
   // Verify if Q is generically complete; if not, then not generically identifiable.
@@ -71,54 +68,41 @@ inline bool is_q_generic_identified(const arma::mat& Q) {
   // Construct a linear sequence from 0 to J - 1
   arma::urowvec J_item_index = seq_linear_increase<arma::urowvec>(0, J - 1);
 
-  Rcpp::Rcout << "cleared 1" << std::endl;
-
   for (unsigned int ii = 0;  ii < all_submat_K1.n_rows; ++ii) {
     arma::urowvec submat_K1_indices = all_submat_K1.row(ii);
 
     // ii is the index for a K*K submat
     arma::mat Q1 = Q.rows(submat_K1_indices);
     bool Q1_GC = check_generic_complete(Q1);
-    Rcpp::Rcout << "cleared 2a" << std::endl;
 
     // if Q1 is not Gen. Complete, then go to next Q1
     if (Q1_GC == false) {
       continue;
     }
 
-    Rcpp::Rcout << "cleared 2b" << std::endl;
-
     // if Q1 is Gen. Complete, search for Q2
     arma::urowvec ind_remain = set_diff(J_item_index, submat_K1_indices);
-    Rcpp::Rcout << "cleared 2c" << std::endl;
 
     arma::umat all_submat_K2 = combination_matrix_from_vector(ind_remain, K);
-    Rcpp::Rcout << "cleared 2d" << std::endl;
 
     for(unsigned int jj = 0; jj < all_submat_K2.n_rows; ++jj) {
       arma::urowvec submat_K2_indices = all_submat_K2.row(jj);
-      Rcpp::Rcout << "cleared 3a" << std::endl;
 
       arma::mat Q2 = Q.rows(submat_K2_indices);
-      Rcpp::Rcout << "cleared 3b" << std::endl;
 
       bool Q2_GC = check_generic_complete(Q2);
-      Rcpp::Rcout << "cleared 3c" << std::endl;
 
       if(Q2_GC == false) {
         continue;
       }
-      Rcpp::Rcout << "cleared 3d" << std::endl;
 
       // if two Gen. Complete Q1 and Q2 are found, then find indices
       // of the remaining Q' part, and check Condition E
       arma::urowvec ind_last = set_diff(ind_remain, submat_K2_indices);
-      Rcpp::Rcout << "cleared 3e" << std::endl;
 
       if(!arma::all(arma::sum(Q.rows(ind_last), 0) >= 1)) {
         continue;
       }
-      Rcpp::Rcout << "cleared 4" << std::endl;
 
       return true;
     }
