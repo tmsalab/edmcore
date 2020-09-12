@@ -63,6 +63,8 @@ test_that("Q is generic complete", {
 
 
 test_that("Q is generic identified", {
+
+  # From the Statisticia Sinica paper
   q3_generic_id = rbind(c(0, 0, 1),
             c(1, 0, 1),
             c(1, 1, 0),
@@ -87,4 +89,22 @@ test_that("Q is generic identified", {
   )
 
   expect_true(edmcore:::is_q_generic_identified(q4_generic_id))
+
+  # Self-generated test cases
+  ones = function(n) {
+    matrix(1, nrow = n, ncol = n)
+  }
+
+  zeros = function(n) {
+    matrix(0, nrow = n, ncol = n)
+  }
+
+  # Verify submatrix component failure
+  q3_submatrix_failure = rbind(ones(3), ones(3), zeros(3))
+  expect_false(edmcore:::is_q_generic_identified(q3_submatrix_failure))
+
+  # Check success
+  q3_submatrix_success = rbind(ones(3), ones(3), diag(3))
+  expect_true(edmcore:::is_q_generic_identified(q3_submatrix_success))
 })
+
