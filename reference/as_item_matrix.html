@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coerce <code>data.frame</code> and <code>matrix</code> classes to an Item Matrix. — as_item_matrix • edmcore</title>
+<title>Coerce data.frame and matrix classes to an Item Matrix. — as_item_matrix • edmcore</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Coerce <code>data.frame</code> and <code>matrix</code> classes to an Item Matrix. — as_item_matrix" />
+<meta property="og:title" content="Coerce data.frame and matrix classes to an Item Matrix. — as_item_matrix" />
 <meta property="og:description" content="Converts underlying data into an Item Matrix frame." />
 
 
@@ -136,7 +136,7 @@
     <p>Converts underlying data into an Item Matrix frame.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>as_item_matrix</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>as_item_matrix</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -163,13 +163,14 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Item matrix values</span>
-<span class='no'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='kw'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>), nrow = <span class='fl'>2</span>)
 
 <span class='co'># Construct item class</span>
-<span class='no'>items</span> <span class='kw'>=</span> <span class='fu'>as_item_matrix</span>(<span class='no'>x</span>)
+<span class='kw'>items</span> <span class='op'>=</span> <span class='fu'>as_item_matrix</span>(<span class='kw'>x</span>)
 
 <span class='co'># View output</span>
-<span class='no'>items</span></div><div class='output co'>#&gt; An item matrix: 2 x 2 
+<span class='kw'>items</span>
+</div><div class='output co'>#&gt; An item matrix: 2 x 2 
 #&gt; 
 #&gt;          Item1 Item2
 #&gt; Subject1     1     0
@@ -189,7 +190,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
