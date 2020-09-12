@@ -1,6 +1,61 @@
 #include "attributes.h"
 #include <edmcore.h>
 
+// [[Rcpp::export]]
+unsigned int n_choose_k(unsigned int n, unsigned int k)
+{
+    return edmcore::n_choose_k(n, k);
+}
+
+// [[Rcpp::export]]
+arma::umat combination_matrix(unsigned int n, unsigned int k)
+{
+    return edmcore::combination_matrix(n, k);
+}
+
+// [[Rcpp::export]]
+arma::umat combination_matrix_from_vector(arma::urowvec x, unsigned int k)
+{
+    return edmcore::combination_matrix_from_vector(x, k);
+}
+
+// [[Rcpp::export]]
+arma::urowvec set_diff_cpp(arma::urowvec x, arma::urowvec y)
+{
+    return edmcore::set_diff(x, y);
+}
+
+// [[Rcpp::export]]
+bool is_q_generic_identified(const arma::mat& Q)
+{
+    return edmcore::is_q_generic_identified(Q);
+}
+
+// [[Rcpp::export]]
+bool is_q_generic_complete(const arma::mat& Q)
+{
+    return edmcore::check_generic_complete(Q);
+}
+
+// [[Rcpp::export]]
+arma::mat binary_q_ideal(unsigned int k)
+{
+    return edmcore::binary_q_ideal(k);
+}
+
+// [[Rcpp::export]]
+arma::rowvec seq_linear_increase(unsigned int start, unsigned int end)
+{
+    return edmcore::seq_linear_increase<arma::rowvec>(start, end);
+}
+
+
+// [[Rcpp::export]]
+arma::rowvec seq_linear_decrease(unsigned int start, unsigned int end)
+{
+    return edmcore::seq_linear_decrease<arma::rowvec>(start, end);
+}
+
 //' Verify Q Matrix is Strictly Identifiable
 //'
 //' Performs a check to see if Q is strictly identified or not.

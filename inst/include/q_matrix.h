@@ -3,7 +3,7 @@
 
 namespace edmcore {
 
-inline bool is_strict_q_identified(const arma::mat Q) {
+inline bool is_strict_q_identified(const arma::mat& Q) {
     unsigned int K = Q.n_cols;
     unsigned int J = Q.n_rows;
 
