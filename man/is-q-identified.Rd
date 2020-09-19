@@ -2,9 +2,12 @@
 % Please edit documentation in R/q-matrix.R
 \name{is_q_strict}
 \alias{is_q_strict}
+\alias{is_q_generic}
 \title{Is Q Matrix Strictly or Generically Identifiable?}
 \usage{
 is_q_strict(x)
+
+is_q_generic(x)
 }
 \arguments{
 \item{x}{A \code{\link[=q_matrix]{q_matrix()}} or \code{\link[base:matrix]{base::matrix()}} to test.}
@@ -31,4 +34,6 @@ Add details...
 x = matrix(c(1, 0, 1, 1))
 is_q_strict(x)
 is_q_strict(q_matrix(x))
+is_q_generic(x)
+is_q_generic(q_matrix(x))
 }
