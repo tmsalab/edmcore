@@ -2,7 +2,7 @@
 % Please edit documentation in R/study-recovery.R
 \name{permutate_order}
 \alias{permutate_order}
-\title{Reorganize terms}
+\title{Reorganize parameters in Theta Matrix}
 \usage{
 permutate_order(estimated_theta, oracle_theta, K = 3)
 }
@@ -17,5 +17,5 @@ permutate_order(estimated_theta, oracle_theta, K = 3)
 A vector containing the permutation order
 }
 \description{
-Reorganize terms
+Reorganize parameters in Theta Matrix
 }

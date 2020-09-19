@@ -27,7 +27,6 @@ permutate_order = function(estimated_theta, oracle_theta, K = 3) {
     beta_order = c(permuteAtableIndices(
       nClass = 2 ^ K,
       K,
-      M = 2,
       order = K,
       vv,
       col_indices - 1 # remove 1 from indices
@@ -46,7 +45,6 @@ permutate_order = function(estimated_theta, oracle_theta, K = 3) {
   beta_order = c(permuteAtableIndices(
     nClass = 2 ^ K,
     K,
-    M = 2,
     order = K,
     vv,
     permutation_order - 1 # remove 1 from indices
@@ -56,7 +54,7 @@ permutate_order = function(estimated_theta, oracle_theta, K = 3) {
   structure(
     list(
       "m" = 2,
-      "k" = k,
+      "k" = K,
       "permutation_order" = permutation_order,
       "beta_order" = beta_order
        ),
