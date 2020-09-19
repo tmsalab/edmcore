@@ -249,9 +249,20 @@ print.q_matrix = function(x, ... ) {
     message("No.\n")
   }
 
-  class(x) = c("matrix")
-  attributes(x)["strictly_identifiable"] = NULL
-  print(x, ...)
+  cat("Generically Identified: ")
+
+  # Creative use of STDERROR vs. STDOUT. Might back fire.
+  if(is_q_generic(x)) {
+    cat("Yes. \n\n")
+  } else {
+    message("No.\n")
+  }
+
+  y = x
+  class(y) = c("matrix")
+  attributes(y)["strictly_identifiable"] = NULL
+  attributes(y)["generically_identifiable"] = NULL
+  print(y, ...)
   invisible(x)
 }
 
