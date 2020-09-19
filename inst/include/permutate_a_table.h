@@ -1,5 +1,7 @@
 #ifndef EDMCORE_PERMUTATE_A_TABLE
 #define EDMCORE_PERMUTATE_A_TABLE
+namespace edmcore {
+
 inline arma::vec inv_gen_bijectionvector(unsigned int K, unsigned int M, double CL)
 {
   arma::vec alpha(K);
@@ -49,6 +51,8 @@ inline arma::vec permuteAtableIndices(unsigned int nClass, unsigned int K,
         }
     }
     return permindices;
+}
+
 }
 
 #endif
