@@ -53,12 +53,18 @@ units.
 
 In particular, we have: 
 
+- EDM Classes
+  - `new_edm_model()`, `new_edm_summary()`, and `new_edm_default_property_list()`
 - Attributes
   - `attribute_classes()`, `attribute_bijection()`, and `attribute_inv_bijection()`.
 - Q Matrix
-  - `q_matrix()`/`as_q_matrix()`, `read_q_matrix()`, `is_q_matrix()`, and `is_q_strict()`
+  - `q_matrix()`/`as_q_matrix()`, `read_q_matrix()`, `is_q_matrix()`, `is_q_strict()`, and
+    `is_q_generic()`.
 - Item Matrix
   - `item_matrix()`/`as_item_matrix()`, `read_item_matrix()`, and `is_item_matrix()`
+- Metrics
+  - `metric_mode()`, `metric_bias()`, `metric_frobenius_norm()`, `metric_element_wise()`, and
+    `metric_matrix_wise()`.
 
 ## Authors
 
