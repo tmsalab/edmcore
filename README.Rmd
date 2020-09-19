@@ -65,6 +65,7 @@ In particular, we have:
 - Metrics
   - `metric_mode()`, `metric_bias()`, `metric_frobenius_norm()`, `metric_element_wise()`, and
     `metric_matrix_wise()`.
+- Permutations 
 
 ## Authors
 
