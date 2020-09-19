@@ -5,6 +5,7 @@
 #' @param property  Information on the data and algorithm configuration.
 #' @param estimate  Mean, SD, Quantiles on chains pased in.
 #' @param ...       Additional model-specific data
+#' @param class     Specify a model-specific summary class.
 #'
 #' @return
 #' An EDM summary object with subclasses of `class`, `edm_summary`, and `list` that

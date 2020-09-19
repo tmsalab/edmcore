@@ -48,22 +48,23 @@ print.edm_property_list = function(x, ...) {
 #'
 #' Base class that provides slots for growth within the modeling objects.
 #'
-#' @param chain     Values from the MCMC chains across iterations.
-#' @param property  Information on the data and algorithm configuration.
-#' @param estimate  Any estimate done within C++ and raised into R during the
-#'                  modeling procedure.
-#' @param ...       Additional model-specific data
+#' @param chain           Values from the MCMC chains across iterations.
+#' @param property_list  Information on the data and algorithm configuration.
+#' @param estimate       Any estimate done within C++ and raised into R during
+#'                       the modeling procedure.
+#' @param ...            Additional model-specific data
+#' @param class          Designate the model-specific class.
 #'
 #' @return
 #' An EDM model object with subclasses of `class`, `edm`, and `list` that
 #' contains:
 #'
 #' - `chains`: Chain values
-#' - `property`: Estimation details including:
+#' - `property_list`: Estimation details including:
 #'    - `n`: Number of Observations
 #'    - `k`: Number of Attributes
 #'    - `order`: Highest degree from 1 to P = 2^K or less.
-#' - `estimates`:
+#' - `estimate`:
 #'    - **Note:** May be `NA` or a sub-list.
 #'
 #' @export

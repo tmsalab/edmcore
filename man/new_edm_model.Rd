@@ -9,25 +9,27 @@ new_edm_model(chain, property_list, estimate = NA, ..., class = character())
 \arguments{
 \item{chain}{Values from the MCMC chains across iterations.}
 
-\item{estimate}{Any estimate done within C++ and raised into R during the
-modeling procedure.}
+\item{property_list}{Information on the data and algorithm configuration.}
+
+\item{estimate}{Any estimate done within C++ and raised into R during
+the modeling procedure.}
 
 \item{...}{Additional model-specific data}
 
-\item{property}{Information on the data and algorithm configuration.}
+\item{class}{Designate the model-specific class.}
 }
 \value{
 An EDM model object with subclasses of \code{class}, \code{edm}, and \code{list} that
 contains:
 \itemize{
 \item \code{chains}: Chain values
-\item \code{property}: Estimation details including:
+\item \code{property_list}: Estimation details including:
 \itemize{
 \item \code{n}: Number of Observations
 \item \code{k}: Number of Attributes
 \item \code{order}: Highest degree from 1 to P = 2^K or less.
 }
-\item \code{estimates}:
+\item \code{estimate}:
 \itemize{
 \item \strong{Note:} May be \code{NA} or a sub-list.
 }

@@ -12,6 +12,8 @@ new_edm_summary(property, estimate, ..., class = character())
 \item{estimate}{Mean, SD, Quantiles on chains pased in.}
 
 \item{...}{Additional model-specific data}
+
+\item{class}{Specify a model-specific summary class.}
 }
 \value{
 An EDM summary object with subclasses of \code{class}, \code{edm_summary}, and \code{list} that
