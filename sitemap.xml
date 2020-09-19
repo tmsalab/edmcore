@@ -22,13 +22,13 @@
     <loc>https://tmsalab.github.io/edmcore/reference/edmcore-package.html</loc>
   </url>
   <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/is-q-identified.html</loc>
+  </url>
+  <url>
     <loc>https://tmsalab.github.io/edmcore/reference/is_item_matrix.html</loc>
   </url>
   <url>
     <loc>https://tmsalab.github.io/edmcore/reference/is_q_matrix.html</loc>
-  </url>
-  <url>
-    <loc>https://tmsalab.github.io/edmcore/reference/is_q_strict.html</loc>
   </url>
   <url>
     <loc>https://tmsalab.github.io/edmcore/reference/item_matrix.html</loc>
@@ -52,7 +52,22 @@
     <loc>https://tmsalab.github.io/edmcore/reference/metric_mode.html</loc>
   </url>
   <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/new_edm_default_property_list.html</loc>
+  </url>
+  <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/new_edm_model.html</loc>
+  </url>
+  <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/new_edm_summary.html</loc>
+  </url>
+  <url>
     <loc>https://tmsalab.github.io/edmcore/reference/permutate_binary_matrix.html</loc>
+  </url>
+  <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/print.edm_model.html</loc>
+  </url>
+  <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/print.edm_property_list.html</loc>
   </url>
   <url>
     <loc>https://tmsalab.github.io/edmcore/reference/print.item_matrix.html</loc>
@@ -77,6 +92,9 @@
   </url>
   <url>
     <loc>https://tmsalab.github.io/edmcore/reference/recovery_element.html</loc>
+  </url>
+  <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/summary.edm_model.html</loc>
   </url>
   <url>
     <loc>https://tmsalab.github.io/edmcore/articles/metrics.html</loc>

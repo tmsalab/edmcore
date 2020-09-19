@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Output Q Matrix — print.q_matrix • edmcore</title>
+<title>Is Q Matrix Strictly or Generically Identifiable? — is_q_strict • edmcore</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Output Q Matrix — print.q_matrix" />
-<meta property="og:description" content="Custom print method for the Q Matrix Object." />
+<meta property="og:title" content="Is Q Matrix Strictly or Generically Identifiable? — is_q_strict" />
+<meta property="og:description" content="Is Q Matrix Strictly or Generically Identifiable?" />
 
 
 
@@ -127,51 +127,51 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Output Q Matrix</h1>
+    <h1>Is Q Matrix Strictly or Generically Identifiable?</h1>
     <small class="dont-index">Source: <a href='https://github.com/tmsalab/edmcore/blob/master/R/q-matrix.R'><code>R/q-matrix.R</code></a></small>
-    <div class="hidden name"><code>print.q_matrix.Rd</code></div>
+    <div class="hidden name"><code>is-q-identified.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Custom print method for the Q Matrix Object.</p>
+    <p>Is Q Matrix Strictly or Generically Identifiable?</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for q_matrix</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>is_q_strict</span>(<span class='kw'>x</span>)
+
+<span class='fu'>is_q_generic</span>(<span class='kw'>x</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>An <code>q_matrix</code> object</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional methods passed onto the <code>print.matrix</code> method.</p></td>
+      <td><p>A <code><a href='q_matrix.html'>q_matrix()</a></code> or <code><a href='https://rdrr.io/r/base/matrix.html'>base::matrix()</a></code> to test.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An invisible <code>matrix</code> without the <code>q_matrix</code> class displayed as a part
-of the output displayed.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>A logical vector</p>
+    <h2 class="hasAnchor" id="strictly-identifiable"><a class="anchor" href="#strictly-identifiable"></a>Strictly Identifiable</h2>
 
-    <div class='dont-index'><p><code><a href='q_matrix.html'>q_matrix()</a></code>, <code><a href='as_q_matrix.html'>as_q_matrix()</a></code></p></div>
+    
+
+
+<p>Add details...</p>
+    <h2 class="hasAnchor" id="generically-identifiable"><a class="anchor" href="#generically-identifiable"></a>Generically Identifiable</h2>
+
+    
+
+
+<p>Add details...</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Q matrix values</span>
-<span class='kw'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>), nrow = <span class='fl'>2</span>)
-
-<span class='co'># Show Q matrix structure</span>
-<span class='fu'><a href='q_matrix.html'>q_matrix</a></span>(<span class='kw'>x</span>)
-</div><div class='output co'>#&gt; A q matrix: 2 x 2 
-#&gt; Strictly Identified: </div><div class='output co'>#&gt; <span class='message'>No.</span></div><div class='output co'>#&gt;       Trait1 Trait2
-#&gt; Item1      1      0
-#&gt; Item2      0      1
-#&gt; attr(,"generically_identifiable")
-#&gt; [1] FALSE</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>))
+<span class='fu'>is_q_strict</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>is_q_strict</span>(<span class='fu'><a href='q_matrix.html'>q_matrix</a></span>(<span class='kw'>x</span>))
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>is_q_generic</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>is_q_generic</span>(<span class='fu'><a href='q_matrix.html'>q_matrix</a></span>(<span class='kw'>x</span>))
+</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
