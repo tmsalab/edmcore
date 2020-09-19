@@ -59,6 +59,7 @@ is_q_matrix = function(x) {
 #'
 #' Add details...
 #'
+#' @rdname is-q-identified
 #' @export
 #' @examples
 #' x = matrix(c(1, 0, 1, 1))
@@ -76,6 +77,22 @@ is_q_strict = function(x) {
   }
 }
 
+#' @rdname is-q-identified
+#' @export
+#' @examples
+#' is_q_generic(x)
+#' is_q_generic(q_matrix(x))
+is_q_generic = function(x) {
+  stopifnot("`x` must be either `q_matrix` or `matrix`" =
+              inherits(x, c("q_matrix", "matrix")))
+
+  if (is_q_matrix(x)) {
+    attr(x, 'generically_identifiable')
+  } else {
+    stopifnot("`x` must contain only 0 or 1 entries." = x %in% c(0, 1))
+    is_q_generic_identified(x)
+  }
+}
 
 ## Convert Data to Q Matrix Object ----
 
@@ -94,6 +111,12 @@ create_q_matrix = function(x) {
   # Verify strict identifiability
   strictly_identified_q = is_q_strict(x)
 
+  generically_identified_q = if(strictly_identified_q) {
+    TRUE
+  } else {
+    is_q_generic_identified(x)
+  }
+
   # Structure Q matrix
   x = format_q_matrix(x)
 
@@ -102,6 +125,7 @@ create_q_matrix = function(x) {
 
   # Embed information
   attr(x, 'strictly_identifiable') = strictly_identified_q
+  attr(x, 'generically_identifiable') = generically_identified_q
 
   # Release result
   x

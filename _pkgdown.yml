@@ -19,6 +19,15 @@ authors:
     href: http://publish.illinois.edu/jeffdoug/
 
 reference:
+- title: Exploratory Diagnostic Model Base Classes
+  desc: >
+    **EDM Classes** establish a defined naming and access system for use with
+    a wide variety of modeling types.
+  contents:
+  - new_edm_summary
+  - new_edm_model
+  - new_edm_default_property_list
+
 - title: Attributes
   desc: >
     **Attributes** represent the latent classes and how we establish a bridge
@@ -39,6 +48,7 @@ reference:
   - read_q_matrix
   - is_q_matrix
   - is_q_strict
+  - is_q_generic
 
 - title: Item Matrix
   desc: >
