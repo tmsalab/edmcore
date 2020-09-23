@@ -61,6 +61,9 @@ In particular, we have:
   - Metrics
       - `metric_mode()`, `metric_bias()`, `metric_frobenius_norm()`,
         `metric_element_wise()`, and `metric_matrix_wise()`.
+  - Link Functions
+      - `link_probit()`, `link_logit()`, `theta_to_beta()`,
+        `theta_probit_to_beta()`, and `theta_logit_to_beta()`.
 
 ## Authors
 

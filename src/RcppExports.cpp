@@ -41,6 +41,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// GenerateAtable
+Rcpp::List GenerateAtable(unsigned int nClass, unsigned int K, unsigned int M, unsigned int order);
+RcppExport SEXP _edmcore_GenerateAtable(SEXP nClassSEXP, SEXP KSEXP, SEXP MSEXP, SEXP orderSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< unsigned int >::type nClass(nClassSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type K(KSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type order(orderSEXP);
+    rcpp_result_gen = Rcpp::wrap(GenerateAtable(nClass, K, M, order));
+    return rcpp_result_gen;
+END_RCPP
+}
 // n_choose_k
 unsigned int n_choose_k(unsigned int n, unsigned int k);
 RcppExport SEXP _edmcore_n_choose_k(SEXP nSEXP, SEXP kSEXP) {
@@ -177,6 +191,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_edmcore_attribute_bijection", (DL_FUNC) &_edmcore_attribute_bijection, 1},
     {"_edmcore_attribute_inv_bijection", (DL_FUNC) &_edmcore_attribute_inv_bijection, 2},
     {"_edmcore_attribute_classes", (DL_FUNC) &_edmcore_attribute_classes, 1},
+    {"_edmcore_GenerateAtable", (DL_FUNC) &_edmcore_GenerateAtable, 4},
     {"_edmcore_n_choose_k", (DL_FUNC) &_edmcore_n_choose_k, 2},
     {"_edmcore_combination_matrix", (DL_FUNC) &_edmcore_combination_matrix, 2},
     {"_edmcore_combination_matrix_from_vector", (DL_FUNC) &_edmcore_combination_matrix_from_vector, 2},
