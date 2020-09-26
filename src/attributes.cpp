@@ -67,6 +67,56 @@ arma::vec attribute_inv_bijection(unsigned int K, double CL)
   return alpha;
 }
 
+//' Generate a vector to map polytomous vector to integers
+//'
+//' Converts class into a bijection to integers
+//'
+//' @param M      Number of Responses
+//' @param K      Number of Attributes
+//'
+//' @return
+//'
+//' Return a matrix containing the class table
+//'
+//' @noRd
+template <class T> T gen_bijectionvector(unsigned int K, unsigned int M)
+{
+  T vv(K);
+  for (unsigned int k = 0; k < K; k++) {
+    vv(k) = pow(M, K - k - 1.0);
+  }
+  return vv;
+}
+
+//' Create the K inverse bijection of attribute vectors
+//'
+//' Converts the class into a bijection.
+//'
+//' @param nClass Number of Attribute Classes
+//' @param M      Number of Options
+//' @param K      Number of Attributes
+//'
+//' @return
+//'
+//' Return a matrix containing the class table
+//'
+//' @noRd
+template <class T>
+T inv_gen_bijectionvector(unsigned int K, unsigned int M, double CL)
+{
+  T alpha(K);
+  for (unsigned int k = 0; k < K; k++) {
+    double Mpow = pow(M, K - k - 1);
+    double ak = 0.;
+    while (((ak + 1.) * Mpow <= CL) & (ak < M)) {
+      ak += 1.;
+    }
+    alpha(k) = ak;
+    CL = CL - Mpow * alpha(k);
+  }
+  return alpha;
+}
+
 //' Simulate all the Latent Attribute Profile \eqn{\mathbf{\alpha}_c} in
 //' Matrix form
 //'
@@ -116,4 +166,94 @@ arma::mat attribute_classes(int K)
 
   // Release result
   return alpha_matrix;
+}
+
+template <class T> bool is_needle_in_haystack(T x, unsigned int needle)
+{
+  arma::uvec m = arma::find(x == needle);
+
+  if (m.n_elem > 0) {
+    return true;
+  }
+
+  return false;
+}
+
+//' Generate tables to store the results during iterations
+//'
+//' Generate tables to store the results during iterations
+//'
+//' @param nClass   Number of Attribute Classes
+//' @param M        Number of Responses
+//' @param K        Number of Attributes
+//' @param order    Order is 1, main-effects, 2 main-effects + interactions.
+//'               Highest level of interactions you want.
+//'
+//' @return
+//'
+//' Return a list containing the tables for different parameters
+//'
+//' @noRd
+// [[Rcpp::export]]
+Rcpp::List GenerateAtable(unsigned int nClass, unsigned int K, unsigned int M,
+                          unsigned int order)
+{
+
+  arma::mat FullAtable(nClass, nClass);
+  arma::mat FullLBtable(nClass, nClass);
+  arma::mat FullDtoQtable(K, nClass);
+  arma::mat Fulladjtable(nClass, nClass);
+  arma::vec model(nClass);
+
+  // Setup storage for main effect indices
+  arma::uvec model_main_effects(nClass);
+
+  // Construct a vv bijection
+  arma::uvec vv_bijection = gen_bijectionvector<arma::uvec>(K, M);
+
+  for (unsigned int cr = 0; cr < nClass; cr++) {
+    arma::vec alpha_r = inv_gen_bijectionvector<arma::vec>(K, M, cr);
+
+    double nof0s = 0.;
+    for (unsigned int k = 0; k < K; k++) {
+      nof0s += 1. * (alpha_r(k) == 0);
+      FullDtoQtable(k, cr) = 1. * (alpha_r(k) > 0);
+    }
+
+    // Checking if the class is in the bijection vector
+    // If integer is corresponding with main effect.
+    model_main_effects(cr) = 1*is_needle_in_haystack(vv_bijection, cr);
+
+    // Flags coefficients with no greater order
+    model(cr) = 1. * (nof0s > double(K - order) - 1);
+    for (unsigned int cc = 0; cc < nClass; cc++) {
+      arma::vec alpha_c = inv_gen_bijectionvector<arma::vec>(K, M, cc);
+      double mindiff = arma::min(alpha_r - alpha_c);
+      FullAtable(cr, cc) = 1. * (mindiff > -1);
+      double maxdiff = arma::accu(abs(alpha_c - alpha_r));
+      FullLBtable(cr, cc) = 1. * (maxdiff == 1) * (mindiff < 0) +
+        2. * (mindiff > -1) * (maxdiff != 0);
+      Fulladjtable(cr, cc) = 1. * (maxdiff == 1);
+    }
+  }
+
+
+  // Columns that should be retained under the appropriate model order
+  arma::uvec finalcols = find(model == 1);
+
+  // Columns corresponding to the main effects
+  // and is present within the model
+  arma::uvec maineffectcols = find(model_main_effects == 1 && model == 1);
+
+  arma::mat Atable = FullAtable.cols(finalcols);
+  arma::mat LBtable = FullLBtable.cols(finalcols);
+  arma::mat DtoQtable = FullDtoQtable.cols(finalcols);
+  arma::mat adjtable = Fulladjtable.submat(finalcols, finalcols);
+
+  return Rcpp::List::create(
+    Rcpp::Named("Atable", Atable), Rcpp::Named("LBtable", LBtable),
+    Rcpp::Named("finalcols", finalcols),
+    Rcpp::Named("DtoQtable", DtoQtable), Rcpp::Named("adjtable", adjtable),
+    Rcpp::Named("maineffectcols", maineffectcols)
+  );
 }

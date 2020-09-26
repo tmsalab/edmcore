@@ -71,6 +71,14 @@ reference:
   - metric_element_wise
   - metric_matrix_wise
 
+- title: Link Functions
+  desc: >
+    **Link Functions** transform values in the model for better relation with
+     response variables.
+  contents:
+  - link_logit
+  - theta_to_beta
+
 - title: Permutations
   desc: >
     **Permutations** relate to how items are re-ordered during a recovery
