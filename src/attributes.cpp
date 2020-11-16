@@ -68,6 +68,7 @@ arma::uvec attribute_inv_bijection(unsigned int K, double CL)
 //' Return a matrix containing the class table
 //'
 //' @export
+// [[Rcpp::export]]
 arma::uvec attribute_gen_bijection(unsigned int K, unsigned int M)
 {
   return edmcore::attribute_gen_bijection<arma::uvec>(K, M);
