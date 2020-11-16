@@ -4,12 +4,12 @@
 \alias{permutate_attribute_level_table}
 \title{Permutation Attribute Table}
 \usage{
-permutate_attribute_level_table(K, M = 2)
+permutate_attribute_level_table(k, m = 2)
 }
 \arguments{
-\item{M}{Number of Responses. Default: 2.}
+\item{k}{Supply the number of attributes to change}
 
-\item{Supply}{the number of attributes to change}
+\item{m}{Number of Responses. Default: 2.}
 }
 \description{
 Generate a table containing attribute permutations.
@@ -17,17 +17,17 @@ Generate a table containing attribute permutations.
 \examples{
 
 # Example of generating all attribute level swap permutations
-K = 3
-nClass = 2 ^ K
+k = 3
+nClass = 2 ^ k
 
 # Total number of label swaps for unstructured mixture
 factorial(nClass)
 
 # Total number of label swaps for structured mixture
-factorial(K) * (2 ^ K)
+factorial(k) * (2 ^ k)
 
 # Create the permutation table
-permutation_table = permutate_attribute_level_table(K = 3, M = 2)
+permutation_table = permutate_attribute_level_table(k = 3, m = 2)
 
 # Loop over columns to find the positions of the equivalent attribute level swaps
 }

@@ -11,7 +11,7 @@ permutate_theta_order(estimated_theta, oracle_theta, k = 3)
 
 \item{oracle_theta}{Known Theta Matrix}
 
-\item{K}{Number of Attributes}
+\item{k}{Number of Attributes}
 }
 \value{
 A vector containing the permutation order

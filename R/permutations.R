@@ -2,38 +2,38 @@
 #'
 #' Generate a table containing attribute permutations.
 #'
-#' @param Supply the number of attributes to change
-#' @param M Number of Responses. Default: 2.
+#' @param k Supply the number of attributes to change
+#' @param m Number of Responses. Default: 2.
 #' @examples
 #'
 #' # Example of generating all attribute level swap permutations
-#' K = 3
-#' nClass = 2 ^ K
+#' k = 3
+#' nClass = 2 ^ k
 #'
 #' # Total number of label swaps for unstructured mixture
 #' factorial(nClass)
 #'
 #' # Total number of label swaps for structured mixture
-#' factorial(K) * (2 ^ K)
+#' factorial(k) * (2 ^ k)
 #'
 #' # Create the permutation table
-#' permutation_table = permutate_attribute_level_table(K = 3, M = 2)
+#' permutation_table = permutate_attribute_level_table(k = 3, m = 2)
 #'
 #' # Loop over columns to find the positions of the equivalent attribute level swaps
-permutate_attribute_level_table = function(K, M = 2) {
+permutate_attribute_level_table = function(k, m = 2) {
 
-  nClass = 2 ^ K
+  nClass = 2 ^ k
 
   # Create a 2^K by K table of attribute classes
-  all_binary_attribute_classes = matrix(0, nClass, K)
+  all_binary_attribute_classes = matrix(0, nClass, k)
   for (cc in 1:(nClass - 1)) {
     all_binary_attribute_classes[cc + 1, ] =
-      t(egdm:::inv_gen_bijectionvector(K, M, cc))
+      t(egdm:::inv_gen_bijectionvector(k, m, cc))
   }
 
   # Establish a vector to map between binary classes and integers
   vv <- 2 ^ {
-    (K:1) - 1
+    (k:1) - 1
   }
 
   # Creating a 2^K by 2^K matrix
@@ -47,7 +47,7 @@ permutate_attribute_level_table = function(K, M = 2) {
   level_swap_table = matrix(0, nClass, nClass)
   for (perms in 0:(nClass - 1)) {
     # Identify which attribute levels are swapped
-    binary_levels_swapped = egdm:::inv_gen_bijectionvector(K, M, perms)
+    binary_levels_swapped = egdm:::inv_gen_bijectionvector(k, m, perms)
     attributes_with_swapped_levels = which(binary_levels_swapped == 1)
 
     # Create a temporary table of swapped attributes modify
@@ -65,7 +65,7 @@ permutate_attribute_level_table = function(K, M = 2) {
 #'
 #' @param estimated_theta  Estimated Theta Matrix
 #' @param oracle_theta     Known Theta Matrix
-#' @param K                Number of Attributes
+#' @param k                Number of Attributes
 #'
 #' @return
 #' A vector containing the permutation order
