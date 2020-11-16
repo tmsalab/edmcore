@@ -26,6 +26,21 @@ test_that("Valid attribute_inv_bijection", {
 
 })
 
+test_that("Valid attribute general bijection", {
+  gen_bijection_test = function(K, M) {
+    matrix( M^((K-1):0) )
+  }
+
+  # Check binary condition
+  expect_equal(attribute_bijection(3),  gen_bijection_test(3, 2))
+
+  # Check M-order condition
+  expect_equal(attribute_gen_bijection(3, 2),  gen_bijection_test(3, 2))
+  expect_equal(attribute_gen_bijection(4, 3),  gen_bijection_test(4, 3))
+  expect_equal(attribute_gen_bijection(5, 2),  gen_bijection_test(5, 2))
+})
+
+
 test_that("Valid attribute inverse general bijection", {
   inv_gen_bijection_test = function(K, M, CL) {
     alpha = rep(NA, K)
