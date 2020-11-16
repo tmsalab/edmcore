@@ -2,7 +2,8 @@
 #'
 #' Functions that rescale the data according to a given distribution.
 #'
-#' @param x A `matrix` or `vector` containing values to be transformed.
+#' @param x A `matrix` or `vector` containing quantiles to be transformed.
+#' @param p A `matrix` or `vector` containing probabilities to be transformed.
 #'
 #' @return
 #' A `matrix` or `vector` with values transformed under the link function.
@@ -10,15 +11,30 @@
 #' @seealso [`theta_to_beta`]
 #' @rdname link-functions
 #' @export
-link_logit = function(x) {
-  log(x / (1 - x))
+link_logit = function(p) {
+  # log(p / (1 - p))
+  stats::qlogis(p)
 }
 
 #' @rdname link-functions
 #' @export
-link_probit = function(x) {
-  qnorm(x)
+link_logit_inv = function(x) {
+  # exp(p) / (1 + exp(x))
+  stats::plogis(x)
 }
+
+#' @rdname link-functions
+#' @export
+link_probit = function(p) {
+  stats::qnorm(p)
+}
+
+#' @rdname link-functions
+#' @export
+link_probit_inv = function(x) {
+  stats::pnorm(x)
+}
+
 
 #' Translate Theta values into Beta values
 #'

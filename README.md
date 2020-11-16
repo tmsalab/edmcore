@@ -63,8 +63,9 @@ In particular, we have:
         `metric_element_wise()`, and `metric_matrix_wise()`.
   - Permutations
   - Link Functions
-      - `link_probit()`, `link_logit()`, `theta_to_beta()`,
-        `theta_probit_to_beta()`, and `theta_logit_to_beta()`.
+      - `link_probit()`, `link_probit_inv()`, `link_logit()`,
+        `link_logit_inv()`, `theta_to_beta()`, `theta_probit_to_beta()`,
+        and `theta_logit_to_beta()`.
 
 ## Authors
 
