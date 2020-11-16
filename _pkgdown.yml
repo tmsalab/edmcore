@@ -76,7 +76,7 @@ reference:
     **Link Functions** transform values in the model for better relation with
      response variables.
   contents:
-  - link_logit
+  - contains("link")
   - theta_to_beta
 
 - title: Permutations

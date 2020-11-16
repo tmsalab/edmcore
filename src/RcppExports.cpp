@@ -8,7 +8,7 @@
 using namespace Rcpp;
 
 // attribute_bijection
-arma::vec attribute_bijection(unsigned int K);
+arma::uvec attribute_bijection(unsigned int K);
 RcppExport SEXP _edmcore_attribute_bijection(SEXP KSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -19,7 +19,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // attribute_inv_bijection
-arma::vec attribute_inv_bijection(unsigned int K, double CL);
+arma::uvec attribute_inv_bijection(unsigned int K, double CL);
 RcppExport SEXP _edmcore_attribute_inv_bijection(SEXP KSEXP, SEXP CLSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -27,6 +27,31 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< unsigned int >::type K(KSEXP);
     Rcpp::traits::input_parameter< double >::type CL(CLSEXP);
     rcpp_result_gen = Rcpp::wrap(attribute_inv_bijection(K, CL));
+    return rcpp_result_gen;
+END_RCPP
+}
+// attribute_gen_bijection
+arma::uvec attribute_gen_bijection(unsigned int K, unsigned int M);
+RcppExport SEXP _edmcore_attribute_gen_bijection(SEXP KSEXP, SEXP MSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< unsigned int >::type K(KSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type M(MSEXP);
+    rcpp_result_gen = Rcpp::wrap(attribute_gen_bijection(K, M));
+    return rcpp_result_gen;
+END_RCPP
+}
+// attribute_inv_gen_bijection
+arma::uvec attribute_inv_gen_bijection(unsigned int K, unsigned int M, double CL);
+RcppExport SEXP _edmcore_attribute_inv_gen_bijection(SEXP KSEXP, SEXP MSEXP, SEXP CLSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< unsigned int >::type K(KSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< double >::type CL(CLSEXP);
+    rcpp_result_gen = Rcpp::wrap(attribute_inv_gen_bijection(K, M, CL));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -190,6 +215,8 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_edmcore_attribute_bijection", (DL_FUNC) &_edmcore_attribute_bijection, 1},
     {"_edmcore_attribute_inv_bijection", (DL_FUNC) &_edmcore_attribute_inv_bijection, 2},
+    {"_edmcore_attribute_gen_bijection", (DL_FUNC) &_edmcore_attribute_gen_bijection, 2},
+    {"_edmcore_attribute_inv_gen_bijection", (DL_FUNC) &_edmcore_attribute_inv_gen_bijection, 3},
     {"_edmcore_attribute_classes", (DL_FUNC) &_edmcore_attribute_classes, 1},
     {"_edmcore_GenerateAtable", (DL_FUNC) &_edmcore_GenerateAtable, 4},
     {"_edmcore_n_choose_k", (DL_FUNC) &_edmcore_n_choose_k, 2},

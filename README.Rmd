@@ -54,21 +54,22 @@ units.
 In particular, we have: 
 
 - EDM Classes
-  - `new_edm_model()`, `new_edm_summary()`, and `new_edm_default_property_list()`
+  - `new_edm_model()`, `new_edm_summary()`, and `new_edm_default_property_list()`.
 - Attributes
-  - `attribute_classes()`, `attribute_bijection()`, and `attribute_inv_bijection()`.
+  - `attribute_classes()`, `attribute_bijection()`, `attribute_inv_bijection()`, `attribute_gen_bijection()`, and `attribute_inv_gen_bijection()`.
 - Q Matrix
   - `q_matrix()`/`as_q_matrix()`, `read_q_matrix()`, `is_q_matrix()`, `is_q_strict()`, and
     `is_q_generic()`.
 - Item Matrix
-  - `item_matrix()`/`as_item_matrix()`, `read_item_matrix()`, and `is_item_matrix()`
+  - `item_matrix()`/`as_item_matrix()`, `read_item_matrix()`, and `is_item_matrix()`.
 - Metrics
   - `metric_mode()`, `metric_bias()`, `metric_frobenius_norm()`, `metric_element_wise()`, and
     `metric_matrix_wise()`.
+- Permutations 
 - Link Functions
-  - `link_probit()`, `link_logit()`, `theta_to_beta()`, `theta_probit_to_beta()`, and
-    `theta_logit_to_beta()`.
-    
+  - `link_probit()`, `link_probit_inv()`, `link_logit()`, `link_logit_inv()`,
+    `theta_to_beta()`, `theta_probit_to_beta()`, and `theta_logit_to_beta()`.
+
 ## Authors
 
 James Joseph Balamuta, Steven Andrew Culpepper, and Jeffrey Douglas
