@@ -136,7 +136,7 @@
     <p>Computes the Bias</p>
     </div>
 
-    <pre class="usage"><span class='fu'>metric_bias</span>(<span class='kw'>estimate</span>, <span class='kw'>oracle</span>, na.rm = <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>metric_bias</span><span class='op'>(</span><span class='va'>estimate</span>, <span class='va'>oracle</span>, na.rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,11 +177,11 @@ $$\operatorname{Bias}(\hat \theta, \theta) = E\left[\hat\theta\right] - \theta$$
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Construct data</span>
-<span class='kw'>estimate</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>4</span>,<span class='fl'>3</span>,<span class='fl'>6</span>), nrow = <span class='fl'>2</span>, ncol = <span class='fl'>3</span>)
-<span class='kw'>truth</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>4</span>,<span class='fl'>5</span>,<span class='fl'>6</span>), nrow = <span class='fl'>2</span>, ncol = <span class='fl'>3</span>)
+<span class='va'>estimate</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>4</span>,<span class='fl'>3</span>,<span class='fl'>6</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>2</span>, ncol <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+<span class='va'>truth</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>4</span>,<span class='fl'>5</span>,<span class='fl'>6</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>2</span>, ncol <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
 
 <span class='co'># Compute the bias</span>
-<span class='fu'>metric_bias</span>(<span class='kw'>estimate</span>, <span class='kw'>truth</span>)
+<span class='fu'>metric_bias</span><span class='op'>(</span><span class='va'>estimate</span>, <span class='va'>truth</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;           [,1]       [,2]      [,3]
 #&gt; [1,] 1.8333333 -0.1666667 -2.166667
 #&gt; [2,] 0.8333333 -1.1666667 -3.166667</div></pre>

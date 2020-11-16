@@ -16,7 +16,13 @@
     <loc>https://tmsalab.github.io/edmcore/reference/attribute_classes.html</loc>
   </url>
   <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/attribute_gen_bijection.html</loc>
+  </url>
+  <url>
     <loc>https://tmsalab.github.io/edmcore/reference/attribute_inv_bijection.html</loc>
+  </url>
+  <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/attribute_inv_gen_bijection.html</loc>
   </url>
   <url>
     <loc>https://tmsalab.github.io/edmcore/reference/edmcore-package.html</loc>
@@ -64,7 +70,13 @@
     <loc>https://tmsalab.github.io/edmcore/reference/new_edm_summary.html</loc>
   </url>
   <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/permutate_attribute_level_table.html</loc>
+  </url>
+  <url>
     <loc>https://tmsalab.github.io/edmcore/reference/permutate_binary_matrix.html</loc>
+  </url>
+  <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/permutate_theta_order.html</loc>
   </url>
   <url>
     <loc>https://tmsalab.github.io/edmcore/reference/print.edm_model.html</loc>

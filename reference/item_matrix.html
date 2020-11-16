@@ -136,7 +136,7 @@
     <p>Provides a way to create an object as a <code>"item_matrix"</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>item_matrix</span>(<span class='kw'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>item_matrix</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -156,13 +156,13 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Item matrix values</span>
-<span class='kw'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>), ncol = <span class='fl'>2</span>)
+<span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, ncol <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 
 <span class='co'># Item matrix initialization</span>
-<span class='kw'>items</span> <span class='op'>=</span> <span class='fu'>item_matrix</span>(<span class='kw'>x</span>)
+<span class='va'>items</span> <span class='op'>=</span> <span class='fu'>item_matrix</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
 <span class='co'># View item matrix</span>
-<span class='kw'>items</span>
+<span class='va'>items</span>
 </div><div class='output co'>#&gt; An item matrix: 3 x 2 
 #&gt; 
 #&gt;          Item1 Item2
@@ -170,16 +170,16 @@
 #&gt; Subject2     0     1
 #&gt; Subject3     0     1</div><div class='input'>
 <span class='co'># Data Frame encoding of items</span>
-<span class='kw'>items_df</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-   s1 = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1</span>),
-   s2 = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>)
-)
+<span class='va'>items_df</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+   s1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>,
+   s2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span>
+<span class='op'>)</span>
 
 <span class='co'># Create an Item Matrix</span>
-<span class='kw'>items</span> <span class='op'>=</span> <span class='fu'>item_matrix</span>(<span class='kw'>items_df</span>)
+<span class='va'>items</span> <span class='op'>=</span> <span class='fu'>item_matrix</span><span class='op'>(</span><span class='va'>items_df</span><span class='op'>)</span>
 
 <span class='co'># View item matrix</span>
-<span class='kw'>items</span>
+<span class='va'>items</span>
 </div><div class='output co'>#&gt; An item matrix: 6 x 2 
 #&gt; 
 #&gt;          Item1 Item2

@@ -136,16 +136,24 @@
     <p>Functions that rescale the data according to a given distribution.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>link_logit</span>(<span class='kw'>x</span>)
+    <pre class="usage"><span class='fu'>link_logit</span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span>
 
-<span class='fu'>link_probit</span>(<span class='kw'>x</span>)</pre>
+<span class='fu'>link_logit_inv</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='fu'>link_probit</span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span>
+
+<span class='fu'>link_probit_inv</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>p</th>
+      <td><p>A <code>matrix</code> or <code>vector</code> containing probabilities to be transformed.</p></td>
+    </tr>
+    <tr>
       <th>x</th>
-      <td><p>A <code>matrix</code> or <code>vector</code> containing values to be transformed.</p></td>
+      <td><p>A <code>matrix</code> or <code>vector</code> containing quantiles to be transformed.</p></td>
     </tr>
     </table>
 

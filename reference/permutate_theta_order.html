@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Heatmap Visualization of a Q Matrix — plot.q_matrix • edmcore</title>
+<title>Reorganize parameters in Theta Matrix — permutate_theta_order • edmcore</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Heatmap Visualization of a Q Matrix — plot.q_matrix" />
-<meta property="og:description" content="Provides a heatmap approach to showing the estimated binary or averaged
-values of the Q Matrix." />
+<meta property="og:title" content="Reorganize parameters in Theta Matrix — permutate_theta_order" />
+<meta property="og:description" content="Reorganize parameters in Theta Matrix" />
 
 
 
@@ -128,40 +127,38 @@ values of the Q Matrix." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Heatmap Visualization of a Q Matrix</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tmsalab/edmcore/blob/master/R/vis-q-matrix.R'><code>R/vis-q-matrix.R</code></a></small>
-    <div class="hidden name"><code>q_graph.Rd</code></div>
+    <h1>Reorganize parameters in Theta Matrix</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tmsalab/edmcore/blob/master/R/permutations.R'><code>R/permutations.R</code></a></small>
+    <div class="hidden name"><code>permutate_theta_order.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Provides a heatmap approach to showing the estimated binary or averaged
-values of the Q Matrix.</p>
+    <p>Reorganize parameters in Theta Matrix</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for q_matrix</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>permutate_theta_order</span><span class='op'>(</span><span class='va'>estimated_theta</span>, <span class='va'>oracle_theta</span>, k <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Either an <code>edina</code>, <code>errum</code>, or <code>q_matrix</code> object.</p></td>
+      <th>estimated_theta</th>
+      <td><p>Estimated Theta Matrix</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional paramters not used</p></td>
+      <th>oracle_theta</th>
+      <td><p>Known Theta Matrix</p></td>
+    </tr>
+    <tr>
+      <th>k</th>
+      <td><p>Number of Attributes</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>ggplot2</code> object that can be further manipulated.</p>
+    <p>A vector containing the permutation order</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>q</span> <span class='op'>=</span> <span class='fu'><a href='q_matrix.html'>q_matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, ncol <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>q</span><span class='op'>)</span>
-</div><div class='img'><img src='q_graph-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

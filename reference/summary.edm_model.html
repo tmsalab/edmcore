@@ -143,7 +143,7 @@
     </div>
 
     <pre class="usage"><span class='co'># S3 method for edm_model</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>object</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -191,7 +191,7 @@
   <code><a href='https://rdrr.io/r/stats/summary.lm.html'>summary.lm</a></code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>attenu</span>, digits = <span class='fl'>4</span>) <span class='co'>#-&gt; summary.data.frame(...), default precision</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>attenu</span>, digits <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span> <span class='co'>#-&gt; summary.data.frame(...), default precision</span>
 </div><div class='output co'>#&gt;      event            mag           station         dist       
 #&gt;  Min.   : 1.00   Min.   :5.000   117    :  5   Min.   :  0.50  
 #&gt;  1st Qu.: 9.00   1st Qu.:5.300   1028   :  4   1st Qu.: 11.32  
@@ -207,16 +207,16 @@
 #&gt;  Mean   :0.15422  
 #&gt;  3rd Qu.:0.21925  
 #&gt;  Max.   :0.81000  
-#&gt;                   </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>attenu</span> <span class='op'>$</span> <span class='kw'>station</span>, maxsum = <span class='fl'>20</span>) <span class='co'>#-&gt; summary.factor(...)</span>
+#&gt;                   </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>attenu</span> <span class='op'>$</span> <span class='va'>station</span>, maxsum <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span> <span class='co'>#-&gt; summary.factor(...)</span>
 </div><div class='output co'>#&gt;     117    1028     113     112     135     475    1030    1083    1093    1095 
 #&gt;       5       4       4       3       3       3       2       2       2       2 
 #&gt;     111     116    1219    1299     130    1308    1377    1383 (Other)    NA's 
 #&gt;       2       2       2       2       2       2       2       2     120      16 </div><div class='input'>
-<span class='kw'>lst</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/class.html'>unclass</a></span>(<span class='kw'>attenu</span><span class='op'>$</span><span class='kw'>station</span>) <span class='op'>&gt;</span> <span class='fl'>20</span> <span class='co'># logical with NAs</span>
+<span class='va'>lst</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/class.html'>unclass</a></span><span class='op'>(</span><span class='va'>attenu</span><span class='op'>$</span><span class='va'>station</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>20</span> <span class='co'># logical with NAs</span>
 <span class='co'>## summary.default() for logicals -- different from *.factor:</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>lst</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>lst</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;    Mode   FALSE    TRUE    NA's 
-#&gt; logical      28     138      16 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='kw'>lst</span>))
+#&gt; logical      28     138      16 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>lst</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; FALSE  TRUE  NA's 
 #&gt;    28   138    16 </div></pre>
   </div>

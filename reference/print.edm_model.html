@@ -137,7 +137,7 @@
     </div>
 
     <pre class="usage"><span class='co'># S3 method for edm_model</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -179,19 +179,19 @@
   <code><a href='https://rdrr.io/r/tools/print.via.format.html'>.print.via.format</a></code> in package <span class="pkg">tools</span>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='kw'>stats</span>)
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'>stats</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/stats/ts.html'>ts</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span>)  <span class='co'>#-- print is the "Default function" --&gt; print.ts(.) is called</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/ts.html'>ts</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span><span class='op'>)</span>  <span class='co'>#-- print is the "Default function" --&gt; print.ts(.) is called</span>
 </div><div class='output co'>#&gt; Time Series:
 #&gt; Start = 1 
 #&gt; End = 20 
 #&gt; Frequency = 1 
-#&gt;  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20</div><div class='input'><span class='co'>for</span>(<span class='kw'>i</span> <span class='co'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>) <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='kw'>i</span>)
+#&gt;  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20</div><div class='input'><span class='kw'>for</span><span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='va'>i</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 1
 #&gt; [1] 1 2
 #&gt; [1] 1 2 3</div><div class='input'>
 <span class='co'>## Printing of factors</span>
-<span class='kw'>attenu</span><span class='op'>$</span><span class='kw'>station</span> <span class='co'>## 117 levels -&gt; 'max.levels' depending on width</span>
+<span class='va'>attenu</span><span class='op'>$</span><span class='va'>station</span> <span class='co'>## 117 levels -&gt; 'max.levels' depending on width</span>
 </div><div class='output co'>#&gt;   [1] 117  1083 1095 283  135  475  113  1008 1028 2001 117  1117 1438 1083 1013
 #&gt;  [16] 1014 1015 1016 1095 1011 1028 270  280  116  266  117  113  112  130  475 
 #&gt;  [31] 269  135  1093 1093 111  116  290  112  113  128  126  127  141  266  110 
@@ -207,17 +207,17 @@
 #&gt; [181] 5073 5072
 #&gt; 117 Levels: 1008 1011 1013 1014 1015 1016 1027 1028 1030 1032 1051 1052 ... c266</div><div class='input'>
 <span class='co'>## ordered factors: levels  "l1 &lt; l2 &lt; .."</span>
-<span class='kw'>esoph</span><span class='op'>$</span><span class='kw'>agegp</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>12</span>]
+<span class='va'>esoph</span><span class='op'>$</span><span class='va'>agegp</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>12</span><span class='op'>]</span>
 </div><div class='output co'>#&gt;  [1] 25-34 25-34 25-34 25-34 25-34 25-34 25-34 25-34 25-34 25-34 25-34 25-34
-#&gt; Levels: 25-34 &lt; 35-44 &lt; 45-54 &lt; 55-64 &lt; 65-74 &lt; 75+</div><div class='input'><span class='kw'>esoph</span><span class='op'>$</span><span class='kw'>alcgp</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>12</span>]
+#&gt; Levels: 25-34 &lt; 35-44 &lt; 45-54 &lt; 55-64 &lt; 65-74 &lt; 75+</div><div class='input'><span class='va'>esoph</span><span class='op'>$</span><span class='va'>alcgp</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>12</span><span class='op'>]</span>
 </div><div class='output co'>#&gt;  [1] 0-39g/day 0-39g/day 0-39g/day 0-39g/day 40-79     40-79     40-79    
 #&gt;  [8] 40-79     80-119    80-119    80-119    120+     
 #&gt; Levels: 0-39g/day &lt; 40-79 &lt; 80-119 &lt; 120+</div><div class='input'>
 <span class='co'>## Printing of sparse (contingency) tables</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>521</span>)
-<span class='kw'>t1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>rt</a></span>(<span class='fl'>200</span>, df = <span class='fl'>1.8</span>)))
-<span class='kw'>t2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>rt</a></span>(<span class='fl'>200</span>, df = <span class='fl'>1.4</span>)))
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>t1</span>, <span class='kw'>t2</span>) <span class='co'># simple</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>521</span><span class='op'>)</span>
+<span class='va'>t1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>rt</a></span><span class='op'>(</span><span class='fl'>200</span>, df <span class='op'>=</span> <span class='fl'>1.8</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>t2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>rt</a></span><span class='op'>(</span><span class='fl'>200</span>, df <span class='op'>=</span> <span class='fl'>1.4</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>t1</span>, <span class='va'>t2</span><span class='op'>)</span> <span class='co'># simple</span>
 </div><div class='output co'>#&gt;     t2
 #&gt; t1    0  1  2  3  4  5  6  7  8 10 17 21 30
 #&gt;   0  21 22 14  4  1  0  1  1  1  0  1  0  0
@@ -229,7 +229,7 @@
 #&gt;   6   1  3  0  0  0  0  0  0  0  0  0  0  0
 #&gt;   7   1  0  0  0  0  0  0  0  0  0  0  0  0
 #&gt;   9   0  0  0  1  0  0  0  0  0  0  0  0  0
-#&gt;   12  1  0  0  0  0  0  0  0  0  0  0  0  0</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>t1</span>, <span class='kw'>t2</span>), zero.print = <span class='st'>"."</span>) <span class='co'># nicer to read</span>
+#&gt;   12  1  0  0  0  0  0  0  0  0  0  0  0  0</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>t1</span>, <span class='va'>t2</span><span class='op'>)</span>, zero.print <span class='op'>=</span> <span class='st'>"."</span><span class='op'>)</span> <span class='co'># nicer to read</span>
 </div><div class='output co'>#&gt;     t2
 #&gt; t1    0  1  2  3  4  5  6  7  8 10 17 21 30
 #&gt;   0  21 22 14  4  1  .  1  1  1  .  1  .  .
@@ -243,9 +243,9 @@
 #&gt;   9   .  .  .  1  .  .  .  .  .  .  .  .  .
 #&gt;   12  1  .  .  .  .  .  .  .  .  .  .  .  .</div><div class='input'>
 <span class='co'>## same for non-integer "table":</span>
-<span class='kw'>T</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>t2</span>,<span class='kw'>t1</span>)
-<span class='kw'>T</span> <span class='op'>&lt;-</span> <span class='kw'>T</span> <span class='op'>*</span> (<span class='fl'>1</span><span class='op'>+</span><span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='kw'>T</span>)))<span class='op'>/</span><span class='fl'>4</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>T</span>, zero.print = <span class='st'>"."</span>) <span class='co'># quite nicer,</span>
+<span class='cn'>T</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>t2</span>,<span class='va'>t1</span><span class='op'>)</span>
+<span class='cn'>T</span> <span class='op'>&lt;-</span> <span class='cn'>T</span> <span class='op'>*</span> <span class='op'>(</span><span class='fl'>1</span><span class='op'>+</span><span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='cn'>T</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>/</span><span class='fl'>4</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='cn'>T</span>, zero.print <span class='op'>=</span> <span class='st'>"."</span><span class='op'>)</span> <span class='co'># quite nicer,</span>
 </div><div class='output co'>#&gt;     t1
 #&gt; t2       0     1     2     3     4     5     6     7     9    12
 #&gt;   0  26.25 25.00 10.00  3.75  1.50  1.25  1.25  1.00     .  2.00
@@ -260,7 +260,7 @@
 #&gt;   10     .  1.00     .     .     .     .     .     .     .     .
 #&gt;   17  1.00     .     .     .     .     .     .     .     .     .
 #&gt;   21     .     .  2.75     .     .     .     .     .     .     .
-#&gt;   30     .     .  5.00     .     .     .     .     .     .     .</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print.table</a></span>(<span class='kw'>T</span>[,<span class='fl'>2</span><span class='op'>:</span><span class='fl'>8</span>] <span class='op'>*</span> <span class='fl'>1e9</span>, digits=<span class='fl'>3</span>, zero.print = <span class='st'>"."</span>)
+#&gt;   30     .     .  5.00     .     .     .     .     .     .     .</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print.table</a></span><span class='op'>(</span><span class='cn'>T</span><span class='op'>[</span>,<span class='fl'>2</span><span class='op'>:</span><span class='fl'>8</span><span class='op'>]</span> <span class='op'>*</span> <span class='fl'>1e9</span>, digits<span class='op'>=</span><span class='fl'>3</span>, zero.print <span class='op'>=</span> <span class='st'>"."</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;     t1
 #&gt; t2          1        2        3        4        5        6        7
 #&gt;   0  2.50e+10 1.00e+10 3.75e+09 1.50e+09 1.25e+09 1.25e+09 1.00e+09
@@ -278,7 +278,7 @@
 #&gt;   30        . 5.00e+09        .        .        .        .        .</div><div class='input'><span class='co'>## still slightly inferior to  Matrix::Matrix(T)  for larger T</span>
 
 <span class='co'>## Corner cases with empty extents:</span>
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fl'>1</span>, <span class='fl'>NA</span>) <span class='co'># &lt; table of extent 1 x 0 &gt;</span>
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='cn'>NA</span><span class='op'>)</span> <span class='co'># &lt; table of extent 1 x 0 &gt;</span>
 </div><div class='output co'>#&gt; &lt; table of extent 1 x 0 &gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

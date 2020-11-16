@@ -136,7 +136,7 @@
     <p>Converts underlying data into an Item Matrix frame.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>as_item_matrix</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>as_item_matrix</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -163,13 +163,13 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Item matrix values</span>
-<span class='kw'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>), nrow = <span class='fl'>2</span>)
+<span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 
 <span class='co'># Construct item class</span>
-<span class='kw'>items</span> <span class='op'>=</span> <span class='fu'>as_item_matrix</span>(<span class='kw'>x</span>)
+<span class='va'>items</span> <span class='op'>=</span> <span class='fu'>as_item_matrix</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
 <span class='co'># View output</span>
-<span class='kw'>items</span>
+<span class='va'>items</span>
 </div><div class='output co'>#&gt; An item matrix: 2 x 2 
 #&gt; 
 #&gt;          Item1 Item2

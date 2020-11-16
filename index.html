@@ -92,22 +92,19 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the released version of edmcore from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"edmcore"</span>)
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"edmcore"</span><span class="op">)</span></code></pre></div>
 <p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="co"># install.packages("devtools")</span>
-<span class="kw">devtools</span>::<span class="fu">install_github</span>(<span class="st">"tmsalab/edmcore"</span>)
-</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"tmsalab/edmcore"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>To use <code>edmcore</code>, load the package using:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st"><a href="https://tmsalab.github.io/edmcore">"edmcore"</a></span>)
-</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tmsalab.github.io/edmcore">"edmcore"</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
@@ -118,14 +115,13 @@
 <li>EDM Classes
 <ul>
 <li>
-<code><a href="reference/new_edm_model.html">new_edm_model()</a></code>, <code><a href="reference/new_edm_summary.html">new_edm_summary()</a></code>, and <code><a href="reference/new_edm_default_property_list.html">new_edm_default_property_list()</a></code>
-</li>
+<code><a href="reference/new_edm_model.html">new_edm_model()</a></code>, <code><a href="reference/new_edm_summary.html">new_edm_summary()</a></code>, and <code><a href="reference/new_edm_default_property_list.html">new_edm_default_property_list()</a></code>.</li>
 </ul>
 </li>
 <li>Attributes
 <ul>
 <li>
-<code><a href="reference/attribute_classes.html">attribute_classes()</a></code>, <code><a href="reference/attribute_bijection.html">attribute_bijection()</a></code>, and <code><a href="reference/attribute_inv_bijection.html">attribute_inv_bijection()</a></code>.</li>
+<code><a href="reference/attribute_classes.html">attribute_classes()</a></code>, <code><a href="reference/attribute_bijection.html">attribute_bijection()</a></code>, <code><a href="reference/attribute_inv_bijection.html">attribute_inv_bijection()</a></code>, <code><a href="reference/attribute_gen_bijection.html">attribute_gen_bijection()</a></code>, and <code><a href="reference/attribute_inv_gen_bijection.html">attribute_inv_gen_bijection()</a></code>.</li>
 </ul>
 </li>
 <li>Q Matrix
@@ -137,8 +133,7 @@
 <li>Item Matrix
 <ul>
 <li>
-<code><a href="reference/item_matrix.html">item_matrix()</a></code>/<code><a href="reference/as_item_matrix.html">as_item_matrix()</a></code>, <code><a href="reference/read_item_matrix.html">read_item_matrix()</a></code>, and <code><a href="reference/is_item_matrix.html">is_item_matrix()</a></code>
-</li>
+<code><a href="reference/item_matrix.html">item_matrix()</a></code>/<code><a href="reference/as_item_matrix.html">as_item_matrix()</a></code>, <code><a href="reference/read_item_matrix.html">read_item_matrix()</a></code>, and <code><a href="reference/is_item_matrix.html">is_item_matrix()</a></code>.</li>
 </ul>
 </li>
 <li>Metrics
@@ -147,10 +142,11 @@
 <code><a href="reference/metric_mode.html">metric_mode()</a></code>, <code><a href="reference/metric_bias.html">metric_bias()</a></code>, <code><a href="reference/metric_frobenius_norm.html">metric_frobenius_norm()</a></code>, <code><a href="reference/metric_element_wise.html">metric_element_wise()</a></code>, and <code><a href="reference/metric_matrix_wise.html">metric_matrix_wise()</a></code>.</li>
 </ul>
 </li>
+<li>Permutations</li>
 <li>Link Functions
 <ul>
 <li>
-<code><a href="reference/link_logit.html">link_probit()</a></code>, <code><a href="reference/link_logit.html">link_logit()</a></code>, <code><a href="reference/theta_to_beta.html">theta_to_beta()</a></code>, <code><a href="reference/theta_to_beta.html">theta_probit_to_beta()</a></code>, and <code><a href="reference/theta_to_beta.html">theta_logit_to_beta()</a></code>.</li>
+<code><a href="reference/link_logit.html">link_probit()</a></code>, <code><a href="reference/link_logit.html">link_probit_inv()</a></code>, <code><a href="reference/link_logit.html">link_logit()</a></code>, <code><a href="reference/link_logit.html">link_logit_inv()</a></code>, <code><a href="reference/theta_to_beta.html">theta_to_beta()</a></code>, <code><a href="reference/theta_to_beta.html">theta_probit_to_beta()</a></code>, and <code><a href="reference/theta_to_beta.html">theta_logit_to_beta()</a></code>.</li>
 </ul>
 </li>
 </ul>
@@ -164,9 +160,8 @@
 <h2 class="hasAnchor">
 <a href="#citing-the-edmcore-package" class="anchor"></a>Citing the <code>edmcore</code> package</h2>
 <p>To ensure future development of the package, please cite <code>edmcore</code> package if used during the analysis or simulations. Citation information for the package may be acquired by using in <em>R</em>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span>(<span class="st">"edmcore"</span>)
-</pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"edmcore"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="license" class="section level2">
 <h2 class="hasAnchor">

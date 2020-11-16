@@ -136,7 +136,7 @@
     <p>Provides a way to create an object as a <code>"q_matrix"</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>q_matrix</span>(<span class='kw'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>q_matrix</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -156,27 +156,25 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Q matrix values</span>
-<span class='kw'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>), nrow = <span class='fl'>2</span>)
+<span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 
 <span class='co'># Q matrix wrapper</span>
-<span class='kw'>q_mat</span> <span class='op'>=</span> <span class='fu'>q_matrix</span>(<span class='kw'>x</span>)
+<span class='va'>q_mat</span> <span class='op'>=</span> <span class='fu'>q_matrix</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
 <span class='co'># View the converted Q matrix</span>
-<span class='kw'>q_mat</span>
+<span class='va'>q_mat</span>
 </div><div class='output co'>#&gt; A q matrix: 2 x 2 
-#&gt; Strictly Identified: </div><div class='output co'>#&gt; <span class='message'>No.</span></div><div class='output co'>#&gt;       Trait1 Trait2
+#&gt; Strictly Identified: </div><div class='output co'>#&gt; <span class='message'>No.</span></div><div class='output co'>#&gt; Generically Identified: </div><div class='output co'>#&gt; <span class='message'>No.</span></div><div class='output co'>#&gt;       Trait1 Trait2
 #&gt; Item1      1      0
-#&gt; Item2      0      1
-#&gt; attr(,"generically_identifiable")
-#&gt; [1] FALSE</div><div class='input'>
+#&gt; Item2      0      1</div><div class='input'>
 <span class='co'># Data Frame encoding of Q</span>
-<span class='kw'>q_df</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-   k1 = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>),
-   k2 = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>)
-)
+<span class='va'>q_df</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+   k1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span>,
+   k2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>
+<span class='op'>)</span>
 
 <span class='co'># Create a Q matrix</span>
-<span class='kw'>q_mat</span> <span class='op'>=</span> <span class='fu'>q_matrix</span>(<span class='kw'>q_df</span>)
+<span class='va'>q_mat</span> <span class='op'>=</span> <span class='fu'>q_matrix</span><span class='op'>(</span><span class='va'>q_df</span><span class='op'>)</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
