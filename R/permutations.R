@@ -20,6 +20,7 @@
 #' permutation_table = permutate_attribute_level_table(k = 3, m = 2)
 #'
 #' # Loop over columns to find the positions of the equivalent attribute level swaps
+#' @export
 permutate_attribute_level_table = function(k, m = 2) {
 
   nClass = 2 ^ k
@@ -28,7 +29,7 @@ permutate_attribute_level_table = function(k, m = 2) {
   all_binary_attribute_classes = matrix(0, nClass, k)
   for (cc in 1:(nClass - 1)) {
     all_binary_attribute_classes[cc + 1, ] =
-      t(egdm:::inv_gen_bijectionvector(k, m, cc))
+      t(attribute_inv_gen_bijection(k, m, cc))
   }
 
   # Establish a vector to map between binary classes and integers
@@ -47,7 +48,7 @@ permutate_attribute_level_table = function(k, m = 2) {
   level_swap_table = matrix(0, nClass, nClass)
   for (perms in 0:(nClass - 1)) {
     # Identify which attribute levels are swapped
-    binary_levels_swapped = egdm:::inv_gen_bijectionvector(k, m, perms)
+    binary_levels_swapped = attribute_inv_gen_bijection(k, m, perms)
     attributes_with_swapped_levels = which(binary_levels_swapped == 1)
 
     # Create a temporary table of swapped attributes modify
