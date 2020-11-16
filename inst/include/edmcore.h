@@ -4,6 +4,7 @@
 #include <RcppArmadillo.h>
 
 #include "utilities.h"
+#include "attributes.h"
 
 
 #include "q_matrix.h"

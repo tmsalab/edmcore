@@ -12,22 +12,7 @@
 #'
 #' Return a matrix containing the class table
 #'
-#' @noRd
-NULL
-
-#' Create the K inverse bijection of attribute vectors
-#'
-#' Converts the class into a bijection.
-#'
-#' @param nClass Number of Attribute Classes
-#' @param M      Number of Options
-#' @param K      Number of Attributes
-#'
-#' @return
-#'
-#' Return a matrix containing the class table
-#'
-#' @noRd
+#' @export
 NULL
 
 #' Constructs Unique Attribute Pattern Map
@@ -79,6 +64,22 @@ attribute_bijection <- function(K) {
 #' inv_biject2 = attribute_inv_bijection(5, 2)
 attribute_inv_bijection <- function(K, CL) {
     .Call(`_edmcore_attribute_inv_bijection`, K, CL)
+}
+
+#' Create the K inverse bijection of attribute vectors
+#'
+#' Converts the class into a bijection.
+#'
+#' @param K      Number of Attributes
+#' @param M      Number of Options.
+#' @param CL     Class Number from 0 to (2^K)-1.
+#'
+#' @return
+#'
+#' Return a matrix containing the class table
+#' @export
+attribute_inv_gen_bijection <- function(K, M, CL) {
+    .Call(`_edmcore_attribute_inv_gen_bijection`, K, M, CL)
 }
 
 #' Simulate all the Latent Attribute Profile \eqn{\mathbf{\alpha}_c} in

@@ -1,4 +1,5 @@
 #include <RcppArmadillo.h>
+#include <edmcore.h>
 
 //' Constructs Unique Attribute Pattern Map
 //'
@@ -21,13 +22,9 @@
 //' ## Construct an attribute bijection ----
 //' biject = attribute_bijection(3)
 // [[Rcpp::export]]
-arma::vec attribute_bijection(unsigned int K)
+arma::uvec attribute_bijection(unsigned int K)
 {
-  arma::vec vv(K);
-  for (unsigned int i = 0; i < K; ++i) {
-    vv(i) = std::pow(2.0, static_cast<double>(K - i) - 1.0);
-  }
-  return vv;
+  return edmcore::attribute_bijection<arma::uvec>(K);
 }
 
 //' Perform an Inverse Bijection of an Integer to Attribute Pattern
@@ -54,17 +51,9 @@ arma::vec attribute_bijection(unsigned int K)
 //' inv_biject1 = attribute_inv_bijection(5, 1)
 //' inv_biject2 = attribute_inv_bijection(5, 2)
 // [[Rcpp::export]]
-arma::vec attribute_inv_bijection(unsigned int K, double CL)
+arma::uvec attribute_inv_bijection(unsigned int K, double CL)
 {
-  arma::vec alpha(K);
-
-  for (unsigned int k = 0; k < K; ++k) {
-    double twopow = std::pow(2.0, static_cast<double>(K - k) - 1.0);
-    alpha(k) = (twopow <= CL);
-    CL = CL - twopow * alpha(k);
-  }
-
-  return alpha;
+  return edmcore::attribute_inv_bijection<arma::uvec>(K, CL);
 }
 
 //' Generate a vector to map polytomous vector to integers
@@ -78,43 +67,27 @@ arma::vec attribute_inv_bijection(unsigned int K, double CL)
 //'
 //' Return a matrix containing the class table
 //'
-//' @noRd
-template <class T> T gen_bijectionvector(unsigned int K, unsigned int M)
+//' @export
+arma::uvec attribute_gen_bijection(unsigned int K, unsigned int M)
 {
-  T vv(K);
-  for (unsigned int k = 0; k < K; k++) {
-    vv(k) = pow(M, K - k - 1.0);
-  }
-  return vv;
+  return edmcore::attribute_gen_bijection<arma::uvec>(K, M);
 }
 
 //' Create the K inverse bijection of attribute vectors
 //'
 //' Converts the class into a bijection.
 //'
-//' @param nClass Number of Attribute Classes
-//' @param M      Number of Options
 //' @param K      Number of Attributes
+//' @param M      Number of Options.
+//' @param CL     Class Number from 0 to (2^K)-1.
 //'
 //' @return
 //'
 //' Return a matrix containing the class table
-//'
-//' @noRd
-template <class T>
-T inv_gen_bijectionvector(unsigned int K, unsigned int M, double CL)
-{
-  T alpha(K);
-  for (unsigned int k = 0; k < K; k++) {
-    double Mpow = pow(M, K - k - 1);
-    double ak = 0.;
-    while (((ak + 1.) * Mpow <= CL) & (ak < M)) {
-      ak += 1.;
-    }
-    alpha(k) = ak;
-    CL = CL - Mpow * alpha(k);
-  }
-  return alpha;
+//' @export
+// [[Rcpp::export]]
+arma::uvec attribute_inv_gen_bijection(unsigned int K, unsigned int M, double CL) {
+  return edmcore::attribute_inv_gen_bijection<arma::uvec>(K, M, CL);
 }
 
 //' Simulate all the Latent Attribute Profile \eqn{\mathbf{\alpha}_c} in
@@ -161,22 +134,11 @@ arma::mat attribute_classes(int K)
 
   // Fill alpha matrix with classes under an inverse bijection
   for (unsigned int cc = 0; cc < nClass; cc++) {
-    alpha_matrix.row(cc) = attribute_inv_bijection(K, cc).t();
+    alpha_matrix.row(cc) = edmcore::attribute_inv_bijection<arma::vec>(K, cc).t();
   }
 
   // Release result
   return alpha_matrix;
-}
-
-template <class T> bool is_needle_in_haystack(T x, unsigned int needle)
-{
-  arma::uvec m = arma::find(x == needle);
-
-  if (m.n_elem > 0) {
-    return true;
-  }
-
-  return false;
 }
 
 //' Generate tables to store the results during iterations
@@ -209,10 +171,10 @@ Rcpp::List GenerateAtable(unsigned int nClass, unsigned int K, unsigned int M,
   arma::uvec model_main_effects(nClass);
 
   // Construct a vv bijection
-  arma::uvec vv_bijection = gen_bijectionvector<arma::uvec>(K, M);
+  arma::uvec vv_bijection = edmcore::attribute_gen_bijection<arma::uvec>(K, M);
 
   for (unsigned int cr = 0; cr < nClass; cr++) {
-    arma::vec alpha_r = inv_gen_bijectionvector<arma::vec>(K, M, cr);
+    arma::vec alpha_r = edmcore::attribute_inv_gen_bijection<arma::vec>(K, M, cr);
 
     double nof0s = 0.;
     for (unsigned int k = 0; k < K; k++) {
@@ -222,12 +184,12 @@ Rcpp::List GenerateAtable(unsigned int nClass, unsigned int K, unsigned int M,
 
     // Checking if the class is in the bijection vector
     // If integer is corresponding with main effect.
-    model_main_effects(cr) = 1*is_needle_in_haystack(vv_bijection, cr);
+    model_main_effects(cr) = 1*edmcore::is_needle_in_haystack(vv_bijection, cr);
 
     // Flags coefficients with no greater order
     model(cr) = 1. * (nof0s > double(K - order) - 1);
     for (unsigned int cc = 0; cc < nClass; cc++) {
-      arma::vec alpha_c = inv_gen_bijectionvector<arma::vec>(K, M, cc);
+      arma::vec alpha_c = edmcore::attribute_inv_gen_bijection<arma::vec>(K, M, cc);
       double mindiff = arma::min(alpha_r - alpha_c);
       FullAtable(cr, cc) = 1. * (mindiff > -1);
       double maxdiff = arma::accu(abs(alpha_c - alpha_r));

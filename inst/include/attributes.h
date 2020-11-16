@@ -1,28 +1,55 @@
 #ifndef EDMCORE_ATTRIBUTES
 #define EDMCORE_ATTRIBUTES
 
+namespace edmcore {
 
-#include <RcppArmadillo.h>
-// [[Rcpp::depends(RcppArmadillo)]]
+// Binary Attribute bijections  ----
 
 template <typename T>
-inline T gen_bijectionvector(unsigned int K, unsigned int M)
+inline T attribute_bijection(unsigned int K)
 {
   T vv(K);
   for (unsigned int k = 0; k < K; k++) {
-    vv(k) = static_cast<typename T::elem_type>(pow(static_cast<double>(M), static_cast<double>(K - k) - 1.0));
+    vv(k) = static_cast<typename T::elem_type>(std::pow(2.0, static_cast<double>(K - k) - 1.0));
+  }
+  return vv;
+}
+
+
+template <typename T>
+inline T attribute_inv_bijection(unsigned int K, double CL)
+{
+  T alpha(K);
+  for (unsigned int k = 0; k < K; k++) {
+
+    double twopow = std::pow(2.0, static_cast<double>(K - k) - 1.0);
+    alpha(k) = static_cast<typename T::elem_type>(twopow <= CL);
+    CL = CL - twopow * alpha(k);
+  }
+  return alpha;
+}
+
+// General Attribute bijections ----
+template <typename T>
+inline T attribute_gen_bijection(unsigned int K, unsigned int M)
+{
+  T vv(K);
+  for (unsigned int k = 0; k < K; k++) {
+    vv(k) = static_cast<typename T::elem_type>(
+      pow(static_cast<double>(M), static_cast<double>(K - k) - 1.0)
+    );
   }
   return vv;
 }
 
 template <typename T>
-inline T inv_gen_bijectionvector(unsigned int K, unsigned int M, unsigned int CL)
+inline T attribute_inv_gen_bijection(unsigned int K, unsigned int M, unsigned int CL)
 {
   T alpha(K);
   for (unsigned int k = 0; k < K; k++) {
     unsigned int Mpow = static_cast<unsigned int>(pow(M, K - k - 1.0));
     unsigned int ak = 0.;
-    while (((ak + 1) * Mpow <= CL) & (ak < M)) {
+    while (((ak + 1) * Mpow <= CL) && (ak < M)) {
       ak += 1;
     }
     //Rcpp::Rcout << "k: " << k << "cl: " << CL << " with: " << ak << std::endl;
@@ -43,7 +70,7 @@ inline arma::umat permutate_attribute_level_table(unsigned int K, unsigned int M
 
   for (unsigned int cc = 1; cc < nClass; ++cc) {
     all_binary_attribute_classes.row(cc) =
-      inv_gen_bijectionvector<arma::urowvec>(K, M, cc);
+      attribute_inv_gen_bijection<arma::urowvec>(K, M, cc);
   }
 
   // Establish a vector to map between binary classes and integers
@@ -65,7 +92,7 @@ inline arma::umat permutate_attribute_level_table(unsigned int K, unsigned int M
 
   for (unsigned int perms = 0; perms < nClass; ++perms) {
     //  Identify which attribute levels are swapped
-    arma::uvec binary_levels_swapped = inv_gen_bijectionvector<arma::uvec>(K, M, perms);
+    arma::uvec binary_levels_swapped = attribute_inv_gen_bijection<arma::uvec>(K, M, perms);
     arma::uvec attributes_with_swapped_levels = arma::find(binary_levels_swapped == 1);
 
     // Create a temporary table of swapped attributes modify
@@ -94,7 +121,7 @@ inline arma::uvec permuteAtableIndices(unsigned int nClass, unsigned int K,
   arma::vec model(nClass);
   arma::vec fullpermindices(nClass);
   for (unsigned int cr = 0; cr < nClass; cr++) {
-    arma::vec alpha_r = inv_gen_bijectionvector<arma::vec>(K, M, cr);
+    arma::vec alpha_r = attribute_inv_gen_bijection<arma::vec>(K, M, cr);
     double nof0s = 0.;
     for (unsigned int k = 0; k < K; k++) {
       nof0s += 1. * (alpha_r(k) == 0);
@@ -132,7 +159,7 @@ inline arma::vec mad_row_and_column(arma::mat estimate, arma::mat truth, arma::u
   // Create permutation tables
   arma::umat permutation_table = permutate_attribute_level_table(K, M);
 
-  arma::vec vv = gen_bijectionvector<arma::vec>(K, M);
+  arma::vec vv = attribute_gen_bijection<arma::vec>(K, M);
 
   unsigned int n_permutations = permutation_table.n_rows;
 
@@ -225,7 +252,7 @@ inline double mad_iteration_row_and_column(arma::cube estimate,
   // Create permutation tables
   arma::umat permutation_table = permutate_attribute_level_table(K, M);
 
-  arma::vec vv = gen_bijectionvector<arma::vec>(K, M);
+  arma::vec vv = attribute_gen_bijection<arma::vec>(K, M);
 
   unsigned int n_iterations = estimate.n_slices;
   unsigned int n_permutations = permutation_table.n_rows;
@@ -307,5 +334,7 @@ inline double mad_iteration_row_and_column(arma::cube estimate,
 
   return mean_abs_deviation_iteration;
 }
+
+}// end edmcore namespace
 
 #endif

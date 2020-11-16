@@ -3,6 +3,19 @@
 
 namespace edmcore {
 
+// Comparison ----
+
+template <class T> bool is_needle_in_haystack(T x, unsigned int needle)
+{
+  arma::uvec m = arma::find(x == needle);
+
+  if (m.n_elem > 0) {
+    return true;
+  }
+
+  return false;
+}
+
 
 // Sequence construction ----
 

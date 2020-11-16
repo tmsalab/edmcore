@@ -26,6 +26,26 @@ test_that("Valid attribute_inv_bijection", {
 
 })
 
+test_that("Valid attribute inverse general bijection", {
+  inv_gen_bijection_test = function(K, M, CL) {
+    alpha = rep(NA, K)
+    for (k in (seq_len(K)-1)) {
+      Mpow = M^(K - k - 1)
+      ak = 0.;
+      while (((ak + 1) * Mpow <= CL) & (ak < M)) {
+        ak = ak + 1
+      }
+      alpha[k+1] = ak
+      CL = CL - Mpow * alpha[k+1]
+    }
+    matrix(alpha)
+  }
+
+  expect_equal(attribute_inv_gen_bijection(3, 2, 0),  inv_gen_bijection_test(3, 2, 0))
+  expect_equal(attribute_inv_gen_bijection(4, 2, 1),  inv_gen_bijection_test(4, 2, 1))
+  expect_equal(attribute_inv_gen_bijection(5, 2, 2),  inv_gen_bijection_test(5, 2, 2))
+})
+
 test_that("Valid attribute classes (alpha matrix / pi references)", {
 
   # Old, r-specific pi mapping function
