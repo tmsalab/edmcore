@@ -1,3 +1,68 @@
+#' Permutation Attribute Table
+#'
+#' Generate a table containing attribute permutations.
+#'
+#' @param Supply the number of attributes to change
+#' @param M Number of Responses. Default: 2.
+#' @examples
+#'
+#' # Example of generating all attribute level swap permutations
+#' K = 3
+#' nClass = 2 ^ K
+#'
+#' # Total number of label swaps for unstructured mixture
+#' factorial(nClass)
+#'
+#' # Total number of label swaps for structured mixture
+#' factorial(K) * (2 ^ K)
+#'
+#' # Create the permutation table
+#' permutation_table = permutate_attribute_level_table(K = 3, M = 2)
+#'
+#' # Loop over columns to find the positions of the equivalent attribute level swaps
+permutate_attribute_level_table = function(K, M = 2) {
+
+  nClass = 2 ^ K
+
+  # Create a 2^K by K table of attribute classes
+  all_binary_attribute_classes = matrix(0, nClass, K)
+  for (cc in 1:(nClass - 1)) {
+    all_binary_attribute_classes[cc + 1, ] =
+      t(egdm:::inv_gen_bijectionvector(K, M, cc))
+  }
+
+  # Establish a vector to map between binary classes and integers
+  vv <- 2 ^ {
+    (K:1) - 1
+  }
+
+  # Creating a 2^K by 2^K matrix
+  # Each row corresponds with focal attribute classes
+  # (e.g., true data generating arrangement)
+  # Each column indicates whether an attribute level is swapped
+  # 0 = not swapped, 1 = swapped
+  # e.g., 000 = no attributes levels swapped;
+  # 011 = 2nd and 3rd attribute levels swapped
+
+  level_swap_table = matrix(0, nClass, nClass)
+  for (perms in 0:(nClass - 1)) {
+    # Identify which attribute levels are swapped
+    binary_levels_swapped = egdm:::inv_gen_bijectionvector(K, M, perms)
+    attributes_with_swapped_levels = which(binary_levels_swapped == 1)
+
+    # Create a temporary table of swapped attributes modify
+    temp_attributes <- all_binary_attribute_classes
+    temp_attributes[, attributes_with_swapped_levels] =
+      1 - all_binary_attribute_classes[, attributes_with_swapped_levels]
+    level_swap_table[, perms + 1] <- temp_attributes %*% vv
+  }
+
+  # Release table
+  level_swap_table
+}
+
+
+
 #' Reorder an object to match a target as closely as possible
 #'
 #' Rearranges columns within a matrix until the closest permutation
