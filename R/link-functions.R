@@ -63,6 +63,6 @@ theta_probit_to_beta = function(theta, k) {
 #' @export
 #' @rdname theta-to-beta
 theta_logit_to_beta = function(theta, k) {
-  theta_to_beta(theta, k, link_probit)
+  theta_to_beta(theta, k, link_logit)
 }
 
