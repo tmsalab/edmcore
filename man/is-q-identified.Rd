@@ -21,7 +21,22 @@ Is Q Matrix Strictly or Generically Identifiable?
 \section{Strictly Identifiable}{
 
 
-Add details...
+If \eqn{\mathbf{Q}} is in the strictly identifiable set \eqn{\mathcal{Q}},
+then it must satisfy the following conditions:
+\itemize{
+\item \strong{(C1)} The rows of \eqn{\boldsymbol{Q}} can be permuted to the form,
+\eqn{\boldsymbol{Q}^\top=\left[{\boldsymbol{I_K},\boldsymbol{I_K}, (\boldsymbol{Q}^\ast)^\top}\right]^\top}
+where \eqn{\boldsymbol{I_K}} is a \eqn{K}-dimensional identity matrix and
+\eqn{\boldsymbol{Q}^\ast} is a \eqn{(J-2K)\times K} matrix.
+\item \strong{(C2)} For any two latent classes \eqn{c} and \eqn{c'}, there exists at least one
+item in \eqn{\boldsymbol{Q}^\ast}, in which
+\eqn{\boldsymbol{\theta}_{jc}\neq \boldsymbol{\theta}_{jc'}}.
+}
+
+In a more practical light, this means \strong{(C1)} requires \eqn{\boldsymbol{Q}}
+to include two simple structure items for each attribute and \strong{(C2)}
+states there must be at least one item not specified for \strong{(C1)}
+that distinguishes between all pairs of classes.
 }
 
 \section{Generically Identifiable}{

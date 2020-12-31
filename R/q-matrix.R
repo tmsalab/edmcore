@@ -53,11 +53,21 @@ is_q_matrix = function(x) {
 #'
 #' @section Strictly Identifiable:
 #'
-#' Add details...
+#' If \eqn{\mathbf{Q}} is in the strictly identifiable set \eqn{\mathcal{Q}},
+#' then it must satisfy the following conditions:
 #'
-#' @section Generically Identifiable:
+#' - **(C1)** The rows of \eqn{\boldsymbol{Q}} can be permuted to the form,
+#'    \eqn{\boldsymbol{Q}^\top=\left[{\boldsymbol{I_K},\boldsymbol{I_K}, (\boldsymbol{Q}^\ast)^\top}\right]^\top}
+#'    where \eqn{\boldsymbol{I_K}} is a \eqn{K}-dimensional identity matrix and
+#'    \eqn{\boldsymbol{Q}^\ast} is a \eqn{(J-2K)\times K} matrix.
+#' - **(C2)** For any two latent classes \eqn{c} and \eqn{c'}, there exists at least one
+#'    item in \eqn{\boldsymbol{Q}^\ast}, in which
+#'    \eqn{\boldsymbol{\theta}_{jc}\neq \boldsymbol{\theta}_{jc'}}.
 #'
-#' Add details...
+#' In a more practical light, this means **(C1)** requires \eqn{\boldsymbol{Q}}
+#' to include two simple structure items for each attribute and **(C2)**
+#' states there must be at least one item not specified for **(C1)**
+#' that distinguishes between all pairs of classes.
 #'
 #' @rdname is-q-identified
 #' @export
@@ -77,6 +87,10 @@ is_q_strict = function(x) {
   }
 }
 
+#' @section Generically Identifiable:
+#'
+#' Add details...
+#'
 #' @rdname is-q-identified
 #' @export
 #' @examples
