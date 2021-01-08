@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{attribute_inv_bijection}
 \alias{attribute_inv_bijection}
-\title{Perform an Inverse Bijection of an Integer to Attribute Pattern}
+\title{Perform an Inverse Bijection of an Integer to Attribute Pattern for Binary Data}
 \usage{
 attribute_inv_bijection(K, CL)
 }
@@ -22,7 +22,10 @@ Convert an integer between \eqn{0} and \eqn{2^{K-1}} to
 \examples{
 ## Construct an attribute inversion bijection ----
 inv_biject1 = attribute_inv_bijection(5, 1)
+inv_biject1
+
 inv_biject2 = attribute_inv_bijection(5, 2)
+inv_biject2
 }
 \seealso{
 \code{\link[=attribute_bijection]{attribute_bijection()}}

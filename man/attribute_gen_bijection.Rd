@@ -12,8 +12,31 @@ attribute_gen_bijection(K, M)
 \item{M}{Number of Responses}
 }
 \value{
-Return a matrix containing the class table
+A \code{vec} with length \eqn{K} detailing the power's of \eqn{M}.
 }
 \description{
-Converts class into a bijection to integers
+Creates a general bijection vector.
+}
+\details{
+The bijection vector generated is
+\eqn{\mathbf v = (M^{K-1},M^{K-2}, \dots, 1)^\top}.
+}
+\examples{
+## Construct an attribute bijection for M responses ----
+biject_ternary = attribute_gen_bijection(5, 3)
+biject_ternary
+
+## Construct an attribute bijection for binary responses ----
+biject_binary = attribute_gen_bijection(5, 2)
+biject_binary
+
+## Construct an attribute bijection for binary responses ----
+biject_default = attribute_bijection(5)
+biject_default
+}
+\seealso{
+\code{\link[=attribute_inv_gen_bijection]{attribute_inv_gen_bijection()}} and \code{\link[=attribute_bijection]{attribute_bijection()}}
+}
+\author{
+Steven Andrew Culpepper and James Joseph Balamuta
 }

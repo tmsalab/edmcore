@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{attribute_bijection}
 \alias{attribute_bijection}
-\title{Constructs Unique Attribute Pattern Map}
+\title{Constructs Unique Attribute Pattern Map for Binary Data}
 \usage{
 attribute_bijection(K)
 }
@@ -16,9 +16,22 @@ A \code{vec} with length \eqn{K} detailing the power's of 2.
 Computes the powers of 2 from \eqn{0} up to \eqn{K - 1} for
 \eqn{K}-dimensional attribute pattern.
 }
+\details{
+The bijection vector generated is \eqn{\mathbf v = (2^{K-1},2^{K-2},\dots,1)^\top}.
+With the bijection vector, there is a way to map the binary
+latent class with \eqn{c=\mathbf\alpha_c^\top\mathbf v\in\{0, 1,\dots, 2^{K}-1\}}.
+For example, for \eqn{K = 2}, \eqn{\mathbf v=(2, 1)^\top}
+and the integer representations for attribute profiles
+\eqn{\mathbf \alpha_0=(0,0)^\top},
+\eqn{\mathbf \alpha_1=(0,1)^\top}, \eqn{\mathbf \alpha_2=(1, 0)^\top}, and
+\eqn{\mathbf \alpha_3=(1,1)^\top} are \eqn{c} = 0, 1, 2, and 3,
+respectively.
+}
 \examples{
-## Construct an attribute bijection ----
-biject = attribute_bijection(3)
+## Construct an attribute bijection for binary data ----
+bijection_k3 = attribute_bijection(3)
+
+bijection_k3
 }
 \seealso{
 \code{\link[=attribute_inv_bijection]{attribute_inv_bijection()}}

@@ -19,3 +19,22 @@ Return a matrix containing the class table
 \description{
 Converts the class into a bijection.
 }
+\examples{
+## Construct an attribute bijection for M responses ----
+inv_biject_ternary = attribute_inv_gen_bijection(5, 3, 2)
+inv_biject_ternary
+
+## Binary data
+inv_biject_binary = attribute_inv_gen_bijection(5, 2, 4)
+inv_biject_binary
+
+## Default binary data
+inv_biject_default = attribute_inv_bijection(5, 4)
+inv_biject_default
+}
+\seealso{
+\code{\link[=attribute_inv_bijection]{attribute_inv_bijection()}}, \code{\link[=attribute_gen_bijection]{attribute_gen_bijection()}}
+}
+\author{
+James Joseph Balamuta and Steven Andrew Culpepper
+}
