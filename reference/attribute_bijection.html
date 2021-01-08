@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Constructs Unique Attribute Pattern Map — attribute_bijection • edmcore</title>
+<title>Constructs Unique Attribute Pattern Map for Binary Data — attribute_bijection • edmcore</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Constructs Unique Attribute Pattern Map — attribute_bijection" />
+<meta property="og:title" content="Constructs Unique Attribute Pattern Map for Binary Data — attribute_bijection" />
 <meta property="og:description" content="Computes the powers of 2 from \(0\) up to \(K - 1\) for
 \(K\)-dimensional attribute pattern." />
 
@@ -128,7 +128,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Constructs Unique Attribute Pattern Map</h1>
+    <h1>Constructs Unique Attribute Pattern Map for Binary Data</h1>
     <small class="dont-index">Source: <a href='https://github.com/tmsalab/edmcore/blob/master/R/RcppExports.R'><code>R/RcppExports.R</code></a></small>
     <div class="hidden name"><code>attribute_bijection.Rd</code></div>
     </div>
@@ -152,6 +152,17 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A <code>vec</code> with length \(K\) detailing the power's of 2.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The bijection vector generated is \(\mathbf v = (2^{K-1},2^{K-2},\dots,1)^\top\).
+With the bijection vector, there is a way to map the binary
+latent class with \(c=\mathbf\alpha_c^\top\mathbf v\in\{0, 1,\dots, 2^{K}-1\}\).
+For example, for \(K = 2\), \(\mathbf v=(2, 1)^\top\)
+and the integer representations for attribute profiles
+\(\mathbf \alpha_0=(0,0)^\top\),
+\(\mathbf \alpha_1=(0,1)^\top\), \(\mathbf \alpha_2=(1, 0)^\top\), and
+\(\mathbf \alpha_3=(1,1)^\top\) are \(c\) = 0, 1, 2, and 3,
+respectively.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='attribute_inv_bijection.html'>attribute_inv_bijection()</a></code></p></div>
@@ -160,9 +171,14 @@
     <p>Steven Andrew Culpepper and James Joseph Balamuta</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Construct an attribute bijection ----</span>
-<span class='va'>biject</span> <span class='op'>=</span> <span class='fu'>attribute_bijection</span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='co'>## Construct an attribute bijection for binary data ----</span>
+<span class='va'>bijection_k3</span> <span class='op'>=</span> <span class='fu'>attribute_bijection</span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>
+
+<span class='va'>bijection_k3</span>
+</div><div class='output co'>#&gt;      [,1]
+#&gt; [1,]    4
+#&gt; [2,]    2
+#&gt; [3,]    1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
