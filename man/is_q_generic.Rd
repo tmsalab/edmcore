@@ -19,7 +19,7 @@ Checks if the \eqn{Q} matrix is generically identified.
 If \eqn{\mathbf{Q}} is in the generically identifiable set \eqn{\mathcal{Q}},
 then it must satisfy the following conditions:
 \itemize{
-\item \strong{(G1)} The true sparsity matrix \eqn{\boldsymbol{Q}} takes the form of
+\item \strong{(G1)} The true \eqn{\boldsymbol{Q}} matrix takes the form of
 \eqn{\boldsymbol{Q}^\top=\left[{\boldsymbol{Q}_1,\boldsymbol{Q}_2, (\boldsymbol{Q}^\ast)^\top}\right]^\top}
 after row swapping, where \eqn{\boldsymbol{Q}^\ast} is a \eqn{(J-2K)\times K}
 binary matrix and \eqn{\boldsymbol{Q}_1,\boldsymbol{Q}_2 \in \mathcal{Q}_g} with
