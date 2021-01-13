@@ -269,9 +269,11 @@ Rcpp::List GenerateAtable(unsigned int nClass, unsigned int K, unsigned int M,
   arma::mat adjtable = Fulladjtable.submat(finalcols, finalcols);
 
   return Rcpp::List::create(
-    Rcpp::Named("Atable", Atable), Rcpp::Named("LBtable", LBtable),
+    Rcpp::Named("Atable", Atable),
+    Rcpp::Named("LBtable", LBtable),
     Rcpp::Named("finalcols", finalcols),
-    Rcpp::Named("DtoQtable", DtoQtable), Rcpp::Named("adjtable", adjtable),
+    Rcpp::Named("DtoQtable", DtoQtable),
+    Rcpp::Named("adjtable", adjtable),
     Rcpp::Named("maineffectcols", maineffectcols)
   );
 }
