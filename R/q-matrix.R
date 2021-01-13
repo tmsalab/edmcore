@@ -44,37 +44,52 @@ is_q_matrix = function(x) {
   inherits(x, "q_matrix")
 }
 
-#' Is Q Matrix Strictly or Generically Identifiable?
+#' Is Q Matrix Strictly Identifiable?
 #'
 #' @param x A [q_matrix()] or [base::matrix()] to test.
 #'
 #' @return
-#' A logical vector
+#' A logical value.
 #'
-#' @section Strictly Identifiable:
+#' @author
+#' James Joseph Balamuta and Steven Andrew Culpepper
 #'
-#' If \eqn{\mathbf{Q}} is in the strictly identifiable set \eqn{\mathcal{Q}},
+#' @details
+#'
+#' If \eqn{\mathbf{Q}} is in the strictly identifiable set \eqn{\mathcal{Q}_s},
 #' then it must satisfy the following conditions:
 #'
-#' - **(C1)** The rows of \eqn{\boldsymbol{Q}} can be permuted to the form,
+#' - **(S1)** The rows of \eqn{\boldsymbol{Q}} can be permuted to the form,
 #'    \eqn{\boldsymbol{Q}^\top=\left[{\boldsymbol{I_K},\boldsymbol{I_K}, (\boldsymbol{Q}^\ast)^\top}\right]^\top}
 #'    where \eqn{\boldsymbol{I_K}} is a \eqn{K}-dimensional identity matrix and
 #'    \eqn{\boldsymbol{Q}^\ast} is a \eqn{(J-2K)\times K} matrix.
-#' - **(C2)** For any two latent classes \eqn{c} and \eqn{c'}, there exists at least one
+#' - **(S2)** For any two latent classes \eqn{c} and \eqn{c'}, there exists at least one
 #'    item in \eqn{\boldsymbol{Q}^\ast}, in which
 #'    \eqn{\boldsymbol{\theta}_{jc}\neq \boldsymbol{\theta}_{jc'}}.
 #'
-#' In a more practical light, this means **(C1)** requires \eqn{\boldsymbol{Q}}
-#' to include two simple structure items for each attribute and **(C2)**
-#' states there must be at least one item not specified for **(C1)**
+#' In a more practical light, this means **(S1)** requires \eqn{\boldsymbol{Q}}
+#' to include two simple structure items for each attribute and **(S2)**
+#' states there must be at least one item not specified for **(S1)**
 #' that distinguishes between all pairs of classes.
 #'
-#' @rdname is-q-identified
+#' @seealso
+#' [is_q_generic()]
+#'
 #' @export
 #' @examples
-#' x = matrix(c(1, 0, 1, 1))
-#' is_q_strict(x)
-#' is_q_strict(q_matrix(x))
+#' ## Check if Q Matrix is Strictly Identified ---
+#' # Create a strict Q matrix
+#' q2_strict = matrix(
+#'   c(0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0),
+#'   ncol = 2
+#' )
+#'
+#' # Check if Q matrix is strict
+#' is_q_strict(q2_strict)
+#'
+#' # (Extra) Check if Q matrix is generic
+#' is_q_generic(q2_strict)
+#'
 is_q_strict = function(x) {
   stopifnot("`x` must be either `q_matrix` or `matrix`" =
               inherits(x, c("q_matrix", "matrix")))
@@ -87,15 +102,58 @@ is_q_strict = function(x) {
   }
 }
 
-#' @section Generically Identifiable:
+#' Is Q Matrix Generically Identifiable?
 #'
-#' Add details...
+#' @param x A [q_matrix()] or [base::matrix()] to test.
 #'
-#' @rdname is-q-identified
+#' @return
+#' A logical vector
+#'
+#' @author
+#' James Joseph Balamuta and Steven Andrew Culpepper
+#'
+#' @details
+#'
+#' If \eqn{\mathbf{Q}} is in the generically identifiable set \eqn{\mathcal{Q}_g},
+#' then it must satisfy the following conditions:
+#'
+#' - **(G1)** The true sparsity matrix \eqn{\boldsymbol{Q}} takes the form of
+#'   \eqn{\boldsymbol{Q}^\top=\left[{\boldsymbol{Q}_1,\boldsymbol{Q}_2, (\boldsymbol{Q}^\ast)^\top}\right]^\top}
+#'   after row swapping, where \eqn{\boldsymbol{Q}^\ast} is a \eqn{(J-2K)\times K}
+#'   binary matrix and \eqn{\boldsymbol{Q}_1,\boldsymbol{Q}_2 \in \mathcal{Q}_g} with
+#'   \eqn{{\mathbb {D}}_g =\left\{ \varvec{D}\in \{0,1\}^{K\times 2^K}:
+#'        \varvec{D} =
+#'        \begin{bmatrix} * &{} 1 &{} *&{} \dots &{} *&{}\dots &{} *\\
+#'                         * &{}*&{} 1 &{} \dots &{} *&{}\dots &{} *\\
+#'              \vdots &{} \vdots &{} &{} \ddots &{} &{} &{} \vdots \\
+#'              * &{} * &{} *&{} \dots &{} 1&{}\dots &{} *\\
+#'              \end{bmatrix}\right\}}
+#' - **(G2)** For any \eqn{k = 1, 2, \ldots, K}, there exists a \eqn{j_k > 2K}, such that \eqn{q_{j_k, k} = 1}.
+#'
+#' @seealso
+#' [is_q_strict()]
+#'
+#' @references
+#' Gu, Yuqi, and Gongjun Xu. "Sufficient and Necessary Conditions for the Identifiability of the \eqn{Q}-matrix." arXiv preprint arXiv:1810.03819 (2018).
+#'
+#' The function implemented is a translation of the publicly available
+#' MATLAB code from <https://github.com/yuqigu/Identify_Q> into _C++_.
+#'
 #' @export
 #' @examples
-#' is_q_generic(x)
-#' is_q_generic(q_matrix(x))
+#' ## Check if Q Matrix is Generically Identified ---
+#' # Create a generically identified Q matrix
+#' q3_generic = rbind(diag(3),
+#'                    c(1, 1, 0),
+#'                    c(1, 0, 1),
+#'                    c(0, 1, 1),
+#'                    c(1, 1, 1))
+#'
+#' # Check if Q matrix is generic
+#' is_q_generic(q3_generic)
+#'
+#' # (Extra) Check if Q matrix is strict
+#' is_q_strict(q3_generic)
 is_q_generic = function(x) {
   stopifnot("`x` must be either `q_matrix` or `matrix`" =
               inherits(x, c("q_matrix", "matrix")))
