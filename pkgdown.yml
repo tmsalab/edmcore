@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   metrics: metrics.html
-last_built: 2021-01-13T01:40Z
+last_built: 2021-01-13T02:06Z
 urls:
   reference: https://tmsalab.github.io/edmcore/reference
   article: https://tmsalab.github.io/edmcore/articles

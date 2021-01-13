@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Is Q Matrix Generically Identifiable? — is_q_generic • edmcore</title>
+<title>Is the \(Q\) Matrix Generically Identifiable? — is_q_generic • edmcore</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Is Q Matrix Generically Identifiable? — is_q_generic" />
-<meta property="og:description" content="Is Q Matrix Generically Identifiable?" />
+<meta property="og:title" content="Is the \(Q\) Matrix Generically Identifiable? — is_q_generic" />
+<meta property="og:description" content="Checks if the \(Q\) matrix is generically identified." />
 
 
 
@@ -127,13 +127,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Is Q Matrix Generically Identifiable?</h1>
+    <h1>Is the \(Q\) Matrix Generically Identifiable?</h1>
     <small class="dont-index">Source: <a href='https://github.com/tmsalab/edmcore/blob/master/R/q-matrix.R'><code>R/q-matrix.R</code></a></small>
     <div class="hidden name"><code>is_q_generic.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Is Q Matrix Generically Identifiable?</p>
+    <p>Checks if the \(Q\) matrix is generically identified.</p>
     </div>
 
     <pre class="usage"><span class='fu'>is_q_generic</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
@@ -152,19 +152,19 @@
     <p>A logical vector</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>If \(\mathbf{Q}\) is in the generically identifiable set \(\mathcal{Q}_g\),
+    <p>If \(\mathbf{Q}\) is in the generically identifiable set \(\mathcal{Q}\),
 then it must satisfy the following conditions:</p><ul>
 <li><p><strong>(G1)</strong> The true sparsity matrix \(\boldsymbol{Q}\) takes the form of
 \(\boldsymbol{Q}^\top=\left[{\boldsymbol{Q}_1,\boldsymbol{Q}_2, (\boldsymbol{Q}^\ast)^\top}\right]^\top\)
 after row swapping, where \(\boldsymbol{Q}^\ast\) is a \((J-2K)\times K\)
 binary matrix and \(\boldsymbol{Q}_1,\boldsymbol{Q}_2 \in \mathcal{Q}_g\) with
-\({\mathbb {D}}_g =\left\{ \varvec{D}\in \{0,1\}^{K\times 2^K}:
-       \varvec{D} =
+$${\mathbb {Q}}_g =\left\{ \boldsymbol{Q} \in \{0,1\}^{J\times K}:
+       \boldsymbol{Q} =
        \begin{bmatrix} * &amp;{} 1 &amp;{} *&amp;{} \dots &amp;{} *&amp;{}\dots &amp;{} *\\
                         * &amp;{}*&amp;{} 1 &amp;{} \dots &amp;{} *&amp;{}\dots &amp;{} *\\
              \vdots &amp;{} \vdots &amp;{} &amp;{} \ddots &amp;{} &amp;{} &amp;{} \vdots \\
              * &amp;{} * &amp;{} *&amp;{} \dots &amp;{} 1&amp;{}\dots &amp;{} *\\
-             \end{bmatrix}\right\}\)</p></li>
+             \end{bmatrix}\right\}$$ where <code><a href='https://rdrr.io/r/base/Arithmetic.html'>*</a></code> can be either 0 or 1.</p></li>
 <li><p><strong>(G2)</strong> For any \(k = 1, 2, \ldots, K\), there exists a \(j_k &gt; 2K\), such that \(q_{j_k, k} = 1\).</p></li>
 </ul>
 
