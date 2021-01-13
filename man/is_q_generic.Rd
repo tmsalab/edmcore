@@ -2,7 +2,7 @@
 % Please edit documentation in R/q-matrix.R
 \name{is_q_generic}
 \alias{is_q_generic}
-\title{Is Q Matrix Generically Identifiable?}
+\title{Is the \eqn{Q} Matrix Generically Identifiable?}
 \usage{
 is_q_generic(x)
 }
@@ -13,23 +13,23 @@ is_q_generic(x)
 A logical vector
 }
 \description{
-Is Q Matrix Generically Identifiable?
+Checks if the \eqn{Q} matrix is generically identified.
 }
 \details{
-If \eqn{\mathbf{Q}} is in the generically identifiable set \eqn{\mathcal{Q}_g},
+If \eqn{\mathbf{Q}} is in the generically identifiable set \eqn{\mathcal{Q}},
 then it must satisfy the following conditions:
 \itemize{
 \item \strong{(G1)} The true sparsity matrix \eqn{\boldsymbol{Q}} takes the form of
 \eqn{\boldsymbol{Q}^\top=\left[{\boldsymbol{Q}_1,\boldsymbol{Q}_2, (\boldsymbol{Q}^\ast)^\top}\right]^\top}
 after row swapping, where \eqn{\boldsymbol{Q}^\ast} is a \eqn{(J-2K)\times K}
 binary matrix and \eqn{\boldsymbol{Q}_1,\boldsymbol{Q}_2 \in \mathcal{Q}_g} with
-\eqn{{\mathbb {D}}_g =\left\{ \varvec{D}\in \{0,1\}^{K\times 2^K}:
-       \varvec{D} =
+\deqn{{\mathbb {Q}}_g =\left\{ \boldsymbol{Q} \in \{0,1\}^{J\times K}:
+       \boldsymbol{Q} =
        \begin{bmatrix} * &{} 1 &{} *&{} \dots &{} *&{}\dots &{} *\\
                         * &{}*&{} 1 &{} \dots &{} *&{}\dots &{} *\\
              \vdots &{} \vdots &{} &{} \ddots &{} &{} &{} \vdots \\
              * &{} * &{} *&{} \dots &{} 1&{}\dots &{} *\\
-             \end{bmatrix}\right\}}
+             \end{bmatrix}\right\}} where \code{*} can be either 0 or 1.
 \item \strong{(G2)} For any \eqn{k = 1, 2, \ldots, K}, there exists a \eqn{j_k > 2K}, such that \eqn{q_{j_k, k} = 1}.
 }
 }

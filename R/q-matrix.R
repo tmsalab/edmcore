@@ -44,7 +44,9 @@ is_q_matrix = function(x) {
   inherits(x, "q_matrix")
 }
 
-#' Is Q Matrix Strictly Identifiable?
+#' Is the \eqn{Q} Matrix Strictly Identifiable?
+#'
+#' Checks if the \eqn{Q} matrix is strictly identified.
 #'
 #' @param x A [q_matrix()] or [base::matrix()] to test.
 #'
@@ -102,7 +104,9 @@ is_q_strict = function(x) {
   }
 }
 
-#' Is Q Matrix Generically Identifiable?
+#' Is the \eqn{Q} Matrix Generically Identifiable?
+#'
+#' Checks if the \eqn{Q} matrix is generically identified.
 #'
 #' @param x A [q_matrix()] or [base::matrix()] to test.
 #'
@@ -114,20 +118,20 @@ is_q_strict = function(x) {
 #'
 #' @details
 #'
-#' If \eqn{\mathbf{Q}} is in the generically identifiable set \eqn{\mathcal{Q}_g},
+#' If \eqn{\mathbf{Q}} is in the generically identifiable set \eqn{\mathcal{Q}},
 #' then it must satisfy the following conditions:
 #'
 #' - **(G1)** The true sparsity matrix \eqn{\boldsymbol{Q}} takes the form of
 #'   \eqn{\boldsymbol{Q}^\top=\left[{\boldsymbol{Q}_1,\boldsymbol{Q}_2, (\boldsymbol{Q}^\ast)^\top}\right]^\top}
 #'   after row swapping, where \eqn{\boldsymbol{Q}^\ast} is a \eqn{(J-2K)\times K}
 #'   binary matrix and \eqn{\boldsymbol{Q}_1,\boldsymbol{Q}_2 \in \mathcal{Q}_g} with
-#'   \eqn{{\mathbb {D}}_g =\left\{ \varvec{D}\in \{0,1\}^{K\times 2^K}:
-#'        \varvec{D} =
+#'   \deqn{{\mathbb {Q}}_g =\left\{ \boldsymbol{Q} \in \{0,1\}^{J\times K}:
+#'        \boldsymbol{Q} =
 #'        \begin{bmatrix} * &{} 1 &{} *&{} \dots &{} *&{}\dots &{} *\\
 #'                         * &{}*&{} 1 &{} \dots &{} *&{}\dots &{} *\\
 #'              \vdots &{} \vdots &{} &{} \ddots &{} &{} &{} \vdots \\
 #'              * &{} * &{} *&{} \dots &{} 1&{}\dots &{} *\\
-#'              \end{bmatrix}\right\}}
+#'              \end{bmatrix}\right\}} where `*` can be either 0 or 1.
 #' - **(G2)** For any \eqn{k = 1, 2, \ldots, K}, there exists a \eqn{j_k > 2K}, such that \eqn{q_{j_k, k} = 1}.
 #'
 #' @seealso

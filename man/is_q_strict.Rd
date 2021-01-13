@@ -2,7 +2,7 @@
 % Please edit documentation in R/q-matrix.R
 \name{is_q_strict}
 \alias{is_q_strict}
-\title{Is Q Matrix Strictly Identifiable?}
+\title{Is the \eqn{Q} Matrix Strictly Identifiable?}
 \usage{
 is_q_strict(x)
 }
@@ -13,7 +13,7 @@ is_q_strict(x)
 A logical value.
 }
 \description{
-Is Q Matrix Strictly Identifiable?
+Checks if the \eqn{Q} matrix is strictly identified.
 }
 \details{
 If \eqn{\mathbf{Q}} is in the strictly identifiable set \eqn{\mathcal{Q}_s},
