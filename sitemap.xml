@@ -28,13 +28,16 @@
     <loc>https://tmsalab.github.io/edmcore/reference/edmcore-package.html</loc>
   </url>
   <url>
-    <loc>https://tmsalab.github.io/edmcore/reference/is-q-identified.html</loc>
-  </url>
-  <url>
     <loc>https://tmsalab.github.io/edmcore/reference/is_item_matrix.html</loc>
   </url>
   <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/is_q_generic.html</loc>
+  </url>
+  <url>
     <loc>https://tmsalab.github.io/edmcore/reference/is_q_matrix.html</loc>
+  </url>
+  <url>
+    <loc>https://tmsalab.github.io/edmcore/reference/is_q_strict.html</loc>
   </url>
   <url>
     <loc>https://tmsalab.github.io/edmcore/reference/item_matrix.html</loc>
