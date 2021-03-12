@@ -125,6 +125,71 @@ permutate_theta_order = function(estimated_theta, oracle_theta, k = 3) {
     class = "permutate_order")
 }
 
+norm_frobenius = function(x) {
+  norm(x, type = "F")
+}
+
+random_uniform_matrix = function(row, column) {
+  matrix(runif(row * column), nrow = row, ncol = column)
+}
+
+#' Label switching after the fact
+#'
+#' Default is Check matrix
+#'
+#' @param estimate A matrix
+#' @param oracle   A matrix. Default a random uniform matrix.
+#'
+#' @references
+#' Erosheva, E. A., & Curtis, S. M. (2011).
+#' Dealing with rotational invariance in Bayesian confirmatory factor analysis.
+#' Department of Statistics, University of Washington, Seattle, Washington, USA.
+#' <https://stat.uw.edu/research/tech-reports/dealing-rotational-invariance-bayesian-confirmatory-factor-analysis>
+permutate_by_matrix = function(estimate, oracle = NULL, M = 2) {
+  n_rows = nrow(estimate)
+  n_cols = ncol(estimate)
+
+  if (is.null(oracle)) {
+    oracle = random_uniform_matrix(n_rows, n_cols)
+  }
+
+  # Create permutation table
+  permutation_table = gtools::permutations(n_cols, n_cols)
+  n_permutations = nrow(permutation_table)
+
+  # Setup a vector to store results from matching columns
+  distance_by_column = rep(NA, n_permutations)
+
+  # Construct a bijection vector into M = 2
+  vv = edmcore::attribute_gen_bijection(n_cols, M)
+
+  n_class = 2 ^ n_cols
+
+  # Iterate on trait permutations
+  for (r in seq_len(n_permutations)) {
+    # Retrieve permutation indices
+    col_indices = permutation_table[r,]
+
+    # Obtain the euclidean distance
+    distance_by_column[r] = norm_frobenius(estimate[, col_indices] - oracle)
+  }
+
+  # Obtain the desired column permutation index
+  permutation_idx = which.min(distance_by_column)
+
+  # Determine the best permutation order from 1 to N_COL
+  permutation_order = permutation_table[permutation_idx,]
+
+  # Define a permutation search
+  structure(
+    list(
+      "m" = 2,
+      "n_col" = n_cols,
+      "permutation_order" = permutation_order
+    ),
+    class = "permutate_matrix")
+}
+
 
 
 #' Reorder an object to match a target as closely as possible
