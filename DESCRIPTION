@@ -23,10 +23,10 @@ Description: Provides a common set of functions used in the exploratory
 URL: https://tmsalab.github.io/edmcore, https://github.com/tmsalab/edmcore
 BugReports: https://github.com/tmsalab/edmcore/issues
 License: GPL (>= 2)
-Depends: R (>= 3.5.0)
+Depends: R (>= 3.6.0)
 LinkingTo: Rcpp, RcppArmadillo
 Imports: 
-    Rcpp,
+    Rcpp (>= 1.0.7),
     gtools,
     ggplot2
 Suggests: 

@@ -26,7 +26,9 @@ new_edm_default_property_list = function(n, j, k, runtime, ..., class = characte
 #' Display Exploratory Diagnostic Model Properties
 #'
 #' Custom print method for viewing Exploratory Diagnostic Model properties.
-#' @inherit base::print
+#'
+#' @param x	  an edm modeling object
+#' @param ...	additional arguments passed to or from other methods.
 #' @export
 print.edm_property_list = function(x, ...) {
   # Display call
@@ -83,7 +85,9 @@ new_edm_model = function(chain, property_list, estimate = NA, ..., class = chara
 #' Print Exploratory Diagnostic Model Components
 #'
 #' Custom print method for viewing Exploratory Diagnostic Model components.
-#' @inherit base::print
+#'
+#' @param x	  an edm modeling object
+#' @param ...	additional arguments passed to or from other methods.
 #' @export
 print.edm_model = function(x, ...) {
   print(x$property_list)
