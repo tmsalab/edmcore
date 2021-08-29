@@ -24,7 +24,7 @@ postprocess_attribute_correlation = function(pi_hat, k, order = k) {
   alpha_profiles =
     t(GenerateAtable(
       nClass = 2 ^ k,
-      K,
+      k,
       M = 2,
       order = order
     )$DtoQtable)
