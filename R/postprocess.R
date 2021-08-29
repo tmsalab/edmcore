@@ -10,6 +10,11 @@
 #' @param k      Number of attributes
 #' @param order  Number of interactions in the model
 #'
+#' @return
+#' A `matrix` containing the correlations. Note, as it is a correlation matrix,
+#' the diagonal will be equivalent to 1.
+#'
+#' @export
 #' @examples
 #'
 #' # Sample calculation when K = 3 and number of classses is 2^3 = 8

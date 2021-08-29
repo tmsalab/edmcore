@@ -13,6 +13,10 @@ postprocess_attribute_correlation(pi_hat, k, order = k)
 
 \item{order}{Number of interactions in the model}
 }
+\value{
+A \code{matrix} containing the correlations. Note, as it is a correlation matrix,
+the diagonal will be equivalent to 1.
+}
 \description{
 Given the estimated latent class membership probabilities, we compute the
 correlation across classes.
